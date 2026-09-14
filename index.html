@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <title>YIN, KO-YING | Academic Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.4/babel.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            background-color: #ffffff;
+            color: #2d3748;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, .serif-font { 
+            font-family: 'Lora', 'Noto Sans TC', serif; 
+        }
+        .section-border { 
+            border-top: 1px solid #edf2f7; 
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        const data = {
+            zh: {
+                name: "殷可盈 (YIN, KO-YING)",
+                title: "專注於氣候政策與社會公平的永續工作者",
+                email: "yinkoying.yky@gmail.com",
+                nav_cv: "個人簡歷",
+                nav_gallery: "活動與競賽紀錄",
+                section_interests: "研究興趣",
+                section_bio: "學術自述",
+                section_awards: "獲獎經歷",
+                section_qualifications: "專業證照",
+                section_overseas: "青年百億計畫",
+                qual_esg: "永續與氣候治理",
+                qual_tech: "資訊科技與人工智慧",
+                qual_finance: "金融與專案管理",
+                gallery_awards: "參賽與活動紀錄",
+                gallery_overseas: "海外見習 (澳洲 EarthCheck)",
+                interests: [
+                    "公正轉型 (Just Transition)", 
+                    "氣候政策的分配效應", 
+                    "綠色金融與社會共融",
+                    "數據驅動的環境治理"
+                ],
+                bio: [
+                    "我大學主修公共行政，後續投入環境永續領域。過去曾在臺北大學商學院審閱上千份上市櫃企業永續報告書，參與「臺灣永續評鑑」，建立扎實的 ESG 數據審查基礎。",
+                    "隨後，我在新系環境技術有限公司擔任專案工程師，親自輔導數十家中小企業進行碳盤查 (ISO 14064-1/14067)。在第一線的工作中，我深刻感受到缺乏資源的中小企業在面對國家淨零政策時，承受著極大的轉型壓力與資源不平等。",
+                    "今年 9 月，我即將進入永豐銀行總行，負責統籌「公平待客與金融友善」專案。從金融業的角度，我觀察到目前的綠色融資多數只看減碳指標 (E)，卻極度缺乏對弱勢群體與中小企業衝擊 (S) 的系統性評估。",
+                    "帶著這些實務觀察，我希望進入研究所探討「綠色金融政策下的公正轉型與分配效應」。我期許結合過去累積的資料分析能力，研究氣候政策在推動減碳的同時，如何兼顧社會公平，避免加劇經濟與金融不平等。"
+                ],
+                awards: [
+                    { year: "2026", title: "氣候變遷創意實作競賽", result: "氣候應用特別獎", org: "教育部 / 交通部中央氣象署", desc: "結合 GIS 空間風險快篩與 NbS 自然解方，輔助基層社區進行氣候韌性決策。", link: "#" },
+                    { year: "2026", title: "第二屆 CCUS 創意教案徵選", result: "優等獎", org: "中央大學", desc: "運用 Firebase 與 AI 開發互動策略模擬器，將碳捕捉技術轉化為沉浸式教案。", link: "#" },
+                    { year: "2026", title: "新北市青年氣候行動", result: "決選", org: "新北市環保局", desc: "結合 IoT 物理感測模組處理真實環境數據，建立在地微循環網絡。", link: "#" },
+                    { year: "2026", title: "臺灣「能」永續能源實作競賽", result: "複賽", org: "教育部", desc: "結合綠色金融與群募機制，探討降低大眾參與綠色投資門檻之解方。", link: "#" },
+                    { year: "2026", title: "台灣仿生設計競賽", result: "決賽", org: "台灣仿生科技發展協會", desc: "以自然正向為核心，探討社區微型碳循環系統。", link: "#" }
+                ],
+                qualifications: {
+                    esg: ["ISO 14064-1 內部查證員 (DNV)", "ISO 14064-1 溫室氣體盤查管理師 (CDRI)", "ISO 14067 產品碳足跡盤查管理師 (CDRI)", "經濟部 iPAS 淨零碳規劃管理師 (中/初級)", "GRI 永續報告書管理師 (CDRI)", "環境部 溫室氣體盤查作業查驗人員", "環境部 環境教育人員", "新北市 低碳社區規劃師", "證期會 永續發展基礎能力測驗"],
+                    tech: ["AWS Certified AI Practitioner", "Azure AI-900", "經濟部 iPAS AI 應用規劃師 (初級)", "Google Cloud 學程結業", "TQC 資訊科技 Python 專業級", "TQC Microsoft Office 專業級"],
+                    finance: ["金研院 金融科技力知識檢定測驗", "證期會 金融市場常識與職業道德", "PMP 專案管理人才實務班"]
+                },
+                overseas: {
+                    title: "旅遊綠方程",
+                    desc: "獲選 2026 年「青年百億海外圓夢基金計畫」，前往澳洲布里斯本 EarthCheck 學院進行海外見習。學習以科學化數據與系統性指標，探討國際永續旅遊認證機制、環境績效監測與目的地管理標準，強化對國際永續標準落地應用之實務理解。"
+                }
+            },
+            en: {
+                name: "YIN, KO-YING",
+                title: "Sustainability Practitioner | Climate Policy & Social Equity",
+                email: "yinkoying.yky@gmail.com",
+                nav_cv: "Curriculum Vitae",
+                nav_gallery: "Photos & Activities",
+                section_interests: "Research Interests",
+                section_bio: "Statement of Purpose",
+                section_awards: "Honors & Awards",
+                section_qualifications: "Professional Certifications",
+                section_overseas: "Global Initiatives (10B Dreams Fund)",
+                qual_esg: "Sustainability & Climate Governance",
+                qual_tech: "Information Technology & AI",
+                qual_finance: "Finance & Project Management",
+                gallery_awards: "Competition & Event Photos",
+                gallery_overseas: "Overseas Apprenticeship (EarthCheck)",
+                interests: [
+                    "Just Transition", 
+                    "Distributional Effects of Climate Policy", 
+                    "Climate Finance & Social Inclusion",
+                    "Data-Driven Environmental Governance"
+                ],
+                bio: [
+                    "My background combines public administration and environmental sustainability. At National Taipei University, I reviewed over a thousand corporate ESG reports and participated in the 'Taiwan Sustainability Evaluation,' building a solid foundation in ESG data auditing.",
+                    "Later, as a project engineer at Xinxi Environmental Technology, I assisted dozens of SMEs with frontline carbon inventories (ISO 14064-1/14067). This experience showed me the immense pressure and inequality resource-constrained small businesses face under national net-zero mandates.",
+                    "In September 2026, I will join SinoPac Bank's headquarters to manage the 'Treating Customers Fairly and Financial Inclusion' project. From a financial perspective, I observe that green financing focuses heavily on carbon reduction (E) but often lacks a systemic evaluation of its impact on vulnerable groups and SMEs (S).",
+                    "With these practical observations, I aim to pursue graduate studies to research the 'Distributional Effects of Climate Policies' and 'Just Transition in Green Finance.' I hope to leverage my data analysis skills to study how financial policies can balance carbon reduction with social equity."
+                ],
+                awards: [
+                    { year: "2026", title: "Climate Change Creative Practice Competition", result: "Special Award for Climate Application", org: "MOE / Central Weather Administration", desc: "Developed a decision-support platform utilizing GIS risk screening and Nature-based Solutions (NbS) for community climate resilience.", link: "#" },
+                    { year: "2026", title: "2nd CCUS Creative Lesson Plan Selection", result: "Excellence Award", org: "National Central University", desc: "Engineered an interactive CCUS net-zero strategy simulator using Firebase and AI to transform carbon capture concepts into immersive education.", link: "#" },
+                    { year: "2026", title: "NTPC Youth Climate Action", result: "Finalist", org: "NTPC Environmental Protection Bureau", desc: "Established a local micro-circular network integrating IoT physical sensors (ESP32) for environmental data processing.", link: "#" },
+                    { year: "2026", title: "Taiwan 'ENERGY' Sustainable Energy Competition", result: "Semi-Finalist", org: "Ministry of Education", desc: "Proposed a green finance crowdfunding platform to lower the threshold for public participation in zero-carbon investments.", link: "#" },
+                    { year: "2026", title: "Taiwan Biomimicry Design Challenge", result: "Finalist", org: "Biomimicry Taiwan", desc: "Designed a community micro-carbon cycle system centered on Nature Positive principles.", link: "#" }
+                ],
+                qualifications: {
+                    esg: ["ISO 14064-1 Internal Verifier (DNV)", "ISO 14064-1 GHG Verification Specialist (CDRI)", "ISO 14067 Product Carbon Footprint Specialist (CDRI)", "iPAS Net Zero Planning & Mgmt Specialist (MOEA)", "GRI Sustainability Reporting Specialist (CDRI)", "GHG Inventory Verification Personnel (MOENV)", "Environmental Education Personnel (MOENV)", "Low-Carbon Community Planner (NTPC)", "Sustainable Development Basic Ability (SFI)"],
+                    tech: ["AWS Certified AI Practitioner", "Azure AI-900", "iPAS AI Application Planner (MOEA)", "Google Cloud Program Certificate", "TQC IT Python Professional", "TQC Microsoft Office Professional"],
+                    finance: ["FinTech Knowledge Proficiency Test (TABF)", "Financial Markets Knowledge & Ethics (SFI)", "PMP Project Management Practice"]
+                },
+                overseas: {
+                    title: "Travel Green Equation",
+                    desc: "Selected for the 2026 'Youth 10 Billion Dreams Fund' for an apprenticeship at EarthCheck Academy in Brisbane, Australia. Studied international sustainable tourism certification, environmental performance monitoring, and destination management using scientific data and systematic indicators."
+                }
+            }
+        };
+
+        const galleryData = {
+            awards: [
+                { src: "images/gallery-award-1.jpg", caption: "Award Ceremony" },
+                { src: "images/gallery-award-2.jpg", caption: "Project Presentation" },
+                { src: "images/gallery-award-3.jpg", caption: "Simulator Demo" },
+                { src: "images/gallery-award-4.jpg", caption: "Fieldwork" }
+            ],
+            overseas: [
+                { src: "images/gallery-aus-1.jpg", caption: "EarthCheck Academy" },
+                { src: "images/gallery-aus-2.jpg", caption: "Sustainable Tourism Fieldwork" },
+                { src: "images/gallery-aus-3.jpg", caption: "Workshop Discussion" },
+                { src: "images/gallery-aus-4.jpg", caption: "Program Completion" }
+            ]
+        };
+
+        const App = () => {
+            const [lang, setLang] = useState('zh');
+            const [activeTab, setActiveTab] = useState('cv');
+
+            const t = data[lang];
+
+            const handleImageError = (e, filename) => {
+                e.target.onerror = null; 
+                e.target.src = `https://placehold.co/600x400/f8fafc/94a3b8?text=Image+Placeholder%5Cn[${filename}]`;
+            };
+
+            return (
+                <div className="max-w-4xl mx-auto px-6 py-12 md:py-16">
+                    
+                    {/* Navigation & Language Toggle */}
+                    <nav className="flex justify-between items-center mb-16 border-b border-gray-200 pb-4">
+                        <div className="flex gap-8">
+                            <button 
+                                onClick={() => setActiveTab('cv')}
+                                className={`text-[15px] font-bold tracking-widest pb-1 transition-colors ${activeTab === 'cv' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400 hover:text-gray-700'}`}
+                            >
+                                {t.nav_cv}
+                            </button>
+                            <button 
+                                onClick={() => setActiveTab('gallery')}
+                                className={`text-[15px] font-bold tracking-widest pb-1 transition-colors ${activeTab === 'gallery' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400 hover:text-gray-700'}`}
+                            >
+                                {t.nav_gallery}
+                            </button>
+                        </div>
+                        <div className="flex gap-3">
+                            <button onClick={() => setLang('zh')} className={`text-xs font-bold px-2 py-1 border rounded-sm transition-colors ${lang === 'zh' ? 'bg-gray-800 text-white border-gray-800' : 'bg-transparent text-gray-400 border-gray-300 hover:text-gray-700'}`}>中文</button>
+                            <button onClick={() => setLang('en')} className={`text-xs font-bold px-2 py-1 border rounded-sm transition-colors ${lang === 'en' ? 'bg-gray-800 text-white border-gray-800' : 'bg-transparent text-gray-400 border-gray-300 hover:text-gray-700'}`}>EN</button>
+                        </div>
+                    </nav>
+
+                    {/* Main Content Area */}
+                    {activeTab === 'cv' ? (
+                        <div className="animate-fade-in space-y-20">
+                            
+                            {/* 1. Header & Bio */}
+                            <header className="flex flex-col md:flex-row gap-12 lg:gap-16 items-start">
+                                {/* Left Column: Photo & Basic Info */}
+                                <div className="w-full md:w-1/3 shrink-0 flex flex-col items-center md:items-start">
+                                    <div className="w-48 h-64 md:w-full md:h-72 bg-gray-100 mb-6 border border-gray-200 shadow-sm relative overflow-hidden">
+                                        <img 
+                                            src="images/profile.jpg" 
+                                            alt={t.name}
+                                            className="w-full h-full object-cover"
+                                            onError={(e) => handleImageError(e, 'profile.jpg')}
+                                        />
+                                    </div>
+                                    <h1 className="text-2xl font-bold mb-2 serif-font text-center md:text-left">{t.name}</h1>
+                                    <p className="text-sm font-medium text-gray-500 mb-4 text-center md:text-left leading-relaxed">{t.title}</p>
+                                    <a href={`mailto:${t.email}`} className="text-[13px] font-medium text-gray-500 hover:text-gray-900 transition-colors border-b border-gray-300 pb-0.5">
+                                        {t.email}
+                                    </a>
+                                </div>
+
+                                {/* Right Column: Bio & Interests */}
+                                <div className="w-full md:w-2/3 pt-2">
+                                    <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">{t.section_interests}</h2>
+                                    <ul className="list-disc pl-5 mb-10 space-y-2 marker:text-gray-400">
+                                        {t.interests.map((item, idx) => (
+                                            <li key={idx} className="text-[14.5px] font-medium text-gray-700">
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">{t.section_bio}</h2>
+                                    <div className="text-[14px] text-gray-700 space-y-4 text-justify leading-relaxed font-medium">
+                                        {t.bio.map((p, idx) => <p key={idx}>{p}</p>)}
+                                    </div>
+                                </div>
+                            </header>
+
+                            {/* 2. Awards */}
+                            <section className="section-border pt-16">
+                                <h2 className="text-xl font-bold mb-8 serif-font">{t.section_awards}</h2>
+                                <div className="space-y-6">
+                                    {t.awards.map((award, idx) => (
+                                        <div key={idx} className="group border border-gray-100 p-5 rounded-sm hover:border-gray-300 transition-colors">
+                                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+                                                <div className="flex items-center gap-3">
+                                                    <span className="text-[11px] font-bold bg-gray-100 px-2 py-0.5 text-gray-600 rounded-sm">
+                                                        {award.year}
+                                                    </span>
+                                                    <h3 className="text-[15px] font-bold text-gray-900">
+                                                        {award.link !== '#' ? (
+                                                            <a href={award.link} target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors">{award.title} &rarr;</a>
+                                                        ) : (
+                                                            award.title
+                                                        )}
+                                                    </h3>
+                                                </div>
+                                                <div className="text-[12px] font-bold text-gray-500">
+                                                    {award.org}
+                                                </div>
+                                            </div>
+                                            <div className="text-[13px] font-bold text-gray-800 mb-2">
+                                                {award.result}
+                                            </div>
+                                            <p className="text-[13px] text-gray-600 leading-relaxed font-medium">
+                                                {award.desc}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+
+                            {/* 3. Qualifications */}
+                            <section className="section-border pt-16">
+                                <h2 className="text-xl font-bold mb-8 serif-font">{t.section_qualifications}</h2>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                                    {/* ESG */}
+                                    <div>
+                                        <h3 className="text-[13px] font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+                                            {t.qual_esg}
+                                        </h3>
+                                        <ul className="space-y-3">
+                                            {t.qualifications.esg.map((item, idx) => (
+                                                <li key={idx} className="text-[13px] text-gray-600 font-medium flex items-start gap-2 leading-snug">
+                                                    <span className="text-gray-300 mt-0.5">▪</span> {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    {/* Tech */}
+                                    <div>
+                                        <h3 className="text-[13px] font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+                                            {t.qual_tech}
+                                        </h3>
+                                        <ul className="space-y-3">
+                                            {t.qualifications.tech.map((item, idx) => (
+                                                <li key={idx} className="text-[13px] text-gray-600 font-medium flex items-start gap-2 leading-snug">
+                                                    <span className="text-gray-300 mt-0.5">▪</span> {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    {/* Finance */}
+                                    <div>
+                                        <h3 className="text-[13px] font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+                                            {t.qual_finance}
+                                        </h3>
+                                        <ul className="space-y-3">
+                                            {t.qualifications.finance.map((item, idx) => (
+                                                <li key={idx} className="text-[13px] text-gray-600 font-medium flex items-start gap-2 leading-snug">
+                                                    <span className="text-gray-300 mt-0.5">▪</span> {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                            {/* 4. Overseas */}
+                            <section className="section-border pt-16">
+                                <h2 className="text-xl font-bold mb-6 serif-font">{t.section_overseas}</h2>
+                                <div className="flex flex-col md:flex-row gap-8 items-center bg-gray-50 border border-gray-100 p-6 md:p-8 rounded-sm">
+                                    <div className="w-full md:w-2/3">
+                                        <h3 className="text-lg font-bold text-gray-900 mb-3">{t.overseas.title}</h3>
+                                        <p className="text-[14px] font-medium text-gray-700 leading-relaxed text-justify">
+                                            {t.overseas.desc}
+                                        </p>
+                                    </div>
+                                    <div className="w-full md:w-1/3 aspect-[4/3] bg-white border border-gray-200 overflow-hidden shadow-sm">
+                                        <img 
+                                            src="images/life.jpg" 
+                                            alt="Overseas Apprenticeship"
+                                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                            onError={(e) => handleImageError(e, 'life.jpg')}
+                                        />
+                                    </div>
+                                </div>
+                            </section>
+
+                        </div>
+                    ) : (
+                        <div className="animate-fade-in pb-10">
+                            
+                            {/* Awards Gallery */}
+                            <div className="mb-16">
+                                <h2 className="text-lg font-bold mb-6 serif-font pb-2 border-b border-gray-100">{t.gallery_awards}</h2>
+                                <div className="gallery-grid">
+                                    {galleryData.awards.map((img, idx) => (
+                                        <div key={idx} className="flex flex-col gap-3 group">
+                                            <div className="w-full aspect-[4/3] bg-gray-50 border border-gray-200 overflow-hidden">
+                                                <img 
+                                                    src={img.src} 
+                                                    alt={img.caption} 
+                                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                                    onError={(e) => handleImageError(e, img.src.split('/').pop())}
+                                                />
+                                            </div>
+                                            <p className="text-[13px] font-medium text-center text-gray-500">{lang === 'zh' ? img.caption : img.caption}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Overseas Gallery */}
+                            <div>
+                                <h2 className="text-lg font-bold mb-6 serif-font pb-2 border-b border-gray-100">{t.gallery_overseas}</h2>
+                                <div className="gallery-grid">
+                                    {galleryData.overseas.map((img, idx) => (
+                                        <div key={idx} className="flex flex-col gap-3 group">
+                                            <div className="w-full aspect-[4/3] bg-gray-50 border border-gray-200 overflow-hidden">
+                                                <img 
+                                                    src={img.src} 
+                                                    alt={img.caption} 
+                                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                                    onError={(e) => handleImageError(e, img.src.split('/').pop())}
+                                                />
+                                            </div>
+                                            <p className="text-[13px] font-medium text-center text-gray-500">{lang === 'zh' ? img.caption : img.caption}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Footer */}
+                    <footer className="mt-20 pt-8 border-t border-gray-200 text-center text-[11px] text-gray-400 font-bold tracking-widest uppercase">
+                        © 2026 YIN, KO-YING.
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
