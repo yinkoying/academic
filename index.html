@@ -10,34 +10,34 @@
     <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.4/babel.min.js"></script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
         body { 
             font-family: 'Noto Sans TC', sans-serif; 
             background-color: #ffffff;
-            color: #1f2937;
+            color: #2d3748;
             line-height: 1.75;
             -webkit-font-smoothing: antialiased;
+            font-size: 16px; 
         }
         h1, h2, h3, .serif-font { 
             font-family: 'Lora', 'Noto Sans TC', serif; 
         }
         .section-border { 
-            border-top: 1px solid #f1f5f9; 
+            border-top: 1px solid #edf2f7; 
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-in {
-            animation: fadeIn 0.3s ease-out forwards;
-        }
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            animation: fadeIn 0.35s ease-out forwards;
         }
     </style>
 </head>
@@ -45,580 +45,461 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect, useMemo } = React;
+        const { useState, useEffect } = React;
 
-        const Icon = ({ size = 16, className = "", children }) => (
-            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>{children}</svg>
-        );
-        const XIcon = (p) => <Icon {...p}><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></Icon>;
-        const ChevronLeft = (p) => <Icon {...p}><polyline points="15 18 9 12 15 6"/></Icon>;
-        const ChevronRight = (p) => <Icon {...p}><polyline points="9 18 15 12 9 6"/></Icon>;
-        const MapPin = (p) => <Icon {...p}><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></Icon>;
-        const Calendar = (p) => <Icon {...p}><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></Icon>;
-        const GraduationCap = (p) => <Icon {...p}><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></Icon>;
-        const Briefcase = (p) => <Icon {...p}><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></Icon>;
-        const Code = (p) => <Icon {...p}><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></Icon>;
-
-        const academicData = {
+        const data = {
             zh: {
                 name: "殷可盈",
                 title: "永續工作者",
-                contact_prefix: "聯絡方式：",
                 email: "yinkoying.yky@gmail.com",
                 nav_cv: "個人簡歷",
+                nav_projects: "專案實務",
                 nav_gallery: "學習剪影",
-                section_journey: "學習歷程",
-                section_direction: "研究方向",
+                section_interests: "研究方向",
+                section_bio: "學習歷程",
                 section_proposal: "研究計畫",
                 section_awards: "競賽紀錄",
-                section_qualifications: "專業證照與培訓認證",
+                section_qualifications: "專業證照",
                 section_overseas: "青年百億海外圓夢計畫",
-                label_education: "學歷背景",
-                label_experience: "實務經歷",
-                label_skills: "研究工具與方法",
-                education_items: [
-                    { school: "國立臺北大學", major: "公共行政暨政策學系 學士", period: "2019 - 2023" }
-                ],
-                experience_items: [
-                    { org: "永豐商業銀行 總行", role: "公平待客與金融友善 專案人員", period: "2026.09 - 迄今" },
-                    { org: "新系環境技術有限公司", role: "環境專案工程師", period: "2024 - 2026" },
-                    { org: "臺北大學 商學院企業永續發展研究中心", role: "研究助理 / 報告書評審員", period: "2022 - 2023" }
-                ],
-                skill_tags: [
-                    "Python (資料分析)", "GIS 空間分析", "ISO 14064-1 碳盤查", 
-                    "ISO 14067 碳足跡", "ESG 報告書查證", "微氣候模擬"
-                ],
+                section_education: "學歷背景",
+                section_experience: "實務經歷",
+                quote_text: "“What you do makes a difference, and you have to decide what kind of difference you want to make.”",
+                quote_zh: "「你的所作所為都會帶來影響，而你要決定，想帶來哪一種影響。」",
+                quote_author: "— Jane Goodall 珍古德",
+                view_detail_btn: "查看詳細說明",
+                close_modal: "關閉",
                 qual_esg: "永續與氣候治理",
                 qual_tech: "資訊科技與人工智慧",
                 qual_finance: "金融與專案管理",
-                journey: [
-                    "大學期間任職於臺北大學商學院企業永續發展研究中心，參與臺灣永續評鑑，審閱上市櫃企業永續報告書，建立對 ESG 規範與揭露制度之基礎認識。",
-                    "畢業後任職於新系環境技術有限公司擔任專案工程師，執行新北市經發局與環境部氣候變遷署專案，協助中小企業執行 ISO 14064-1 溫室氣體與 ISO 14067 產品碳足跡盤查。實務輔導過程中，觀察到中小企業在面對淨零法規與供應鏈要求時，面臨合規成本與資源配置落差。",
-                    "接續參與永豐商業銀行總行「公平待客與金融友善」專案，由金融實務機制切入，探討綠色授信與轉型融資規範推動時，金融包容性與多元利害關係人間之平衡。"
+                gallery_all: "全部剪影",
+                gallery_awards: "競賽發表",
+                gallery_projects: "專案田野",
+                gallery_overseas: "海外見習",
+                
+                interests: [
+                    "公正轉型", 
+                    "氣候政策分配效應", 
+                    "綠色金融與社會共融",
+                    "量化環境治理"
                 ],
-                direction: [
-                    "公正轉型 (Just Transition) 與氣候韌性評估", 
-                    "氣候政策與碳定價機制分配效應 (Distributional Impacts)", 
-                    "綠色金融體系與金融包容性 (Financial Inclusion)",
-                    "實證環境政策與量化資料治理 (Empirical Environmental Governance)"
+                
+                bio: [
+                    "具備公共治理與環境工程盤查背景。於臺北大學商學院參與『臺灣永續評鑑』，審閱千份上市櫃企業永續報告書，建立對 ESG 法規與數據治理的基礎認知。",
+                    "任職新系環境技術專案工程師期間，執行公部門計畫，輔導數十家中小企業進行 ISO 14064-1 與 ISO 14067 碳盤查。從中觀察到：面對淨零政策合規要求，中小企業正遭遇轉型挑戰與資源不平等。",
+                    "即將於 9 月進入永豐銀行總行，參與『公平待客與金融友善』專案。未來將從金融體系視角，探討綠色融資政策與脆弱群體（含中小企業）權益間的平衡。"
                 ],
+
                 proposal: [
                     {
                         subtitle: "研究動機",
-                        content: "國際與臺灣加速推動綠色金融與減碳政策（如綠色授信規範、碳費定價機制），促使資金與技術向低碳產業配置。然而，實務上中小企業與邊陲利害關係人常受限於資本規模與資訊不對稱，承擔不成比例之合規成本，產生轉型資源配置失衡之現象。氣候治理若缺乏分配正義視角，可能在達成減碳目標之同時擴大經濟不平等。"
+                        content: "國際與臺灣加速推動綠色金融與減碳政策（如碳費機制），促使資金向低碳產業配置。然而，中小企業與邊陲群體常受限於資本規模與資訊不對稱，承擔不成比例的合規成本。氣候治理若缺乏分配正義視角，可能在達成減碳目標時擴大經濟不平等。"
                     },
                     {
                         subtitle: "研究主軸與規劃",
-                        content: "研究規劃聚焦「臺灣綠色金融與氣候政策推進下之分配效應與公正轉型機制」。擬結合計量經濟分析、GIS 空間資料與產業盤查數據，針對政策實施前後之脆弱群體受衝擊程度進行實證評估，進而提出具經驗證據之政策緩衝與誘因機制，為環境治理提供兼顧減碳效率與社會公平之學術基礎。"
+                        content: "未來研究主軸聚焦「台灣氣候政策與綠色金融的分配效應」。規劃結合空間分析與產業盤查數據，實證評估政策實施對脆弱群體的衝擊，探討政策緩衝與誘因機制。過去累積的資料科學基礎，將應用於後續的量化分析實作。"
                     }
                 ],
+
+                education: [
+                    { school: "國立臺北大學", dept: "公共行政暨政策學系", degree: "學士", period: "2020 - 2024" },
+                    { school: "淡江大學", dept: "資訊管理學系", degree: "先修 / 研習", period: "2018 - 2020" }
+                ],
+
+                experience: [
+                    { role: "公平待客與金融友善 專案人員", org: "永豐商業銀行 總行", period: "2026.09 - Present" },
+                    { role: "環境專案工程師", org: "新系環境技術有限公司", period: "2024 - 2026" },
+                    { role: "研究助理 / 報告書評審員", org: "國立臺北大學 企業永續發展研究中心", period: "2022 - 2023" }
+                ],
+
                 awards: [
-                    { 
-                        year: "2026", 
-                        title: "氣候變遷創意實作競賽", 
-                        result: "氣候應用特別獎", 
-                        isWinner: true,
-                        org: "教育部 / 交通部中央氣象署", 
-                        desc: "整合 GIS 空間風險快篩與 NbS 自然解方，評估社區熱點脆弱度，建立調適決策支援架構。", 
-                        link: "https://tanji2026.github.io/nbs/",
-                        tags: ["氣候韌性", "GIS 空間分析", "NbS 自然解方", "微氣候調適"]
-                    },
-                    { 
-                        year: "2026", 
-                        title: "第二屆 CCUS 創意教案徵選活動", 
-                        result: "優等獎", 
-                        isWinner: true,
-                        org: "中央大學 / CCUS 科教計畫", 
-                        desc: "建置模擬運算環境，將碳捕捉、利用與封存技術流程及政策誘因轉化為互動評估工具。", 
-                        link: "https://tanji2026.github.io/ccus/",
-                        tags: ["負碳技術", "CCUS 政策", "策略模擬", "環境教育"]
-                    },
-                    { 
-                        year: "2026", 
-                        title: "三鶯永續行：AI 智慧交通公民共創平台", 
-                        result: "入圍決賽", 
-                        isWinner: false,
-                        org: "臺北聯合大學系統", 
-                        desc: "運用交通路網數據，探討三鶯地區低碳移動網絡規劃與弱勢移動權益保障。", 
-                        link: "https://tanji2026.github.io/sanying/",
-                        tags: ["公民科技", "智慧交通", "公正轉型", "地方交通治理"]
-                    },
-                    { 
-                        year: "2026", 
-                        title: "台灣仿生設計競賽", 
-                        result: "晉級決賽", 
-                        isWinner: false,
-                        org: "台灣仿生科技發展協會 / 新北市政府", 
-                        desc: "參考菌絲體分解循環機制，規劃社區微型有機質處理系統，評估在地碳循環效益。", 
-                        link: "https://tanji2026.github.io/biomimicry/",
-                        tags: ["仿生設計", "自然資本", "微型碳循環", "資源再利用"]
-                    },
-                    { 
-                        year: "2026", 
-                        title: "新北市青年氣候行動徵件", 
-                        result: "進入決選", 
-                        isWinner: false,
-                        org: "新北市政府 / 環保局", 
-                        desc: "建置微型循環架構，整合 ESP32 環境物理感測與碳氮比監測，落實社區落葉與有機物堆肥轉化。", 
-                        link: "https://tanji2026.github.io/tanji-loop/",
-                        tags: ["IoT 感測", "微循環系統", "社區參與", "環境監測"]
-                    },
-                    { 
-                        year: "2026", 
-                        title: "臺灣「能」- 永續能源創意實作競賽", 
-                        result: "晉級複賽", 
-                        isWinner: false,
-                        org: "教育部 / 國立科學工藝博物館", 
-                        desc: "分析民間小額資金參與永續專案機制，規劃淨零專案媒合與抵換評估架構。", 
-                        link: "https://tanji2026.github.io/twenergy/",
-                        tags: ["綠色金融", "群眾募資", "公眾參與", "碳抵換機制"]
-                    },
-                    { 
-                        year: "2026", 
-                        title: "Impact Star 青年影響力啟動賽", 
-                        result: "晉級複賽", 
-                        isWinner: false,
-                        org: "新北市政府青年局", 
-                        desc: "規劃互動式測驗介面連結三峽傳統工坊，探討數位展示對地方文化維護之助益。", 
-                        link: "https://tanji2026.github.io/sanxia/",
-                        tags: ["地方創生", "文化保存", "數位互動", "社會效益"]
-                    },
-                    { 
-                        year: "2026", 
-                        title: "IASE 影響力創新獎", 
-                        result: "入圍青年人才", 
-                        isWinner: false,
-                        org: "IASE 國際永續認證協會", 
-                        desc: "整合地方傳統工坊網絡與參與介面，評估青年推動永續實踐的可行路徑。", 
-                        link: "https://tanji2026.github.io/sanxia/",
-                        tags: ["社會創新", "公眾溝通", "青年培力"]
-                    }
+                    { year: "2026", title: "氣候變遷創意實作競賽", result: "榮獲 氣候應用特別獎", org: "教育部 / 交通部中央氣象署", desc: "結合 GIS 空間風險快篩與 NbS 自然解方，建立微氣候調適與社區韌性決策支援架構。", link: "https://tanji2026.github.io/nbs/" },
+                    { year: "2026", title: "第二屆 CCUS 創意教案徵選", result: "榮獲 優等獎", org: "中央大學 / CCUS 科教計畫", desc: "建置模擬運算環境，將碳捕捉技術與政策誘因轉化為具備角色權衡機制的互動評估工具。", link: "https://tanji2026.github.io/ccus/" },
+                    { year: "2026", title: "三鶯永續行：AI 智慧交通共創", result: "入圍決賽", org: "臺北聯合大學系統", desc: "運用交通路網數據，探討三鶯地區低碳移動網絡規劃與弱勢群體移動權益保障。", link: "https://tanji2026.github.io/sanying/" },
+                    { year: "2026", title: "台灣仿生設計競賽", result: "晉級決賽", org: "台灣仿生科技發展協會 / 新北市", desc: "參考菌絲體分解機制，規劃社區微型有機質處理系統，評估在地微型碳循環效益。", link: "https://tanji2026.github.io/biomimicry/" },
+                    { year: "2026", title: "新北市青年氣候行動", result: "進入決選", org: "新北市環保局", desc: "建立微型循環架構，整合 ESP32 物理感測與碳氮比監測，落實社區有機物堆肥轉化。", link: "https://tanji2026.github.io/tanji-loop/" },
+                    { year: "2026", title: "臺灣「能」永續能源實作競賽", result: "晉級複賽", org: "教育部", desc: "分析民間小額資金參與機制，規劃淨零專案媒合與碳抵換評估架構。", link: "https://tanji2026.github.io/twenergy/" },
+                    { year: "2026", title: "Impact Star 青年影響力啟動賽", result: "晉級複賽", org: "新北市青年局", desc: "建置互動式測驗介面連結三峽傳統工坊，探討數位展示對地方文化維護之助益。", link: "https://tanji2026.github.io/sanxia/" },
+                    { year: "2026", title: "IASE 影響力創新獎", result: "入圍青年人才", org: "IASE 國際永續認證協會", desc: "整合地方工坊網絡與數位參與介面，評估青年推動永續實踐的可行路徑。", link: "https://tanji2026.github.io/sanxia/" }
                 ],
                 qualifications: {
-                    esg: [
-                        "ISO 14064-1 內部查證員 (DNV)",
-                        "ISO 14064-1 溫室氣體盤查管理師 (商研院)",
-                        "ISO 14067 產品碳足跡盤查管理師 (商研院)",
-                        "經濟部 iPAS 淨零碳規劃管理師 (中級 / 初級)",
-                        "GRI 永續報告書管理師 (商研院)",
-                        "環境部 溫室氣體盤查作業查驗人員",
-                        "環境部 環境教育人員 (中央大學)",
-                        "新北市 低碳社區規劃師 (新北市環保局)",
-                        "證期會 永續發展基礎能力測驗"
-                    ],
-                    tech: [
-                        "AWS Certified AI Practitioner",
-                        "Azure AI-900: Microsoft Azure AI Fundamentals",
-                        "經濟部 iPAS AI 應用規劃師 (初級)",
-                        "Google Cloud 學程結業證書",
-                        "TQC 資訊科技 Python 專業級",
-                        "TQC Microsoft Office 專業級"
-                    ],
-                    finance: [
-                        "金研院 金融科技力知識檢定測驗",
-                        "證期會 金融市場常識與職業道德",
-                        "勞動部 PMP 專案管理人才實務班"
-                    ]
+                    esg: ["ISO 14064-1 內部查證員 (DNV)", "ISO 14064-1 溫室氣體盤查管理師 (商研院)", "ISO 14067 產品碳足跡盤查管理師 (商研院)", "經濟部 iPAS 淨零碳規劃管理師 (中級/初級)", "GRI 永續報告書管理師 (商研院)", "環境部 溫室氣體盤查作業查驗人員", "環境部 環境教育人員", "新北市 低碳社區規劃師", "證期會 永續發展基礎能力測驗"],
+                    tech: ["AWS Certified AI Practitioner", "Azure AI-900", "經濟部 iPAS AI 應用規劃師 (初級)", "Google Cloud 學程結業", "TQC 資訊科技 Python 專業級", "TQC Microsoft Office 專業級"],
+                    finance: ["金研院 金融科技力知識檢定測驗", "證期會 金融市場常識與職業道德", "勞動部 PMP 專案管理人才實務班"]
                 },
                 overseas: {
-                    title: "青年百億海外圓夢計畫 - 旅遊綠方程",
-                    institution: "EarthCheck 學院 (澳洲 布里斯本)",
-                    date: "2026.06.20 - 2026.07.11",
-                    desc: "參與海外研習計畫，前往觀光與目的地永續認證機構 EarthCheck。研習內容包含量化環境績效指標體系、內部永續治理流程與目的地認證標準，深入瞭解國際永續標準制定與實務查證方法。"
-                },
-                gallery_title: "學習剪影",
-                gallery_sub: "田野調查、海外研習與專案發表紀錄",
-                filter_all: "全數項目",
-                filter_overseas: "海外研習 (EarthCheck)",
-                filter_awards: "專案審查與發表",
-                filter_projects: "田野調查與實務盤查",
-                btn_view_large: "檢視紀錄詳情",
-                modal_back: "返回清單",
-                modal_context: "實務情境與反思"
+                    title: "旅遊綠方程",
+                    desc: "獲選前往澳洲布里斯本 EarthCheck 學院進行海外見習。學習以科學化數據與系統性指標，探討國際永續旅遊認證機制、環境績效監測與目的地管理標準，建立對國際永續標準落地應用的實務認知。",
+                    video_link: "https://youtu.be/PpYg8SxHXf8?si=BNPhJUeTvJqRIijY"
+                }
             },
             en: {
                 name: "YIN, KO-YING",
                 title: "Sustainability Practitioner",
-                contact_prefix: "Contact: ",
                 email: "yinkoying.yky@gmail.com",
                 nav_cv: "Curriculum Vitae",
-                nav_gallery: "Learning Highlights",
-                section_journey: "Academic Journey",
-                section_direction: "Research Direction",
+                nav_projects: "Professional Projects",
+                nav_gallery: "Gallery",
+                section_interests: "Research Focus",
+                section_bio: "Academic Journey",
                 section_proposal: "Research Proposal",
                 section_awards: "Competition Records",
-                section_qualifications: "Certifications & Training",
-                section_overseas: "Global Learning Program",
-                label_education: "Education",
-                label_experience: "Experience",
-                label_skills: "Methods & Tools",
-                education_items: [
-                    { school: "National Taipei University", major: "B.A. in Public Administration and Policy", period: "2019 - 2023" }
+                section_qualifications: "Certifications",
+                section_overseas: "Overseas Program",
+                section_education: "Education",
+                section_experience: "Professional Experience",
+                quote_text: "“What you do makes a difference, and you have to decide what kind of difference you want to make.”",
+                quote_zh: "“What you do makes a difference, and you have to decide what kind of difference you want to make.”",
+                quote_author: "— Dr. Jane Goodall",
+                view_detail_btn: "View Details",
+                close_modal: "Close",
+                qual_esg: "Sustainability Governance",
+                qual_tech: "IT & AI",
+                qual_finance: "Finance & Project Mgmt",
+                gallery_all: "All Highlights",
+                gallery_awards: "Presentations",
+                gallery_projects: "Fieldwork",
+                gallery_overseas: "Apprenticeship",
+                
+                interests: [
+                    "Just Transition", 
+                    "Distributional Impacts", 
+                    "Financial Inclusion",
+                    "Empirical Environmental Governance"
                 ],
-                experience_items: [
-                    { org: "Bank SinoPac HQ", role: "Treating Customers Fairly & Inclusive Finance Specialist", period: "2026.09 - Present" },
-                    { org: "Xinxi Environmental Technology", role: "Environmental Project Engineer", period: "2024 - 2026" },
-                    { org: "Center for Corporate Sustainability, NTPU", role: "Research Assistant / ESG Auditor", period: "2022 - 2023" }
-                ],
-                skill_tags: [
-                    "Python (Data Analysis)", "GIS Spatial Analysis", "ISO 14064-1 GHG Inventory", 
-                    "ISO 14067 Carbon Footprint", "ESG Report Assurance", "Microclimate Modeling"
-                ],
-                qual_esg: "Sustainability & Climate Governance",
-                qual_tech: "Information Technology & AI",
-                qual_finance: "Finance & Project Management",
-                journey: [
-                    "Audited corporate sustainability disclosures and supported the Taiwan Sustainability Evaluation at National Taipei University, establishing solid understanding of regulatory disclosure frameworks.",
-                    "Served as an environmental project engineer at Xinxi Environmental Technology, assisting SMEs with ISO 14064-1 and ISO 14067 audits. Observed compliance costs and resource constraints facing smaller enterprises.",
-                    "Participating in Bank SinoPac HQ's Fair Customer Treatment initiative, observing institutional tensions between green credit policies and financial inclusion across diverse stakeholders."
-                ],
-                direction: [
-                    "Just Transition & Climate Resilience Assessment", 
-                    "Distributional Impacts of Climate Policies & Carbon Pricing", 
-                    "Sustainable Finance Frameworks & Financial Inclusion",
-                    "Empirical Environmental Governance & Policy Evaluation"
+                bio: [
+                    "Possess an interdisciplinary background in public administration and environmental auditing. Audited corporate sustainability disclosures at National Taipei University, establishing an understanding of ESG frameworks.",
+                    "Served as an environmental project engineer, assisting SMEs with ISO 14064-1 and ISO 14067 carbon inventories. Observed compliance costs and resource inequality facing small businesses under net-zero mandates.",
+                    "Joining Bank SinoPac to manage the Fair Customer Treatment project. Will explore tensions between green credit policies and financial inclusion for vulnerable stakeholders."
                 ],
                 proposal: [
                     {
                         subtitle: "Research Motivation",
-                        content: "Accelerated implementation of green finance frameworks (e.g., green lending standards and carbon pricing mechanisms) reallocates capital toward low-carbon industries. However, SMEs and vulnerable groups often face disproportionate compliance costs due to capital constraints and information asymmetries. Without a distributional justice lens, environmental governance risks widening economic inequalities."
+                        content: "The accelerated implementation of green finance reallocates capital toward low-carbon industries. However, SMEs and marginalized groups often face disproportionate compliance costs. Without a distributional justice lens, environmental governance risks widening economic inequalities."
                     },
                     {
-                        subtitle: "Scope & Proposed Plan",
-                        content: "Proposed research focuses on distributional effects and just transition mechanisms under Taiwan's green finance regime. By combining econometric modeling, GIS spatial data, and emission inventory records, the study evaluates policy impacts on vulnerable stakeholders to formulate evidence-based transition support mechanisms."
+                        subtitle: "Research Scope",
+                        content: "Future research focuses on the distributional effects of climate policies. Plans to evaluate policy impacts on vulnerable stakeholders using spatial and inventory data, translating field observations into policy assessments."
                     }
+                ],
+                education: [
+                    { school: "National Taipei University", dept: "Public Administration & Policy", degree: "B.A.", period: "2020 - 2024" },
+                    { school: "Tamkang University", dept: "Information Management", degree: "Undergraduate Study", period: "2018 - 2020" }
+                ],
+                experience: [
+                    { role: "Financial Inclusion & Customer Care Specialist", org: "Bank SinoPac HQ", period: "2026.09 - Present" },
+                    { role: "Environmental Project Engineer", org: "Xinxi Environmental Technology", period: "2024 - 2026" },
+                    { role: "Research Assistant / ESG Auditor", org: "Center for Corporate Sustainability, NTPU", period: "2022 - 2023" }
                 ],
                 awards: [
-                    { 
-                        year: "2026", 
-                        title: "Climate Change Creative Practice Competition", 
-                        result: "Special Award for Climate Application", 
-                        isWinner: true,
-                        org: "MOE / Central Weather Administration", 
-                        desc: "Integrated GIS spatial risk assessment with Nature-based Solutions (NbS) to evaluate urban heat vulnerabilities and decision frameworks.", 
-                        link: "https://tanji2026.github.io/nbs/",
-                        tags: ["Climate Resilience", "GIS Spatial Analysis", "Nature-based Solutions", "Microclimate"]
-                    },
-                    { 
-                        year: "2026", 
-                        title: "2nd CCUS Creative Lesson Plan Selection", 
-                        result: "Excellence Award", 
-                        isWinner: true,
-                        org: "National Central University", 
-                        desc: "Constructed simulation tools to translate CCUS technological mechanisms and regulatory parameters into interactive models.", 
-                        link: "https://tanji2026.github.io/ccus/",
-                        tags: ["Negative Carbon", "CCUS Policy", "Policy Simulation", "Environmental Education"]
-                    },
-                    { 
-                        year: "2026", 
-                        title: "SanYing Sustainable Mobility: AI Smart Traffic", 
-                        result: "Finalist", 
-                        isWinner: false,
-                        org: "University System of Taipei", 
-                        desc: "Utilized network data to explore low-carbon commuting structures and transit equity in transitional suburban communities.", 
-                        link: "https://tanji2026.github.io/sanying/",
-                        tags: ["Civic Tech", "Smart Traffic", "Just Transition", "Urban Governance"]
-                    },
-                    { 
-                        year: "2026", 
-                        title: "Taiwan Biomimicry Design Challenge", 
-                        result: "Finalist", 
-                        isWinner: false,
-                        org: "Biomimicry Taiwan / NTPC", 
-                        desc: "Modeled community-scale mycelial recycling to assess local organic carbon loops and ecological utility.", 
-                        link: "https://tanji2026.github.io/biomimicry/",
-                        tags: ["Biomimicry", "Natural Capital", "Micro Carbon Loop", "Circular Economy"]
-                    },
-                    { 
-                        year: "2026", 
-                        title: "NTPC Youth Climate Action Campaign", 
-                        result: "Finalist", 
-                        isWinner: false,
-                        org: "NTPC Environmental Protection Bureau", 
-                        desc: "Deployed ESP32 sensor configurations to track C/N ratios and moisture levels in community composting setups.", 
-                        link: "https://tanji2026.github.io/tanji-loop/",
-                        tags: ["IoT Sensors", "Micro-Circulation", "Community Participation", "Environmental Monitoring"]
-                    },
-                    { 
-                        year: "2026", 
-                        title: "Taiwan 'ENERGY' Sustainable Energy Competition", 
-                        result: "Semi-Finalist", 
-                        isWinner: false,
-                        org: "Ministry of Education", 
-                        desc: "Examined mechanisms for public participation in zero-carbon projects and carbon offsetting structures.", 
-                        link: "https://tanji2026.github.io/twenergy/",
-                        tags: ["Green Finance", "Crowdfunding", "Public Engagement", "Carbon Offsets"]
-                    },
-                    { 
-                        year: "2026", 
-                        title: "Impact Star Youth Influence Competition", 
-                        result: "Semi-Finalist", 
-                        isWinner: false,
-                        org: "NTPC Youth Department", 
-                        desc: "Evaluated interactive interfaces linking traditional craft businesses with regional revitalization strategies.", 
-                        link: "https://tanji2026.github.io/sanxia/",
-                        tags: ["Regional Revitalization", "Heritage Preservation", "Digital Interface", "Social Impact"]
-                    },
-                    { 
-                        year: "2026", 
-                        title: "IASE Impact Innovation Award", 
-                        result: "Shortlisted", 
-                        isWinner: false,
-                        org: "IASE", 
-                        desc: "Mapped local craft networks and participatory digital tools for regional sustainability applications.", 
-                        link: "https://tanji2026.github.io/sanxia/",
-                        tags: ["Social Innovation", "Public Communication", "Youth Engagement"]
-                    }
+                    { year: "2026", title: "Climate Change Creative Practice Competition", result: "Won Special Award", org: "MOE / CWA", desc: "Developed a decision-support platform utilizing GIS risk screening and NbS for community climate resilience.", link: "https://tanji2026.github.io/nbs/" },
+                    { year: "2026", title: "2nd CCUS Creative Lesson Plan Selection", result: "Won Excellence Award", org: "National Central University", desc: "Engineered an interactive CCUS net-zero strategy simulator translating policy into role-based tools.", link: "https://tanji2026.github.io/ccus/" },
+                    { year: "2026", title: "SanYing Sustainable Mobility", result: "Finalist", org: "University System of Taipei", desc: "Explored low-carbon commuting structures and transit equity in transitional suburban communities.", link: "https://tanji2026.github.io/sanying/" },
+                    { year: "2026", title: "Taiwan Biomimicry Design Challenge", result: "Finalist", org: "Biomimicry Taiwan", desc: "Modeled community-scale mycelial recycling to assess local organic carbon loops.", link: "https://tanji2026.github.io/biomimicry/" },
+                    { year: "2026", title: "NTPC Youth Climate Action", result: "Finalist", org: "NTPC EPB", desc: "Deployed IoT sensors to track ratios in community composting setups.", link: "https://tanji2026.github.io/tanji-loop/" },
+                    { year: "2026", title: "Taiwan 'ENERGY' Sustainable Energy", result: "Semi-Finalist", org: "MOE", desc: "Examined mechanisms for public participation in zero-carbon projects.", link: "https://tanji2026.github.io/twenergy/" },
+                    { year: "2026", title: "Impact Star Youth Influence", result: "Semi-Finalist", org: "NTPC", desc: "Evaluated interactive interfaces linking traditional craft businesses with revitalization.", link: "https://tanji2026.github.io/sanxia/" },
+                    { year: "2026", title: "IASE Impact Innovation Award", result: "Shortlisted", org: "IASE", desc: "Mapped local craft networks and participatory digital tools for regional sustainability.", link: "https://tanji2026.github.io/sanxia/" }
                 ],
                 qualifications: {
-                    esg: [
-                        "ISO 14064-1 Internal Verifier (DNV)",
-                        "ISO 14064-1 GHG Verification Specialist (CDRI)",
-                        "ISO 14067 Product Carbon Footprint Specialist (CDRI)",
-                        "iPAS Net Zero Planning & Mgmt Specialist (MOEA)",
-                        "GRI Sustainability Reporting Specialist (CDRI)",
-                        "GHG Inventory Verification Personnel (MOENV)",
-                        "Environmental Education Personnel (MOENV)",
-                        "Low-Carbon Community Planner (NTPC EPB)",
-                        "Sustainable Development Basic Ability (SFI)"
-                    ],
-                    tech: [
-                        "AWS Certified AI Practitioner",
-                        "Azure AI-900: Microsoft Azure AI Fundamentals",
-                        "iPAS AI Application Planner (MOEA)",
-                        "Google Cloud Program Certificate",
-                        "TQC IT Python Professional",
-                        "TQC Microsoft Office Professional"
-                    ],
-                    finance: [
-                        "FinTech Knowledge Proficiency Test (TABF)",
-                        "Financial Markets Knowledge & Ethics (SFI)",
-                        "PMP Project Management Practice (MOL)"
-                    ]
+                    esg: ["ISO 14064-1 Internal Verifier", "ISO 14064-1 Verification Specialist", "ISO 14067 Verification Specialist", "iPAS Net Zero Planning Specialist", "GRI Sustainability Reporting Specialist", "GHG Inventory Verification Personnel", "Environmental Education Personnel", "Low-Carbon Community Planner", "Sustainable Development Basic Ability"],
+                    tech: ["AWS Certified AI Practitioner", "Azure AI-900", "iPAS AI Application Planner", "Google Cloud Program Certificate", "TQC IT Python Professional", "TQC Microsoft Office Professional"],
+                    finance: ["FinTech Knowledge Proficiency Test", "Financial Markets Knowledge & Ethics", "PMP Project Management Practice"]
                 },
                 overseas: {
-                    title: "Overseas Apprenticeship - Travel Green Equation",
-                    institution: "EarthCheck Academy (Brisbane, Australia)",
-                    date: "2026.06.20 - 2026.07.11",
-                    desc: "Completed study at EarthCheck on quantitative environmental performance indicators, sustainability auditing, and destination standards, obtaining practical insights into international environmental certification."
-                },
-                gallery_title: "Learning Highlights",
-                gallery_sub: "Field investigations, international training, and project presentations",
-                filter_all: "All Records",
-                filter_overseas: "EarthCheck Apprenticeship",
-                filter_awards: "Presentations & Defense",
-                filter_projects: "Field Audits & Monitoring",
-                btn_view_large: "View Details",
-                modal_back: "Return to List",
-                modal_context: "Practical Context & Observations"
+                    title: "Travel Green Equation",
+                    desc: "Apprenticeship at EarthCheck Academy in Brisbane. Studied international sustainable tourism certification and environmental performance monitoring.",
+                    video_link: "https://youtu.be/PpYg8SxHXf8?si=BNPhJUeTvJqRIijY"
+                }
             }
         };
 
-        const richGalleryItems = [
+        const professionalProjects = [
             {
-                id: "aus-1",
-                category: "overseas",
-                src: "images/gallery-aus-1.jpg",
-                title: { zh: "EarthCheck 總部指標系統研習", en: "EarthCheck HQ Indicator Study" },
-                date: "2026.06",
-                location: { zh: "澳洲 布里斯本", en: "Brisbane, Australia" },
-                tags: ["指標架構", "國際標準", "目的地治理"],
-                desc: {
-                    zh: "研習 EarthCheck 定量評估指標，探討水資源、能源與廢棄物監測架構如何應用於區域永續治理，提供跨國標準實施之實例參考。",
-                    en: "Examined EarthCheck quantitative benchmarks on resource monitoring to understand structural applications in regional sustainability governance."
-                }
+                id: "proj-bank",
+                org: { zh: "永豐商業銀行 總行", en: "Bank SinoPac HQ" },
+                role: { zh: "公平待客與金融友善 專案人員", en: "Financial Inclusion Specialist" },
+                period: "2026.09 - Present",
+                src: "images/proj-bank.jpg",
+                title: { zh: "綠色金融與公平待客專案", en: "Green Finance & Fair Customer Treatment" },
+                desc: { 
+                    zh: "統籌銀行公平待客與金融友善專案。從金融體系視角，探討綠色授信與轉型融資規範推動時，金融包容性與多元利害關係人（含中小企業與脆弱族群）權益間的平衡。", 
+                    en: "Managing financial inclusion initiatives. Examining the balance between green credit guidelines and the rights of vulnerable stakeholders from a systemic financial perspective." 
+                },
+                details: {
+                    context: {
+                        zh: "金管會全面推動綠色及轉型金融行動方案，銀行業在引導資金流向淨零領域時，中小企業與特定群體可能面臨融資成本提高或授信限制的門檻效應。",
+                        en: "As regulatory authorities promote transition finance, small businesses face potential credit constraint risks and elevated compliance costs."
+                    },
+                    implementation: {
+                        zh: "分析綠色融資審查指標與友善服務流程，梳理第一線申貸與客戶權益申訴樣態，建立授信評估與包容性政策對照基準。",
+                        en: "Audited green loan assessment indicators and fair customer treatment mechanisms to bridge policy design with end-user protections."
+                    },
+                    reflection: {
+                        zh: "深入金融決策中樞，印證了氣候政策若無分配公正機制，將使脆弱市場主體處於劣勢，確立未來碩士研究將綠色授信衝擊納入實證的主軸。",
+                        en: "Reinforced the thesis that without careful transition design, green financing can inadvertently heighten economic disparities among vulnerable borrowers."
+                    }
+                },
+                tags: { zh: ["綠色金融", "金融包容性", "政策評估"], en: ["Green Finance", "Financial Inclusion", "Policy Evaluation"] }
             },
             {
-                id: "aus-2",
-                category: "overseas",
-                src: "images/gallery-aus-2.jpg",
-                title: { zh: "昆士蘭生態旅遊管理現勘", en: "Queensland Ecotourism Site Survey" },
-                date: "2026.06",
-                location: { zh: "澳洲 昆士蘭", en: "Queensland, Australia" },
-                tags: ["環境合規", "組織運作", "現地調查"],
-                desc: {
-                    zh: "訪查澳洲生態認證旅宿與自然保護區，觀察內部跨部門環境推動機制與實務運作折衝。",
-                    en: "Field survey of eco-certified accommodations and reserves in Queensland, observing organizational coordination and operational considerations."
-                }
+                id: "proj-xinxi",
+                org: { zh: "新系環境技術有限公司", en: "Xinxi Environmental Technology" },
+                role: { zh: "環境專案工程師", en: "Environmental Project Engineer" },
+                period: "2024 - 2026",
+                src: "images/proj-xinxi.jpg",
+                title: { zh: "中小企業碳盤查輔導專案", en: "SME Carbon Inventory Consultation" },
+                desc: { 
+                    zh: "執行公部門專案，實地走訪輔導在地中小企業進行 ISO 14064-1 與 ISO 14067 盤查。紀錄並分析企業面對淨零法規時的合規成本與轉型資源落差。", 
+                    en: "Executed public sector programs, guiding local SMEs through ISO 14064-1 and ISO 14067 audits. Documented compliance costs and transitional hurdles." 
+                },
+                details: {
+                    context: {
+                        zh: "新北市經發局與環境部推動在地產業減碳，數十家傳統加工與零件製造業面對供應鏈國際查證壓力，普遍面臨量化人員不足與經費限制。",
+                        en: "Local manufacturers confronted steep Scope 1 & 2 carbon accounting requirements under tight resources and lack of specialized personnel."
+                    },
+                    implementation: {
+                        zh: "現場實勘廠區活動數據源、能源耗用管線與製程逸散，編製溫室氣體清冊並協助完成內部查證與第三方稽核準備。",
+                        en: "Conducted factory site audits, measured direct fuel emissions, electricity utility logs, and drafted compliant GHG inventories."
+                    },
+                    reflection: {
+                        zh: "深刻體悟微型與中小型工廠在合規程序中所承受的不對稱壓力，促使後續研究聚焦於如何設計漸進式誘因與過渡緩衝機制。",
+                        en: "Direct engagement with factory operators revealed how rigid regulatory frameworks disproportionately burden SMEs with limited capital."
+                    }
+                },
+                tags: { zh: ["ISO 14064-1", "ISO 14067", "產業輔導"], en: ["ISO 14064-1", "ISO 14067", "Industry Auditing"] }
             },
             {
-                id: "aus-3",
-                category: "overseas",
-                src: "images/gallery-aus-3.jpg",
-                title: { zh: "EarthCheck 學院結訓評估", en: "EarthCheck Program Evaluation" },
-                date: "2026.07",
-                location: { zh: "澳洲 布里斯本", en: "Brisbane, Australia" },
-                tags: ["研習認證", "合規標準", "政策制度"],
-                desc: {
-                    zh: "完成永續管理與利害關係人溝通模組，檢視國際標準導入區域時之資訊落差，探討調適制度設計之公平性。",
-                    en: "Completed sustainable governance training, reviewing information asymmetry when applying global standards locally."
-                }
+                id: "proj-ntpu",
+                org: { zh: "臺北大學 商學院企業永續發展研究中心", en: "Center for Corporate Sustainability, NTPU" },
+                role: { zh: "研究助理 / 報告書評審員", en: "Research Assistant / ESG Auditor" },
+                period: "2022 - 2023",
+                src: "images/proj-ntpu.jpg",
+                title: { zh: "臺灣永續評鑑與 ESG 報告書審閱", en: "Taiwan Sustainability Evaluation" },
+                desc: { 
+                    zh: "參與臺灣永續評鑑專案，審閱上市櫃企業永續報告書。透過客觀資料彙整與指標對照，建立對國內外 ESG 揭露規範與評鑑框架的基礎認知。", 
+                    en: "Audited corporate sustainability reports for the Taiwan Sustainability Evaluation. Analyzed data to establish a fundamental understanding of ESG disclosure frameworks." 
+                },
+                details: {
+                    context: {
+                        zh: "金管會發布「公司治理 3.0」與 ESG 資訊揭露藍圖，需對上市櫃公司龐雜的非財務資訊進行客觀量化與結構化梳理。",
+                        en: "Examined non-financial corporate disclosures against regulatory scoring metrics under Taiwan's evolving corporate governance roadmaps."
+                    },
+                    implementation: {
+                        zh: "交叉查核 GRI、SASB 與金管會核心指標，實證審閱超過千份上市櫃永續報告書，建構嚴密之評量數據庫。",
+                        en: "Benchmarked corporate disclosures against GRI standards and national evaluation rubrics across over a thousand annual reports."
+                    },
+                    reflection: {
+                        zh: "奠定了對跨產業非財務數據的結構化分析力，同時察覺大企業具備編制報告優勢，反襯出中小企業在制度揭露面上的顯著資訊不對稱。",
+                        en: "Formed a solid quantitative ground for ESG data governance while highlighting institutional reporting gaps between large firms and SMEs."
+                    }
+                },
+                tags: { zh: ["ESG 評鑑", "永續報告書", "數據治理"], en: ["ESG Frameworks", "Reporting", "Data Governance"] }
+            }
+        ];
+
+        const galleryItems = [
+            { 
+                id: "g-aus-1", 
+                category: "overseas", 
+                src: "images/gallery-aus-1.jpg", 
+                caption: { zh: "EarthCheck 總部指標研習", en: "EarthCheck Indicator Study" },
+                desc: { 
+                    zh: "於布里斯本 EarthCheck 學院研習國際永續目的地標準，深入分析碳抵換、能源績效評估與綠色認證體系之運作流程。", 
+                    en: "Studied destination sustainability standards and performance metrics at EarthCheck HQ in Brisbane." 
+                } 
             },
-            {
-                id: "award-1",
-                category: "awards",
-                src: "images/gallery-award-1.jpg",
-                title: { zh: "氣候變遷創意實作競賽 決賽發表", en: "Climate Competition Final Presentation" },
-                date: "2026.06",
-                location: { zh: "國立科學工藝博物館", en: "National Science & Technology Museum" },
-                tags: ["GIS 空間分析", "NbS", "脆弱度評估"],
-                desc: {
-                    zh: "展示微氣候決策平台，說明老舊市區高溫脆弱度指標與 NbS 自然解方模擬降溫成效，獲中央氣象署專項認可。",
-                    en: "Demonstrated spatial heat vulnerability indexing and simulated NbS cooling impacts to evaluation committees."
-                }
+            { 
+                id: "g-aus-2", 
+                category: "overseas", 
+                src: "images/gallery-aus-2.jpg", 
+                caption: { zh: "昆士蘭 生態旅遊現勘", en: "Queensland Ecotourism Fieldwork" },
+                desc: { 
+                    zh: "實地走訪昆士蘭生態示範據點，評估脆弱生態環境在承受遊客承載量時的監測指標與社區共好機制。", 
+                    en: "Investigated eco-tourism sites in Queensland to assess carrying capacity indicators and conservation frameworks." 
+                } 
             },
-            {
-                id: "award-2",
-                category: "awards",
-                src: "images/gallery-award-2.jpg",
-                title: { zh: "CCUS 創意教案評選 成果發表", en: "CCUS Lesson Plan Presentation" },
-                date: "2026.06",
-                location: { zh: "國立中央大學", en: "National Central University" },
-                tags: ["負碳技術", "模擬工具", "政策模型"],
-                desc: {
-                    zh: "說明碳捕捉與封存之法規流程、地質評估及成本參數模擬模型，將技術與政策要素轉化為角色權衡決策教案。",
-                    en: "Presented parameter modeling for CCUS regulations, geological assessment, and capital costs within policy simulation tools."
-                }
+            { 
+                id: "g-aus-3", 
+                category: "overseas", 
+                src: "images/gallery-aus-3.jpg", 
+                caption: { zh: "目的地治理 實務討論", en: "Destination Governance Discussion" },
+                desc: { 
+                    zh: "與國際永續稽核師共同探討地方政府推動永續轉型時，公私協力與居民參與之實務瓶頸與解方。", 
+                    en: "Engaged in strategic roundtables on public-private alignment in regional sustainable governance." 
+                } 
             },
-            {
-                id: "award-3",
-                category: "awards",
-                src: "images/gallery-award-3.jpg",
-                title: { zh: "仿生設計競賽 交流研討", en: "Biomimicry Challenge Seminar" },
-                date: "2026.07",
-                location: { zh: "新北市板橋", en: "Banqiao, New Taipei" },
-                tags: ["仿生架構", "資源循環", "跨領域研討"],
-                desc: {
-                    zh: "與生態及工程領域人員討論真菌碳循環機制應用於社區廢棄物處理之可行性與邊界條件。",
-                    en: "Discussed operational constraints and feasibility of mycelial decomposition systems with engineering and ecological researchers."
-                }
+            { 
+                id: "g-aus-4", 
+                category: "overseas", 
+                src: "images/gallery-aus-4.jpg", 
+                caption: { zh: "EarthCheck 學院結訓", en: "EarthCheck Academy Completion" },
+                desc: { 
+                    zh: "完成海外見習計畫課程，確立以科學化指標連結地方實踐與國際治理標準之研究視野。", 
+                    en: "Completed international overseas training, strengthening evidence-based approaches to global environmental benchmarks." 
+                } 
             },
-            {
-                id: "proj-1",
-                category: "projects",
-                src: "images/gallery-proj-1.jpg",
-                title: { zh: "中小企業 ISO 14064-1 現場盤查輔導", en: "SME On-site ISO 14064-1 Inventory" },
-                date: "2025.11",
-                location: { zh: "新北市產業園區", en: "Industrial Parks, New Taipei" },
-                tags: ["溫室氣體盤查", "現場勘查", "中小企業"],
-                desc: {
-                    zh: "走訪製造業廠區進行排放源辨識與活動數據收集，記錄小型業者面臨供應鏈碳揭露要求之實際合規門檻。",
-                    en: "Conducted emission source identification and activity data audits in manufacturing sites, documenting compliance hurdles among SMEs."
-                }
+            { 
+                id: "g-award-1", 
+                category: "awards", 
+                src: "images/gallery-award-1.jpg", 
+                caption: { zh: "氣候變遷創意實作 決賽發表", en: "Climate Competition Presentation" },
+                desc: { 
+                    zh: "教育部決賽發表微氣候韌性決策支援架構，向氣象署評審委員說明空間圖資如何輔助社區自評。", 
+                    en: "Presented community climate resilience framework before ministry judges, demonstrating GIS-enabled vulnerability mapping." 
+                } 
             },
-            {
-                id: "proj-2",
-                category: "projects",
-                src: "images/gallery-proj-2.jpg",
-                title: { zh: "MycoNode 物聯網感測模組架設", en: "MycoNode IoT Sensor Deployment" },
-                date: "2026.04",
-                location: { zh: "社區循環示範場域", en: "Community Demonstration Site" },
-                tags: ["環境數據", "感測器架設", "微氣候量測"],
-                desc: {
-                    zh: "架設 ESP32 感測模組監測有機堆肥溫濕度變化，累積環境物理數據流採集與初步處理經驗。",
-                    en: "Configured ESP32 sensors for temperature and moisture logging, gathering practical experience in micro-environmental data pipelines."
-                }
+            { 
+                id: "g-award-2", 
+                category: "awards", 
+                src: "images/gallery-award-2.jpg", 
+                caption: { zh: "CCUS 創意教案 成果展演", en: "CCUS Lesson Plan Exhibition" },
+                desc: { 
+                    zh: "於中央大學展示碳捕捉模擬器，運用角色分權博弈情境引導青年評估高碳產業的轉型抉擇。", 
+                    en: "Demonstrated the interactive CCUS decision model highlighting transition trade-offs for high-emission sectors." 
+                } 
             },
-            {
-                id: "proj-3",
-                category: "projects",
-                src: "images/gallery-proj-3.jpg",
-                title: { zh: "三鶯社區低碳交通與傳統工坊訪談", en: "SanYing Mobility & Craft Fieldwork" },
-                date: "2026.05",
-                location: { zh: "新北市三峽與鶯歌", en: "Sanxia & Yingge, New Taipei" },
-                tags: ["質性訪談", "移動需求", "地方治理"],
-                desc: {
-                    zh: "針對高齡居民移動模式與傳統工坊經營者進行質性訪談，記錄城鄉交界處之交通需求與轉型困境。",
-                    en: "Conducted qualitative interviews with elderly commuters and local artisans to record transit needs and regional challenges."
-                }
+            { 
+                id: "g-award-3", 
+                category: "awards", 
+                src: "images/gallery-award-3.jpg", 
+                caption: { zh: "仿生設計競賽 交流研討", en: "Biomimicry Design Seminar" },
+                desc: { 
+                    zh: "於仿生咖啡館與學者專家研討社區微型循環網絡，評估真菌分解落葉轉化黑金土的減碳量化潛力。", 
+                    en: "Discussed local organic carbon cycles with environmental scholars to validate nature-positive community solutions." 
+                } 
+            },
+            { 
+                id: "g-proj-1", 
+                category: "projects", 
+                src: "images/gallery-proj-1.jpg", 
+                caption: { zh: "中小企業 現場盤查輔導", en: "SME On-site Auditing" },
+                desc: { 
+                    zh: "走入在地金屬成型工廠，於配電盤與發電機旁核實活動數據憑證，輔導廠長建立邊界盤查清冊。", 
+                    en: "Assisted manufacturing facility supervisors with facility-level boundary identification and activity data logging." 
+                } 
+            },
+            { 
+                id: "g-proj-2", 
+                category: "projects", 
+                src: "images/gallery-proj-2.jpg", 
+                caption: { zh: "IoT 感測模組 現地架設", en: "IoT Sensor Deployment" },
+                desc: { 
+                    zh: "實地架設 ESP32 物理感測硬體，量測堆肥箱溫濕度與碳氮比，探討低成本物聯網對基層治理的助益。", 
+                    en: "Deployed micro-sensors on community composting barrels to capture real-time moisture and environmental metrics." 
+                } 
+            },
+            { 
+                id: "g-proj-3", 
+                category: "projects", 
+                src: "images/gallery-proj-3.jpg", 
+                caption: { zh: "社區低碳交通 田野訪談", en: "Community Transit Fieldwork" },
+                desc: { 
+                    zh: "訪談三鶯地區年長居民與轉乘通勤族，探討高齡化邊陲社區在低碳接駁缺口下的移動權益保障。", 
+                    en: "Conducted field interviews with suburban elderly residents to map transit accessibility barriers under green policies." 
+                } 
             }
         ];
 
         const App = () => {
             const [lang, setLang] = useState('zh');
-            const [activeTab, setActiveTab] = useState('cv');
-            const [galleryFilter, setGalleryFilter] = useState('all');
-            const [selectedPhoto, setSelectedPhoto] = useState(null);
+            const [activeTab, setActiveTab] = useState('cv'); // 'cv', 'projects', 'gallery'
+            const [galleryFilter, setGalleryFilter] = useState('all'); // 'all', 'overseas', 'awards', 'projects'
+            const [selectedProject, setSelectedProject] = useState(null);
+            const [selectedGalleryItem, setSelectedGalleryItem] = useState(null);
 
-            const t = academicData[lang];
-
-            const filteredGallery = useMemo(() => {
-                if (galleryFilter === 'all') return richGalleryItems;
-                return richGalleryItems.filter(item => item.category === galleryFilter);
-            }, [galleryFilter]);
-
-            const currentIndex = useMemo(() => {
-                if (!selectedPhoto) return -1;
-                return richGalleryItems.findIndex(i => i.id === selectedPhoto.id);
-            }, [selectedPhoto]);
-
-            const handlePrevPhoto = (e) => {
-                e && e.stopPropagation();
-                if (currentIndex > 0) {
-                    setSelectedPhoto(richGalleryItems[currentIndex - 1]);
-                } else {
-                    setSelectedPhoto(richGalleryItems[richGalleryItems.length - 1]);
-                }
-            };
-
-            const handleNextPhoto = (e) => {
-                e && e.stopPropagation();
-                if (currentIndex < richGalleryItems.length - 1) {
-                    setSelectedPhoto(richGalleryItems[currentIndex + 1]);
-                } else {
-                    setSelectedPhoto(richGalleryItems[0]);
-                }
-            };
-
-            useEffect(() => {
-                const handleKeyDown = (e) => {
-                    if (!selectedPhoto) return;
-                    if (e.key === 'Escape') setSelectedPhoto(null);
-                    if (e.key === 'ArrowLeft') handlePrevPhoto();
-                    if (e.key === 'ArrowRight') handleNextPhoto();
-                };
-                window.addEventListener('keydown', handleKeyDown);
-                return () => window.removeEventListener('keydown', handleKeyDown);
-            }, [selectedPhoto, currentIndex]);
+            const t = data[lang];
 
             const handleImageError = (e, filename) => {
                 e.target.onerror = null; 
-                e.target.src = `https://placehold.co/800x600/f8fafc/64748b?text=Photograph+Record%0A[${filename}]`;
+                e.target.src = `https://placehold.co/800x600/f8fafc/94a3b8?text=Image+Placeholder%5Cn[${filename}]`;
             };
 
+            const filteredGallery = galleryFilter === 'all' 
+                ? galleryItems 
+                : galleryItems.filter(item => item.category === galleryFilter);
+
+            const PlayIcon = () => (
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                </svg>
+            );
+
+            const CloseIcon = () => (
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            );
+
+            // Escape key closes modals
+            useEffect(() => {
+                const handleKeyDown = (e) => {
+                    if (e.key === 'Escape') {
+                        setSelectedProject(null);
+                        setSelectedGalleryItem(null);
+                    }
+                };
+                window.addEventListener('keydown', handleKeyDown);
+                return () => window.removeEventListener('keydown', handleKeyDown);
+            }, []);
+
             return (
-                <div className="max-w-4xl mx-auto px-6 py-12 md:py-16">
+                <div className="max-w-5xl mx-auto px-6 py-12 md:py-16">
                     
-                    {/* Top Navigation Bar */}
-                    <nav className="flex justify-between items-center mb-14 border-b border-gray-200 pb-4">
+                    {/* Top Navigation */}
+                    <nav className="flex justify-between items-center mb-12 border-b border-gray-200 pb-5">
                         <div className="flex gap-8">
                             <button 
                                 onClick={() => setActiveTab('cv')}
-                                className={`text-[15px] font-bold tracking-widest pb-1 transition-colors relative ${activeTab === 'cv' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400 hover:text-gray-700'}`}
+                                className={`text-[17px] font-bold tracking-widest pb-1 transition-colors ${activeTab === 'cv' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400 hover:text-gray-700'}`}
                             >
                                 {t.nav_cv}
                             </button>
                             <button 
+                                onClick={() => setActiveTab('projects')}
+                                className={`text-[17px] font-bold tracking-widest pb-1 transition-colors ${activeTab === 'projects' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400 hover:text-gray-700'}`}
+                            >
+                                {t.nav_projects}
+                            </button>
+                            <button 
                                 onClick={() => setActiveTab('gallery')}
-                                className={`text-[15px] font-bold tracking-widest pb-1 transition-colors relative ${activeTab === 'gallery' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400 hover:text-gray-700'}`}
+                                className={`text-[17px] font-bold tracking-widest pb-1 transition-colors ${activeTab === 'gallery' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400 hover:text-gray-700'}`}
                             >
                                 {t.nav_gallery}
                             </button>
                         </div>
-                        <div className="flex gap-2">
-                            <button onClick={() => setLang('zh')} className={`text-xs font-bold px-2.5 py-1 border rounded-sm transition-colors ${lang === 'zh' ? 'bg-gray-800 text-white border-gray-800' : 'bg-transparent text-gray-400 border-gray-300 hover:text-gray-700'}`}>中文</button>
-                            <button onClick={() => setLang('en')} className={`text-xs font-bold px-2.5 py-1 border rounded-sm transition-colors ${lang === 'en' ? 'bg-gray-800 text-white border-gray-800' : 'bg-transparent text-gray-400 border-gray-300 hover:text-gray-700'}`}>EN</button>
+                        <div className="flex gap-2.5">
+                            <button onClick={() => setLang('zh')} className={`text-[14px] font-bold px-2.5 py-1 border rounded-sm transition-colors ${lang === 'zh' ? 'bg-gray-800 text-white border-gray-800' : 'bg-transparent text-gray-400 border-gray-300 hover:text-gray-700'}`}>中文</button>
+                            <button onClick={() => setLang('en')} className={`text-[14px] font-bold px-2.5 py-1 border rounded-sm transition-colors ${lang === 'en' ? 'bg-gray-800 text-white border-gray-800' : 'bg-transparent text-gray-400 border-gray-300 hover:text-gray-700'}`}>EN</button>
                         </div>
                     </nav>
 
-                    {activeTab === 'cv' ? (
-                        <div className="animate-fade-in space-y-16">
+                    {/* Quotation Banner: Dr. Jane Goodall */}
+                    <div className="mb-14 bg-stone-50 border-l-4 border-stone-800 p-6 md:p-7 rounded-sm">
+                        <p className="text-[17px] md:text-[18px] serif-font italic text-stone-800 leading-relaxed mb-2">
+                            {t.quote_text}
+                        </p>
+                        {lang === 'zh' && (
+                            <p className="text-[15.5px] font-medium text-stone-700 leading-relaxed mb-2">
+                                {t.quote_zh}
+                            </p>
+                        )}
+                        <p className="text-[13.5px] font-bold text-stone-500 tracking-wider text-right uppercase">
+                            {t.quote_author}
+                        </p>
+                    </div>
+
+                    {/* Main Tab: Curriculum Vitae */}
+                    {activeTab === 'cv' && (
+                        <div className="animate-fade-in space-y-20">
                             
-                            {/* Profile Header Block */}
-                            <header className="flex flex-col md:flex-row gap-10 lg:gap-14 items-start">
-                                {/* Profile Column */}
-                                <div className="w-full md:w-1/3 shrink-0 flex flex-col">
-                                    <div className="w-48 h-64 md:w-full md:h-72 bg-gray-100 mb-5 border border-gray-200 shadow-sm relative overflow-hidden rounded-sm mx-auto md:mx-0">
+                            {/* 1. Header & Bio */}
+                            <header className="flex flex-col md:flex-row gap-12 lg:gap-16 items-start">
+                                
+                                {/* Left Column: Photo, Contact, Education, Experience */}
+                                <div className="w-full md:w-1/3 shrink-0 flex flex-col items-center md:items-start">
+                                    <div className="w-56 h-72 md:w-full md:h-80 bg-gray-100 mb-6 border border-gray-200 shadow-sm relative overflow-hidden">
                                         <img 
                                             src="images/profile.jpg" 
                                             alt={t.name}
@@ -626,238 +507,212 @@
                                             onError={(e) => handleImageError(e, 'profile.jpg')}
                                         />
                                     </div>
-                                    <h1 className="text-2xl font-bold mb-1.5 serif-font text-gray-900 text-center md:text-left">{t.name}</h1>
-                                    <p className="text-sm font-medium text-gray-500 mb-2 text-center md:text-left">{t.title}</p>
-                                    <div className="text-[13px] font-medium text-gray-600 mb-6 mx-auto md:mx-0 text-center md:text-left">
-                                        <span>{t.contact_prefix}</span>
+                                    <h1 className="text-3xl font-bold mb-2 serif-font text-center md:text-left text-gray-900">{t.name}</h1>
+                                    <p className="text-base font-medium text-gray-500 mb-3 text-center md:text-left leading-relaxed">{t.title}</p>
+                                    <div className="text-[15px] font-medium text-gray-600 mb-8 mx-auto md:mx-0 text-center md:text-left">
+                                        <span className="mr-1">{lang === 'zh' ? '聯絡方式：' : 'Contact: '}</span>
                                         <a href={`mailto:${t.email}`} className="text-gray-800 hover:text-blue-700 transition-colors border-b border-gray-300 pb-0.5">
                                             {t.email}
                                         </a>
                                     </div>
 
-                                    {/* Education & Experience Details */}
-                                    <div className="space-y-5 pt-4 border-t border-gray-200 text-left">
-                                        <div>
-                                            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                                                <GraduationCap size={13} className="text-gray-400" />
-                                                {t.label_education}
-                                            </h3>
-                                            <div className="space-y-1.5">
-                                                {t.education_items.map((item, idx) => (
-                                                    <div key={idx} className="text-xs">
-                                                        <div className="font-semibold text-gray-800">{item.school}</div>
-                                                        <div className="text-gray-600">{item.major}</div>
-                                                        <div className="text-[11px] text-gray-400">{item.period}</div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                                                <Briefcase size={13} className="text-gray-400" />
-                                                {t.label_experience}
-                                            </h3>
-                                            <div className="space-y-2.5">
-                                                {t.experience_items.map((item, idx) => (
-                                                    <div key={idx} className="text-xs">
-                                                        <div className="font-semibold text-gray-800">{item.org}</div>
-                                                        <div className="text-gray-600">{item.role}</div>
-                                                        <div className="text-[11px] text-gray-400">{item.period}</div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                                                <Code size={13} className="text-gray-400" />
-                                                {t.label_skills}
-                                            </h3>
-                                            <div className="flex flex-wrap gap-1.5">
-                                                {t.skill_tags.map((skill, idx) => (
-                                                    <span key={idx} className="text-[11px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded border border-gray-200/80">
-                                                        {skill}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="w-full md:w-2/3 pt-1 space-y-8">
-                                    {/* 1. 學習歷程 */}
-                                    <div>
-                                        <h2 className="text-xs font-bold text-gray-800 uppercase tracking-widest mb-3.5 flex items-center gap-2">
-                                            <span className="inline-block w-2 h-2 bg-gray-800 rounded-xs"></span>
-                                            {t.section_journey}
-                                        </h2>
-                                        <div className="text-[14px] text-gray-700 space-y-3 text-justify leading-relaxed font-normal pl-1">
-                                            {t.journey.map((p, idx) => <p key={idx}>{p}</p>)}
-                                        </div>
-                                    </div>
-
-                                    {/* 2. 研究方向 */}
-                                    <div className="pt-2">
-                                        <h2 className="text-xs font-bold text-gray-800 uppercase tracking-widest mb-3.5 flex items-center gap-2">
-                                            <span className="inline-block w-2 h-2 bg-gray-800 rounded-xs"></span>
-                                            {t.section_direction}
-                                        </h2>
-                                        <ul className="space-y-2 pl-1">
-                                            {t.direction.map((item, idx) => (
-                                                <li key={idx} className="text-[14px] font-medium text-gray-800 flex items-start gap-2.5">
-                                                    <span className="text-gray-400 text-[12px] mt-0.5">–</span>
-                                                    <span>{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    {/* 3. 研究計畫（含研究動機） */}
-                                    <div className="pt-2">
-                                        <h2 className="text-xs font-bold text-gray-800 uppercase tracking-widest mb-3.5 flex items-center gap-2">
-                                            <span className="inline-block w-2 h-2 bg-gray-800 rounded-xs"></span>
-                                            {t.section_proposal}
-                                        </h2>
-                                        <div className="space-y-4 pl-1">
-                                            {t.proposal.map((item, idx) => (
-                                                <div key={idx} className="bg-slate-50/60 p-3.5 rounded border border-slate-200/80">
-                                                    <h3 className="text-xs font-bold text-gray-800 mb-1.5 flex items-center gap-1.5">
-                                                        <span className="text-gray-400 text-[10px]">•</span>
-                                                        {item.subtitle}
-                                                    </h3>
-                                                    <p className="text-[13.5px] text-gray-700 leading-relaxed text-justify font-normal">
-                                                        {item.content}
-                                                    </p>
+                                    {/* Education section */}
+                                    <div className="w-full pt-6 border-t border-gray-200 mb-8">
+                                        <h3 className="text-[14px] font-bold text-gray-900 uppercase tracking-wider mb-4 flex items-center gap-2">
+                                            <span className="w-2 h-2 bg-gray-700 rounded-sm"></span>
+                                            {t.section_education}
+                                        </h3>
+                                        <div className="space-y-4">
+                                            {t.education.map((edu, idx) => (
+                                                <div key={idx} className="text-left">
+                                                    <div className="text-[15px] font-bold text-gray-800 leading-snug">{edu.school}</div>
+                                                    <div className="text-[14px] font-medium text-gray-600 leading-snug">{edu.dept}・{edu.degree}</div>
+                                                    <div className="text-[12.5px] font-medium text-gray-400">{edu.period}</div>
                                                 </div>
                                             ))}
                                         </div>
+                                    </div>
+
+                                    {/* Experience section */}
+                                    <div className="w-full pt-6 border-t border-gray-200">
+                                        <h3 className="text-[14px] font-bold text-gray-900 uppercase tracking-wider mb-4 flex items-center gap-2">
+                                            <span className="w-2 h-2 bg-gray-700 rounded-sm"></span>
+                                            {t.section_experience}
+                                        </h3>
+                                        <div className="space-y-4">
+                                            {t.experience.map((exp, idx) => (
+                                                <div key={idx} className="text-left">
+                                                    <div className="text-[15px] font-bold text-gray-800 leading-snug">{exp.role}</div>
+                                                    <div className="text-[14px] font-medium text-gray-600 leading-snug">{exp.org}</div>
+                                                    <div className="text-[12.5px] font-medium text-gray-400">{exp.period}</div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                {/* Right Column: Academic Bio, Interests, Proposal */}
+                                <div className="w-full md:w-2/3 pt-2">
+                                    {/* 學習歷程 */}
+                                    <h2 className="text-[16px] font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                        <span className="inline-block w-2.5 h-2.5 bg-gray-800 rounded-sm"></span>
+                                        {t.section_bio}
+                                    </h2>
+                                    <div className="text-[16px] text-gray-700 space-y-4 text-justify leading-relaxed font-medium mb-12 pl-1">
+                                        {t.bio.map((p, idx) => <p key={idx}>{p}</p>)}
+                                    </div>
+
+                                    {/* 研究方向 */}
+                                    <h2 className="text-[16px] font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                        <span className="inline-block w-2.5 h-2.5 bg-gray-800 rounded-sm"></span>
+                                        {t.section_interests}
+                                    </h2>
+                                    <ul className="space-y-2 mb-12 pl-1">
+                                        {t.interests.map((item, idx) => (
+                                            <li key={idx} className="text-[16px] font-medium text-gray-700 flex items-start gap-2.5">
+                                                <span className="text-gray-400 mt-0.5">–</span>
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    {/* 研究計畫 */}
+                                    <h2 className="text-[16px] font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                        <span className="inline-block w-2.5 h-2.5 bg-gray-800 rounded-sm"></span>
+                                        {t.section_proposal}
+                                    </h2>
+                                    <div className="space-y-5 pl-1">
+                                        {t.proposal.map((item, idx) => (
+                                            <div key={idx} className="bg-gray-50 p-4 rounded-sm border border-gray-200">
+                                                <h3 className="text-[14.5px] font-bold text-gray-800 mb-2 flex items-center gap-2">
+                                                    <span className="text-gray-400 text-[12px]">•</span>
+                                                    {item.subtitle}
+                                                </h3>
+                                                <p className="text-[15.5px] text-gray-700 leading-relaxed text-justify font-medium">
+                                                    {item.content}
+                                                </p>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                             </header>
 
-                            <section className="section-border pt-14">
-                                <h2 className="text-xl font-bold mb-8 serif-font text-gray-900">{t.section_qualifications}</h2>
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                    <div className="bg-slate-50/70 p-4 rounded border border-slate-200">
-                                        <h3 className="text-[13px] font-bold text-gray-900 mb-3 pb-2 border-b border-gray-200">
-                                            {t.qual_esg}
-                                        </h3>
-                                        <ul className="space-y-2">
-                                            {t.qualifications.esg.map((item, idx) => (
-                                                <li key={idx} className="text-[12px] text-gray-700 flex items-start gap-1.5 leading-snug">
-                                                    <span className="text-gray-400 mt-0.5">•</span> {item}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    <div className="bg-slate-50/70 p-4 rounded border border-slate-200">
-                                        <h3 className="text-[13px] font-bold text-gray-900 mb-3 pb-2 border-b border-gray-200">
-                                            {t.qual_tech}
-                                        </h3>
-                                        <ul className="space-y-2">
-                                            {t.qualifications.tech.map((item, idx) => (
-                                                <li key={idx} className="text-[12px] text-gray-700 flex items-start gap-1.5 leading-snug">
-                                                    <span className="text-gray-400 mt-0.5">•</span> {item}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    <div className="bg-slate-50/70 p-4 rounded border border-slate-200">
-                                        <h3 className="text-[13px] font-bold text-gray-900 mb-3 pb-2 border-b border-gray-200">
-                                            {t.qual_finance}
-                                        </h3>
-                                        <ul className="space-y-2">
-                                            {t.qualifications.finance.map((item, idx) => (
-                                                <li key={idx} className="text-[12px] text-gray-700 flex items-start gap-1.5 leading-snug">
-                                                    <span className="text-gray-400 mt-0.5">•</span> {item}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </section>
-
-                            <section className="section-border pt-14">
-                                <h2 className="text-xl font-bold serif-font text-gray-900 mb-6">{t.section_awards}</h2>
-
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+                            {/* 2. Awards */}
+                            <section className="section-border pt-16">
+                                <h2 className="text-2xl font-bold mb-8 serif-font text-gray-900">{t.section_awards}</h2>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                                     {t.awards.map((award, idx) => {
-                                        const isWinner = award.isWinner;
-                                        const cardBg = isWinner ? "bg-amber-50/40 border-amber-200/90" : "bg-white border-gray-200";
-                                        const resultBadge = isWinner 
-                                            ? "bg-amber-100 text-amber-900 border border-amber-300 font-bold" 
-                                            : "bg-sky-50 text-sky-800 border border-sky-200 font-semibold";
+                                        const isWinner = award.result.includes('榮獲') || award.result.includes('Won');
+                                        const cardClass = isWinner 
+                                            ? "border-amber-200/90 bg-amber-50/30" 
+                                            : "border-gray-200 bg-white";
+                                        const resultClass = isWinner 
+                                            ? "bg-amber-100 text-amber-800 px-2 py-0.5 rounded-sm" 
+                                            : "bg-sky-50 text-sky-800 border border-sky-100 px-2 py-0.5 rounded-sm";
 
                                         return (
-                                            <div key={idx} className={`p-5 rounded-sm transition-colors flex flex-col h-full border ${cardBg}`}>
-                                                <div className="flex items-center justify-between gap-2 mb-2.5">
-                                                    <div className="flex items-center gap-2">
-                                                        <span className="text-[11px] font-bold bg-gray-100 px-2 py-0.5 text-gray-600 rounded-sm">
-                                                            {award.year}
-                                                        </span>
-                                                        <span className={`text-[11px] px-2 py-0.5 rounded-sm ${resultBadge}`}>
-                                                            {award.result}
-                                                        </span>
-                                                    </div>
-                                                    <span className="text-[11px] text-gray-400 truncate max-w-[150px] text-right">
-                                                        {award.org}
-                                                    </span>
-                                                </div>
-
-                                                <h3 className="text-[14.5px] font-bold text-gray-900 leading-snug mb-2">
-                                                    {award.title}
-                                                </h3>
-
-                                                {award.tags && (
-                                                    <div className="flex flex-wrap gap-1.5 mb-3">
-                                                        {award.tags.map((tag, tIdx) => (
-                                                            <span key={tIdx} className="text-[10.5px] px-2 py-0.5 bg-slate-100 text-slate-700 rounded border border-slate-200">
-                                                                {tag}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-                                                )}
-
-                                                <p className="text-[12.5px] text-gray-600 leading-relaxed mb-4 flex-grow text-justify">
-                                                    {award.desc}
-                                                </p>
-
-                                                {award.link && award.link !== '#' && (
-                                                    <div className="mt-auto border-t border-gray-100/80 pt-3">
-                                                        <a href={award.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11.5px] font-semibold text-slate-600 hover:text-blue-700 transition-colors">
-                                                            <span>{lang === 'zh' ? '系統規格與成果檢視' : 'Platform Documentation'}</span>
-                                                            <span>&rarr;</span>
-                                                        </a>
-                                                    </div>
-                                                )}
+                                        <div key={idx} className={`group border p-6 rounded-sm hover:border-gray-400 transition-colors flex flex-col h-full relative ${cardClass}`}>
+                                            <div className="flex items-center gap-3 mb-3.5">
+                                                <span className="text-[13px] font-bold bg-gray-100 px-2 py-0.5 text-gray-600 rounded-sm shrink-0">
+                                                    {award.year}
+                                                </span>
+                                                <span className={`text-[13px] font-bold ${resultClass}`}>
+                                                    {award.result}
+                                                </span>
                                             </div>
+                                            <h3 className="text-[17px] font-bold text-gray-900 leading-snug mb-1.5">
+                                                {award.title}
+                                            </h3>
+                                            <div className="text-[14px] font-medium text-gray-500 mb-4">
+                                                {award.org}
+                                            </div>
+                                            <p className="text-[15px] text-gray-600 leading-relaxed font-medium mb-5 flex-grow">
+                                                {award.desc}
+                                            </p>
+                                            {award.link !== '#' && (
+                                                <div className="mt-auto border-t border-gray-100/80 pt-4">
+                                                    <a href={award.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[14px] font-bold text-gray-700 hover:text-blue-700 transition-colors">
+                                                        {lang === 'zh' ? '查看作品' : 'View Project'} &rarr;
+                                                    </a>
+                                                </div>
+                                            )}
+                                        </div>
                                         );
                                     })}
                                 </div>
                             </section>
 
-                            <section className="section-border pt-14">
-                                <h2 className="text-xl font-bold mb-6 serif-font text-gray-900">{t.section_overseas}</h2>
-                                <div className="flex flex-col md:flex-row gap-8 items-center bg-gray-50 border border-gray-200 p-6 md:p-8 rounded-sm">
-                                    <div className="w-full md:w-2/3">
-                                        <div className="flex items-center gap-2 mb-1.5 text-xs font-semibold text-teal-800 tracking-wide">
-                                            <span>{t.overseas.institution}</span>
-                                            <span>•</span>
-                                            <span>{t.overseas.date}</span>
-                                        </div>
-                                        <h3 className="text-lg font-bold text-gray-900 mb-3">{t.overseas.title}</h3>
-                                        <p className="text-[13.5px] text-gray-700 leading-relaxed text-justify">
+                            {/* 3. Qualifications (Certifications with structured boxes) */}
+                            <section className="section-border pt-16">
+                                <h2 className="text-2xl font-bold mb-8 serif-font text-gray-900">{t.section_qualifications}</h2>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    {/* ESG Column Box */}
+                                    <div className="bg-white border border-gray-200 p-6 rounded-sm shadow-xs flex flex-col">
+                                        <h3 className="text-[16px] font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200 flex items-center gap-2">
+                                            <span className="w-2 h-2 bg-emerald-600 rounded-full"></span>
+                                            {t.qual_esg}
+                                        </h3>
+                                        <ul className="space-y-3 flex-grow">
+                                            {t.qualifications.esg.map((item, idx) => (
+                                                <li key={idx} className="text-[14.5px] text-gray-700 font-medium flex items-start gap-2 leading-snug">
+                                                    <span className="text-gray-300 mt-1">▪</span> {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    {/* Tech Column Box */}
+                                    <div className="bg-white border border-gray-200 p-6 rounded-sm shadow-xs flex flex-col">
+                                        <h3 className="text-[16px] font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200 flex items-center gap-2">
+                                            <span className="w-2 h-2 bg-indigo-600 rounded-full"></span>
+                                            {t.qual_tech}
+                                        </h3>
+                                        <ul className="space-y-3 flex-grow">
+                                            {t.qualifications.tech.map((item, idx) => (
+                                                <li key={idx} className="text-[14.5px] text-gray-700 font-medium flex items-start gap-2 leading-snug">
+                                                    <span className="text-gray-300 mt-1">▪</span> {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    {/* Finance Column Box */}
+                                    <div className="bg-white border border-gray-200 p-6 rounded-sm shadow-xs flex flex-col">
+                                        <h3 className="text-[16px] font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200 flex items-center gap-2">
+                                            <span className="w-2 h-2 bg-amber-600 rounded-full"></span>
+                                            {t.qual_finance}
+                                        </h3>
+                                        <ul className="space-y-3 flex-grow">
+                                            {t.qualifications.finance.map((item, idx) => (
+                                                <li key={idx} className="text-[14.5px] text-gray-700 font-medium flex items-start gap-2 leading-snug">
+                                                    <span className="text-gray-300 mt-1">▪</span> {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                            {/* 4. Overseas Program */}
+                            <section className="section-border pt-16">
+                                <h2 className="text-2xl font-bold mb-6 serif-font text-gray-900">{t.section_overseas}</h2>
+                                <div className="flex flex-col md:flex-row gap-8 items-center bg-gray-50 border border-gray-200 p-8 rounded-sm">
+                                    <div className="w-full md:w-2/3 flex flex-col items-start">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-4">{t.overseas.title}</h3>
+                                        <p className="text-[16px] font-medium text-gray-700 leading-relaxed text-justify mb-5">
                                             {t.overseas.desc}
                                         </p>
+                                        <a href={t.overseas.video_link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-blue-700 hover:text-blue-900 transition-colors font-bold text-[15px] border-b border-blue-200 pb-0.5">
+                                            <PlayIcon />
+                                            {lang === 'zh' ? '觀看見習紀錄影片' : 'Watch Apprenticeship Video'}
+                                        </a>
                                     </div>
-                                    <div className="w-full md:w-1/3 aspect-[4/3] bg-white border border-gray-200 overflow-hidden shadow-sm rounded-sm">
+                                    <div className="w-full md:w-1/3 aspect-[4/3] bg-white border border-gray-200 overflow-hidden shadow-sm">
                                         <img 
                                             src="images/life.jpg" 
                                             alt="Overseas Apprenticeship"
-                                            className="w-full h-full object-cover"
+                                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                                             onError={(e) => handleImageError(e, 'life.jpg')}
                                         />
                                     </div>
@@ -865,78 +720,104 @@
                             </section>
 
                         </div>
-                    ) : (
-                        <div className="animate-fade-in pb-12">
-                            <div className="mb-8">
-                                <h2 className="text-2xl font-bold serif-font text-gray-900 mb-2">{t.gallery_title}</h2>
-                                <p className="text-sm text-gray-500 font-normal">{t.gallery_sub}</p>
-                            </div>
+                    )}
 
-                            {/* Gallery Filter Controls */}
-                            <div className="flex flex-wrap gap-2 mb-10 pb-4 border-b border-gray-200">
-                                {[
-                                    { id: 'all', label: t.filter_all },
-                                    { id: 'overseas', label: t.filter_overseas },
-                                    { id: 'awards', label: t.filter_awards },
-                                    { id: 'projects', label: t.filter_projects }
-                                ].map(tab => (
-                                    <button
-                                        key={tab.id}
-                                        onClick={() => setGalleryFilter(tab.id)}
-                                        className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                                            galleryFilter === tab.id
-                                            ? 'bg-gray-900 text-white shadow-sm'
-                                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                                        }`}
-                                    >
-                                        {tab.label}
-                                    </button>
-                                ))}
-                            </div>
-
-                            {/* Gallery Card Grid */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {filteredGallery.map((item) => (
-                                    <div 
-                                        key={item.id} 
-                                        onClick={() => setSelectedPhoto(item)}
-                                        className="group bg-white border border-gray-200 rounded-sm overflow-hidden hover:border-gray-400 transition-all duration-200 cursor-pointer flex flex-col h-full"
-                                    >
-                                        <div className="w-full aspect-[4/3] bg-gray-100 relative overflow-hidden shrink-0">
-                                            <img 
-                                                src={item.src} 
-                                                alt={item.title[lang]} 
-                                                className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
-                                                onError={(e) => handleImageError(e, item.src.split('/').pop())}
-                                            />
-                                            <div className="absolute top-2.5 left-2.5 z-10">
-                                                <span className="text-[10px] font-semibold px-2 py-0.5 bg-black/60 text-white rounded-sm">
-                                                    {item.date}
-                                                </span>
-                                            </div>
+                    {/* Tab: Professional Projects (專案實務) */}
+                    {activeTab === 'projects' && (
+                        <div className="animate-fade-in space-y-12 pb-10">
+                            {professionalProjects.map((proj) => (
+                                <div key={proj.id} className="flex flex-col md:flex-row gap-8 bg-white border border-gray-200 p-6 md:p-8 rounded-sm hover:border-gray-400 transition-colors shadow-xs">
+                                    <div className="w-full md:w-1/3 aspect-[4/3] bg-gray-100 overflow-hidden shrink-0 border border-gray-100 cursor-pointer" onClick={() => setSelectedProject(proj)}>
+                                        <img 
+                                            src={proj.src} 
+                                            alt={proj.title[lang]}
+                                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                            onError={(e) => handleImageError(e, proj.src.split('/').pop())}
+                                        />
+                                    </div>
+                                    <div className="w-full md:w-2/3 flex flex-col">
+                                        <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-2">
+                                            <h3 className="text-xl font-bold text-gray-900 leading-snug">{proj.title[lang]}</h3>
+                                            <span className="text-[13px] font-bold text-gray-600 bg-gray-100 px-2.5 py-1 rounded-sm w-fit shrink-0">
+                                                {proj.period}
+                                            </span>
                                         </div>
-
-                                        <div className="p-4 flex flex-col flex-grow">
-                                            <div className="flex items-center gap-1 text-[11px] text-gray-400 mb-1">
-                                                <MapPin size={12} className="text-gray-400 shrink-0" />
-                                                <span className="truncate">{item.location[lang]}</span>
-                                            </div>
-
-                                            <h3 className="text-[14px] font-bold text-gray-900 leading-snug mb-2 group-hover:text-blue-900 transition-colors">
-                                                {item.title[lang]}
-                                            </h3>
-
-                                            <p className="text-[12px] text-gray-600 leading-relaxed line-clamp-2 mb-3 flex-grow">
-                                                {item.desc[lang]}
-                                            </p>
-
-                                            <div className="flex flex-wrap gap-1 mt-auto pt-2.5 border-t border-gray-100">
-                                                {item.tags.map((tag, tIdx) => (
-                                                    <span key={tIdx} className="text-[10px] px-1.5 py-0.5 bg-slate-50 text-slate-600 rounded border border-slate-200">
+                                        <div className="text-[15px] font-bold text-gray-800 mb-0.5">{proj.org[lang]}</div>
+                                        <div className="text-[14px] font-medium text-gray-500 mb-4">{proj.role[lang]}</div>
+                                        
+                                        <p className="text-[16px] text-gray-700 leading-relaxed font-medium mb-6 text-justify">
+                                            {proj.desc[lang]}
+                                        </p>
+                                        
+                                        <div className="flex flex-wrap items-center justify-between gap-4 mt-auto pt-4 border-t border-gray-100">
+                                            <div className="flex flex-wrap gap-2">
+                                                {proj.tags[lang].map((tag, tIdx) => (
+                                                    <span key={tIdx} className="text-[13px] px-2 py-0.5 bg-gray-50 text-gray-600 rounded border border-gray-200 font-medium">
                                                         #{tag}
                                                     </span>
                                                 ))}
                                             </div>
+                                            <button 
+                                                onClick={() => setSelectedProject(proj)} 
+                                                className="inline-flex items-center text-[14px] font-bold text-blue-700 hover:text-blue-900 transition-colors"
+                                            >
+                                                {t.view_detail_btn} &rarr;
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* Tab: Learning Highlights Gallery (學習剪影) */}
+                    {activeTab === 'gallery' && (
+                        <div className="animate-fade-in pb-10">
+                            {/* Filter category pills */}
+                            <div className="flex flex-wrap gap-3 mb-10 pb-4 border-b border-gray-200">
+                                {[
+                                    { key: 'all', label: t.gallery_all },
+                                    { key: 'overseas', label: t.gallery_overseas },
+                                    { key: 'awards', label: t.gallery_awards },
+                                    { key: 'projects', label: t.gallery_projects }
+                                ].map((cat) => (
+                                    <button 
+                                        key={cat.key}
+                                        onClick={() => setGalleryFilter(cat.key)}
+                                        className={`text-[14px] font-bold px-3.5 py-1.5 rounded-sm transition-colors ${galleryFilter === cat.key ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                                    >
+                                        {cat.label}
+                                    </button>
+                                ))}
+                            </div>
+
+                            <div className="gallery-grid">
+                                {filteredGallery.map((item) => (
+                                    <div 
+                                        key={item.id} 
+                                        onClick={() => setSelectedGalleryItem(item)}
+                                        className="flex flex-col gap-3 group cursor-pointer bg-white border border-gray-200 p-3 rounded-sm hover:border-gray-400 transition-all shadow-xs"
+                                    >
+                                        <div className="w-full aspect-[4/3] bg-gray-50 overflow-hidden relative">
+                                            <img 
+                                                src={item.src} 
+                                                alt={item.caption[lang]} 
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                                onError={(e) => handleImageError(e, item.src.split('/').pop())}
+                                            />
+                                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                                                <span className="text-white text-xs font-bold px-2 py-1 bg-black/60 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                                                    {t.view_detail_btn}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 className="text-[15.5px] font-bold text-gray-900 leading-snug group-hover:text-blue-700 transition-colors">
+                                                {item.caption[lang]}
+                                            </h4>
+                                            <p className="text-[13.5px] text-gray-500 line-clamp-2 mt-1 leading-relaxed">
+                                                {item.desc[lang]}
+                                            </p>
                                         </div>
                                     </div>
                                 ))}
@@ -944,103 +825,92 @@
                         </div>
                     )}
 
-                    {selectedPhoto && (
-                        <div 
-                            className="fixed inset-0 z-50 bg-black/75 flex items-center justify-center p-4 md:p-8 animate-fade-in"
-                            onClick={() => setSelectedPhoto(null)}
-                        >
-                            <div 
-                                className="bg-white max-w-3xl w-full max-h-[90vh] overflow-y-auto rounded-sm shadow-2xl relative flex flex-col md:flex-row overflow-hidden"
-                                onClick={(e) => e.stopPropagation()}
-                            >
-                                <div className="w-full md:w-3/5 bg-gray-950 flex items-center justify-center relative aspect-[4/3] md:aspect-auto">
-                                    <img 
-                                        src={selectedPhoto.src} 
-                                        alt={selectedPhoto.title[lang]}
-                                        className="w-full h-full object-contain max-h-[60vh] md:max-h-full"
-                                        onError={(e) => handleImageError(e, selectedPhoto.src.split('/').pop())}
-                                    />
-                                    <button 
-                                        onClick={handlePrevPhoto} 
-                                        aria-label="Previous"
-                                        className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
-                                    >
-                                        <ChevronLeft size={18} />
-                                    </button>
-                                    <button 
-                                        onClick={handleNextPhoto} 
-                                        aria-label="Next"
-                                        className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
-                                    >
-                                        <ChevronRight size={18} />
-                                    </button>
+                    {/* MODAL 1: Professional Project Detailed View */}
+                    {selectedProject && (
+                        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+                            <div className="bg-white max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-sm border border-gray-300 p-6 md:p-8 shadow-xl relative animate-fade-in">
+                                <button 
+                                    onClick={() => setSelectedProject(null)}
+                                    className="absolute top-6 right-6 text-gray-400 hover:text-gray-700 transition-colors"
+                                >
+                                    <CloseIcon />
+                                </button>
+                                
+                                <span className="text-[13px] font-bold text-gray-500 bg-gray-100 px-2.5 py-1 rounded-sm">
+                                    {selectedProject.period}
+                                </span>
+                                <h3 className="text-2xl font-bold text-gray-900 mt-3 mb-1">{selectedProject.title[lang]}</h3>
+                                <div className="text-[15px] font-bold text-gray-700 mb-6">{selectedProject.org[lang]}・{selectedProject.role[lang]}</div>
+                                
+                                <div className="space-y-5 text-[15.5px] text-gray-700 leading-relaxed font-medium">
+                                    <div className="bg-gray-50 p-4 rounded-sm border border-gray-200">
+                                        <h4 className="text-[14px] font-bold text-gray-900 mb-1.5">{lang === 'zh' ? '背景與問題意識' : 'Context & Challenge'}</h4>
+                                        <p className="text-justify">{selectedProject.details.context[lang]}</p>
+                                    </div>
+
+                                    <div className="bg-gray-50 p-4 rounded-sm border border-gray-200">
+                                        <h4 className="text-[14px] font-bold text-gray-900 mb-1.5">{lang === 'zh' ? '執行方法與實踐' : 'Execution & Methodology'}</h4>
+                                        <p className="text-justify">{selectedProject.details.implementation[lang]}</p>
+                                    </div>
+
+                                    <div className="bg-gray-50 p-4 rounded-sm border border-gray-200">
+                                        <h4 className="text-[14px] font-bold text-gray-900 mb-1.5">{lang === 'zh' ? '實務觀察與研究反思' : 'Key Takeaways & Reflection'}</h4>
+                                        <p className="text-justify">{selectedProject.details.reflection[lang]}</p>
+                                    </div>
                                 </div>
 
-                                <div className="w-full md:w-2/5 p-6 flex flex-col justify-between bg-white">
-                                    <div>
-                                        <div className="flex justify-between items-start mb-4">
-                                            <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
-                                                {selectedPhoto.category}
-                                            </span>
-                                            <button 
-                                                onClick={() => setSelectedPhoto(null)} 
-                                                className="text-gray-400 hover:text-gray-800 transition-colors p-1"
-                                                title="Close"
-                                            >
-                                                <XIcon size={18} />
-                                            </button>
-                                        </div>
+                                <div className="mt-8 pt-4 border-t border-gray-200 flex justify-end">
+                                    <button 
+                                        onClick={() => setSelectedProject(null)}
+                                        className="px-5 py-1.5 bg-gray-800 text-white text-[14px] font-bold rounded-sm hover:bg-gray-900 transition-colors"
+                                    >
+                                        {t.close_modal}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
 
-                                        <h3 className="text-base font-bold text-gray-900 serif-font leading-snug mb-3">
-                                            {selectedPhoto.title[lang]}
-                                        </h3>
+                    {/* MODAL 2: Learning Highlights Detailed Lightbox */}
+                    {selectedGalleryItem && (
+                        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
+                            <div className="bg-white max-w-xl w-full max-h-[90vh] overflow-y-auto rounded-sm border border-gray-300 p-6 shadow-xl relative animate-fade-in">
+                                <button 
+                                    onClick={() => setSelectedGalleryItem(null)}
+                                    className="absolute top-5 right-5 text-gray-400 hover:text-gray-700 transition-colors"
+                                >
+                                    <CloseIcon />
+                                </button>
+                                
+                                <div className="w-full aspect-[4/3] bg-gray-100 overflow-hidden mb-5 border border-gray-200">
+                                    <img 
+                                        src={selectedGalleryItem.src} 
+                                        alt={selectedGalleryItem.caption[lang]} 
+                                        className="w-full h-full object-cover"
+                                        onError={(e) => handleImageError(e, selectedGalleryItem.src.split('/').pop())}
+                                    />
+                                </div>
 
-                                        <div className="space-y-1 mb-4 text-xs text-gray-500 pb-3 border-b border-gray-100">
-                                            <div className="flex items-center gap-1.5">
-                                                <Calendar size={13} className="text-gray-400" />
-                                                <span>{selectedPhoto.date}</span>
-                                            </div>
-                                            <div className="flex items-center gap-1.5">
-                                                <MapPin size={13} className="text-gray-400" />
-                                                <span>{selectedPhoto.location[lang]}</span>
-                                            </div>
-                                        </div>
+                                <h3 className="text-xl font-bold text-gray-900 mb-3">{selectedGalleryItem.caption[lang]}</h3>
+                                <p className="text-[15.5px] text-gray-700 leading-relaxed text-justify font-medium mb-6">
+                                    {selectedGalleryItem.desc[lang]}
+                                </p>
 
-                                        <div className="mb-4">
-                                            <h4 className="text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-2">
-                                                {t.modal_context}
-                                            </h4>
-                                            <p className="text-[13px] text-gray-700 leading-relaxed text-justify">
-                                                {selectedPhoto.desc[lang]}
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="pt-4 border-t border-gray-100 mt-4">
-                                        <div className="flex flex-wrap gap-1.5 mb-3">
-                                            {selectedPhoto.tags.map((tag, idx) => (
-                                                <span key={idx} className="text-[10px] px-2 py-0.5 bg-gray-100 text-gray-600 rounded">
-                                                    #{tag}
-                                                </span>
-                                            ))}
-                                        </div>
-                                        <div className="flex justify-end items-center text-xs">
-                                            <button 
-                                                onClick={() => setSelectedPhoto(null)} 
-                                                className="text-xs text-gray-600 hover:text-gray-900 underline underline-offset-2"
-                                            >
-                                                {t.modal_back}
-                                            </button>
-                                        </div>
-                                    </div>
+                                <div className="pt-4 border-t border-gray-200 flex justify-end">
+                                    <button 
+                                        onClick={() => setSelectedGalleryItem(null)}
+                                        className="px-5 py-1.5 bg-gray-800 text-white text-[14px] font-bold rounded-sm hover:bg-gray-900 transition-colors"
+                                    >
+                                        {t.close_modal}
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     )}
 
                     {/* Footer */}
-                    <footer className="mt-20 pt-8 border-t border-gray-200 text-center text-[11px] text-gray-400 font-medium tracking-wider">
-                        © 2026 YIN, KO-YING
+                    <footer className="mt-24 pt-8 border-t border-gray-200 text-center text-[13px] text-gray-400 font-bold tracking-widest uppercase">
+                        © 2026 YIN, KO-YING.
                     </footer>
                 </div>
             );
