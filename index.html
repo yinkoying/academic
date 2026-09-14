@@ -55,13 +55,13 @@
                 nav_gallery: "活動與競賽紀錄",
                 section_interests: "研究興趣",
                 section_bio: "學術自述",
-                section_awards: "獲獎經歷",
+                section_awards: "競賽參與",
                 section_qualifications: "專業證照",
                 section_overseas: "青年百億計畫",
                 qual_esg: "永續與氣候治理",
                 qual_tech: "資訊科技與人工智慧",
                 qual_finance: "金融與專案管理",
-                gallery_awards: "參賽與活動紀錄",
+                gallery_awards: "活動與競賽紀錄",
                 gallery_overseas: "海外見習 (澳洲 EarthCheck)",
                 interests: [
                     "公正轉型 (Just Transition)", 
@@ -100,13 +100,13 @@
                 nav_gallery: "Photos & Activities",
                 section_interests: "Research Interests",
                 section_bio: "Statement of Purpose",
-                section_awards: "Honors & Awards",
+                section_awards: "Competitions",
                 section_qualifications: "Professional Certifications",
                 section_overseas: "Global Initiatives (10B Dreams Fund)",
                 qual_esg: "Sustainability & Climate Governance",
                 qual_tech: "Information Technology & AI",
                 qual_finance: "Finance & Project Management",
-                gallery_awards: "Competition & Event Photos",
+                gallery_awards: "Photos & Activities",
                 gallery_overseas: "Overseas Apprenticeship (EarthCheck)",
                 interests: [
                     "Just Transition", 
@@ -231,41 +231,7 @@
                                 </div>
                             </header>
 
-                            {/* 2. Awards */}
-                            <section className="section-border pt-16">
-                                <h2 className="text-xl font-bold mb-8 serif-font">{t.section_awards}</h2>
-                                <div className="space-y-6">
-                                    {t.awards.map((award, idx) => (
-                                        <div key={idx} className="group border border-gray-100 p-5 rounded-sm hover:border-gray-300 transition-colors">
-                                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
-                                                <div className="flex items-center gap-3">
-                                                    <span className="text-[11px] font-bold bg-gray-100 px-2 py-0.5 text-gray-600 rounded-sm">
-                                                        {award.year}
-                                                    </span>
-                                                    <h3 className="text-[15px] font-bold text-gray-900">
-                                                        {award.link !== '#' ? (
-                                                            <a href={award.link} target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors">{award.title} &rarr;</a>
-                                                        ) : (
-                                                            award.title
-                                                        )}
-                                                    </h3>
-                                                </div>
-                                                <div className="text-[12px] font-bold text-gray-500">
-                                                    {award.org}
-                                                </div>
-                                            </div>
-                                            <div className="text-[13px] font-bold text-gray-800 mb-2">
-                                                {award.result}
-                                            </div>
-                                            <p className="text-[13px] text-gray-600 leading-relaxed font-medium">
-                                                {award.desc}
-                                            </p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </section>
-
-                            {/* 3. Qualifications */}
+                            {/* 2. Qualifications (Swapped to be before Awards) */}
                             <section className="section-border pt-16">
                                 <h2 className="text-xl font-bold mb-8 serif-font">{t.section_qualifications}</h2>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -308,6 +274,38 @@
                                             ))}
                                         </ul>
                                     </div>
+                                </div>
+                            </section>
+
+                            {/* 3. Awards (Now a 2-column grid and height-matched) */}
+                            <section className="section-border pt-16">
+                                <h2 className="text-xl font-bold mb-8 serif-font">{t.section_awards}</h2>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                                    {t.awards.map((award, idx) => (
+                                        <div key={idx} className="group border border-gray-100 p-5 rounded-sm hover:border-gray-300 transition-colors flex flex-col h-full">
+                                            <div className="flex items-start gap-3 mb-3">
+                                                <span className="text-[11px] font-bold bg-gray-100 px-2 py-0.5 text-gray-600 rounded-sm shrink-0 mt-0.5">
+                                                    {award.year}
+                                                </span>
+                                                <h3 className="text-[14.5px] font-bold text-gray-900 leading-snug">
+                                                    {award.link !== '#' ? (
+                                                        <a href={award.link} target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors">{award.title} &rarr;</a>
+                                                    ) : (
+                                                        award.title
+                                                    )}
+                                                </h3>
+                                            </div>
+                                            <div className="text-[12px] font-bold text-gray-500 mb-1.5">
+                                                {award.org}
+                                            </div>
+                                            <div className="text-[13px] font-bold text-gray-800 mb-3">
+                                                {award.result}
+                                            </div>
+                                            <p className="text-[13px] text-gray-600 leading-relaxed font-medium mt-auto">
+                                                {award.desc}
+                                            </p>
+                                        </div>
+                                    ))}
                                 </div>
                             </section>
 
