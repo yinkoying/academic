@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -50,19 +51,22 @@
         const data = {
             zh: {
                 name: "殷可盈",
-                title: "永續工作者",
+                title: "永續管理師 Coco",
                 email: "yinkoying.yky@gmail.com",
                 nav_cv: "個人簡歷",
                 nav_projects: "專案實務",
                 nav_gallery: "學習剪影",
-                section_bio: "學習歷程",
+                section_bio: "相關經歷",
                 section_interests: "研究方向",
-                section_proposal: "研究計畫",
+                section_proposal: "研究構想",
+                section_ai_practice: "AI 新秀培訓專班",
                 section_awards: "競賽紀錄",
                 section_qualifications: "專業證照",
-                section_overseas: "青年百億海外圓夢計畫",
+                section_overseas: "青年百億海外圓夢基金計畫",
                 section_education: "學歷背景",
                 section_experience: "工作經歷",
+                section_language: "英文能力",
+                toeic: "TOEIC 720",
                 quote_text: "「你的所作所為都會帶來影響，而你要決定，想帶來哪一種影響。」",
                 quote_author: "— Jane Goodall 珍古德",
                 view_detail_btn: "查看詳細說明",
@@ -76,24 +80,35 @@
                 gallery_projects: "工作日常",
                 gallery_overseas: "海外見習",
                 
-                interests: [], // 留空待討論
-                proposal: [],  // 留空待討論
+                interests: [
+                    "跨部會氣候治理",
+                    "環境政策評估",
+                    "企業永續揭露",
+                    "綠色及轉型金融"
+                ],
+                proposal_title: "跨部會氣候政策協調與企業合規負擔：臺灣上市櫃公司之分析",
+                proposal: [
+                    "臺灣正透過碳盤查、查證、減量與永續資訊揭露等制度推動企業淨零轉型。環境部與金管會的相關措施雖共同指向減碳與企業韌性，但在適用對象、術語、資料要求、揭露內容及查證時程上，可能存在需要進一步銜接之處。對資源相對有限的上市櫃公司而言，制度之間的落差可能增加資料整備與內部治理的因應負擔。",
+                    "本研究擬以政策一致性（policy coherence）為分析架構，比較環境部與金管會之氣候相關制度，系統檢視其規範對象、資訊要求、術語、資料格式與時程安排。再結合上市櫃公司公開年報、永續報告書與相關揭露資料，觀察不同規模及產業企業的因應情形與差異。研究將把「合規負擔」界定為制度性因應負擔，而不逕自推論個別企業的實際金額成本。",
+                    "期望透過此分析，辨識跨部會制度可加強協調之處，並提出資料標準、時程安排及企業輔導機制的建議，協助臺灣在推進淨零目標時兼顧政策可執行性與企業轉型能力。"
+                ],
+                ai_practice: "2025 年中我參與臺北大學與經濟部合作之「AI 新秀培訓專班」的 300 小時培訓，課程涵蓋生成式 AI 金融服務、金融數據管理、雲端金融平台架構、金融系統開發及自然語言處理。其後，我將所學運用於多項永續與氣候行動競賽，透過網頁應用程式開發社區微氣候韌性決策、CCUS 淨零策略模擬、低碳循環與綠色金融等工具，嘗試將複雜的氣候資料與制度議題轉化為可理解、可操作的應用。",
                 
                 bio: [
-                    "我具備公共行政與環境工程盤查的跨領域背景。過去在臺北大學商學院，我審閱了超過一千份上市櫃公司的永續報告書，建立對 ESG 法規與企業揭露的基礎了解。",
-                    "隨後，我進入新系環境技術擔任專案工程師，實地輔導數十家中小企業完成 ISO 14064-1 與 ISO 14067 碳盤查。在第一線的工作中，我深刻體會到中小型工廠面對淨零法規時，遭遇的資源限制與轉型壓力。",
-                    "帶著這些實務觀察，我於 9 月加入永豐銀行總行，負責推動公平待客與金融友善專案。我希望能從大型金融機構的視角，了解政策在推動綠色轉型與社會包容時，會面臨哪些實務挑戰。",
-                    "未來的研究將聚焦於氣候政策下的公正轉型。希望能將過去在實務現場的觀察，轉化為客觀的政策評估，並運用資料科學工具進行實證分析。"
+                    "我曾在國立臺北大學企業永續發展研究中心擔任研究助理，參與臺灣永續評鑑，審閱逾千份上市櫃公司永續報告書，累積企業公開揭露資料的檢視與整理經驗。",
+                    "在新系環境技術擔任專案工程師時，我協助中小企業依 ISO 14064-1 與 ISO 14067 進行溫室氣體與產品碳足跡盤查，接觸企業資料整備、外部查證與內部溝通的實務流程，也看見不同資源條件的企業面對相同制度要求時，會有不同的因應能力。另曾派駐環境部氣候變遷署，從政府專案執行現場觀察環境部、金管會及其他部會在制度推進與資料銜接上的協調需求。",
+                    "自 2026 年 9 月起，我將在永豐商業銀行擔任營管企劃，關注公平待客與金融友善之國內外趨勢，協助獎項報獎、自評作業及相關專案規劃與管理。我期待透過總行制度規劃與跨部門協作的實務，進一步理解金融機構如何將監理要求、內部治理與服務包容性轉化為可執行的工作。",
+                    "這些經驗讓我注意到，當碳盤查、查證與永續揭露等要求同步推進時，不同規模與資源條件的企業，在資訊整備、查證與內部治理上可能面臨不同的因應負擔。為將實務觀察轉化為可檢驗的研究問題，我希望透過研究所的環境政策、制度分析與實證方法訓練，進一步探討跨部會氣候治理對企業轉型的影響。"
                 ],
 
                 education: [
-                    { school: "臺北大學", dept: "公共行政暨政策學系研究所", degree: "碩士班", period: "2022 - 肄業" },
+                    { school: "國立臺北大學", dept: "公共行政暨政策學系研究所", degree: "", period: "2022 - 肄業" },
                     { school: "淡江大學", dept: "公共行政學系", degree: "學士", period: "2018 - 2021" }
                 ],
 
                 experience: [
                     { role: "營管企劃", org: "永豐商業銀行", period: "2026.09 - Present" },
-                    { role: "專案工程師", org: "新系環境技術有限公司", period: "2026.01 - 2026.09 " },
+                    { role: "專案工程師", org: "新系環境技術有限公司", period: "2026.01 - 2026.09" },
                     { role: "研究助理", org: "國立臺北大學 企業永續發展研究中心 / 民意與選舉研究中心", period: "2022.09 - 2025.12" }
                 ],
 
@@ -108,32 +123,52 @@
                     { year: "2026", title: "2026 IASE 影響力創新獎", result: "入圍【青年人才】", org: "IASE 國際永續認證協會", desc: "作品：三峽職人：手路尋蹤。整合地方工坊網絡與數位參與介面，評估青年推動永續實踐的可行路徑。", link: "https://tanji2026.github.io/sanxia/" }
                 ],
                 qualifications: {
-                    esg: ["ISO 14064-1 內部查證員 (DNV)", "ISO 14064-1 溫室氣體盤查管理師", "ISO 14067 產品碳足跡盤查管理師", "經濟部 iPAS 淨零碳規劃管理師 (中級/初級)", "GRI 永續報告書管理師", "環境部 溫室氣體盤查作業查驗人員", "環境部 環境教育人員", "新北市 低碳社區規劃師", "證期會 永續發展基礎能力測驗"],
-                    tech: ["AWS Certified AI Practitioner", "Azure AI-900", "經濟部 iPAS AI 應用規劃師 (初級)", "Google Cloud 學程結業", "TQC 資訊科技 Python 專業級", "TQC Microsoft Office 專業級"],
-                    finance: ["金研院 金融科技力知識檢定測驗", "證期會 金融市場常識與職業道德", "勞動部 PMP 專案管理人才實務班"]
+                    esg: [
+                        { issuer: "DNV", items: ["ISO 14064-1 內部查證員"] },
+                        { issuer: "財團法人商業發展研究院", items: ["ISO 14064-1 溫室氣體盤查管理師", "ISO 14067 產品碳足跡盤查管理師", "永續報告書管理師"] },
+                        { issuer: "AFNOR", items: ["ISO 14067 產品碳足跡主任稽核員"] },
+                        { issuer: "經濟部 iPAS", items: ["淨零碳規劃管理師（中級／初級）"] },
+                        { issuer: "環境部", items: ["溫室氣體盤查作業查驗人員", "環境教育人員"] },
+                        { issuer: "新北市政府", items: ["低碳社區規劃師"] },
+                    ],
+                    tech: [
+                        { issuer: "AWS", items: ["AWS Certified AI Practitioner"] },
+                        { issuer: "Microsoft", items: ["Azure AI-900"] },
+                        { issuer: "經濟部 iPAS", items: ["AI 應用規劃師（初級）"] },
+                        { issuer: "Google Cloud", items: ["Google Cloud 學程結業"] },
+                        { issuer: "電腦技能基金會（TQC）", items: ["資訊科技 Python 專業級", "Microsoft Office 專業級"] }
+                    ],
+                    finance: [
+                        { issuer: "台灣金融研訓院", items: ["金融科技力知識檢定測驗"] },
+                        { issuer: "證券暨期貨市場發展基金會", items: ["金融市場常識與職業道德", "永續發展基礎能力測驗"] },
+                        { issuer: "勞動部", items: ["PMP 專案管理人才實務班"] }
+                    ]
                 },
                 overseas: {
-                    title: "旅遊綠方程",
-                    desc: "獲選前往澳洲布里斯本 EarthCheck 學院進行海外見習。學習以數據與指標，探討國際永續旅遊認證機制、環境績效監測與目的地管理標準，了解國際規範落地應用的實務作法。",
+                    title: "115年度第一梯次・海外翱翔組 G-3-3「旅遊綠方程」",
+                    desc: "教育部青年發展署透過海外見習、培訓與交流及資源支持，協助青年拓展國際視野與行動能力。獲選赴澳洲布里斯本 EarthCheck Academy 見習，研習永續旅遊認證、環境績效監測與目的地管理。",
                     video_link: "https://youtu.be/PpYg8SxHXf8?si=BNPhJUeTvJqRIijY",
                     video_text: "觀看見習紀錄影片"
                 }
             },
             en: {
                 name: "YIN, KO-YING",
-                title: "Sustainability Practitioner",
+                title: "Sustainability Manager Coco",
                 email: "yinkoying.yky@gmail.com",
                 nav_cv: "Curriculum Vitae",
                 nav_projects: "Professional Projects",
                 nav_gallery: "Gallery",
-                section_bio: "Academic Journey",
+                section_bio: "Relevant Experience",
                 section_interests: "Research Focus",
-                section_proposal: "Research Proposal",
+                section_proposal: "Research Concept",
+                section_ai_practice: "AI Rising Talent Training Program",
                 section_awards: "Competition Records",
                 section_qualifications: "Certifications",
-                section_overseas: "Overseas Program",
+                section_overseas: "Youth Overseas Dream Fund Program",
                 section_education: "Education",
                 section_experience: "Work Experience",
+                section_language: "English Proficiency",
+                toeic: "TOEIC 720",
                 quote_text: "“What you do makes a difference, and you have to decide what kind of difference you want to make.”",
                 quote_author: "— Dr. Jane Goodall",
                 view_detail_btn: "View Details",
@@ -147,17 +182,28 @@
                 gallery_projects: "Work Life",
                 gallery_overseas: "Apprenticeship",
                 
-                interests: [],
-                proposal: [],
+                interests: [
+                    "Cross-Ministerial Climate Governance",
+                    "Environmental Policy Evaluation",
+                    "Corporate Sustainability Disclosure",
+                    "Green and Transition Finance"
+                ],
+                proposal_title: "Policy Coordination and Corporate Compliance Burdens in Taiwan's Climate Governance: An Analysis of Listed Firms",
+                proposal: [
+                    "Taiwan is advancing corporate net-zero transition through greenhouse-gas accounting, verification, emissions reduction, and sustainability disclosure requirements. Although measures led by the Ministry of Environment and the Financial Supervisory Commission share the broader goals of decarbonization and corporate resilience, their scope, terminology, data requirements, disclosure content, and verification timelines may require further alignment. For listed firms with relatively limited resources, gaps between regulatory systems may increase the burden of data preparation and internal governance.",
+                    "Drawing on policy coherence as its analytical framework, this study will compare climate-related regulatory systems administered by the Ministry of Environment and the Financial Supervisory Commission. It will systematically examine their covered entities, information requirements, terminology, data formats, and timelines. The study will then use publicly available annual reports, sustainability reports, and related disclosures to explore how firms of different sizes and industries respond. Compliance burden will be treated as an institutional response burden rather than as a direct estimate of firms' monetary costs.",
+                    "The study aims to identify areas where cross-ministerial coordination can be strengthened and to propose improvements in data standards, timelines, and corporate-support mechanisms. It seeks to support a net-zero transition that is both administratively workable and responsive to differences in corporate transition capacity."
+                ],
+                ai_practice: "In mid-2025, I completed 300 hours in the AI Rising Talent Training Program jointly delivered by National Taipei University and the Ministry of Economic Affairs. The curriculum covered generative-AI financial services, financial data management, cloud financial-platform architecture, financial-system development, and natural language processing. I subsequently applied this learning in sustainability and climate-action competitions, developing web applications for community microclimate-resilience decisions, CCUS net-zero strategy simulations, low-carbon circularity, and green-finance tools. These projects sought to turn complex climate data and institutional issues into understandable, actionable applications.",
                 
                 bio: [
-                    "I have an interdisciplinary background in public administration and environmental engineering. During my time at National Taipei University, I audited over a thousand corporate sustainability reports, which built my foundational understanding of ESG frameworks.",
-                    "As an environmental project engineer, I helped local SMEs conduct ISO 14064-1 and ISO 14067 carbon inventories. This frontline experience showed me the severe resource constraints and compliance costs that small businesses struggle with under net-zero policies.",
-                    "I joined Bank SinoPac this September to manage the Fair Customer Treatment project. I look forward to observing how green credit policies and social inclusion initiatives are implemented from a macro-financial perspective.",
-                    "My future research focuses on the distributional effects of climate policies. I plan to translate these fieldwork observations into objective policy evaluations using data science tools."
+                    "As a research assistant at National Taipei University's Center for Corporate Sustainability, I participated in the Taiwan Sustainability Evaluation, reviewing more than one thousand sustainability reports from listed companies and building experience in examining and organizing public corporate disclosures.",
+                    "As a project engineer at Xinxi Environmental Technology, I supported SMEs with greenhouse-gas and product-carbon-footprint inventories under ISO 14064-1 and ISO 14067. I encountered the practical processes of corporate data preparation, external assurance, and internal communication, and saw that firms with different resource conditions respond differently to the same requirements. I was also stationed at the Climate Change Administration, Ministry of Environment, where I observed the need for coordination in institutional implementation and data alignment among the Ministry of Environment, the Financial Supervisory Commission, and other ministries.",
+                    "Beginning in September 2026, I will serve as an Operations & Management Planning Specialist at Bank SinoPac, monitoring domestic and international developments in fair customer treatment and financial inclusion while assisting with award submissions, internal self-assessments, and related project planning and management. I hope to learn through headquarters-level policy planning and cross-departmental collaboration how financial institutions translate supervisory expectations, internal governance, and inclusive service into executable work.",
+                    "These experiences drew my attention to the differing response burdens firms may face in information preparation, assurance, and internal governance as carbon accounting, assurance, and sustainability-disclosure requirements advance in parallel. I hope to turn these practical observations into testable research questions through graduate training in environmental policy, institutional analysis, and empirical methods, with a focus on how cross-ministerial climate governance affects corporate transition."
                 ],
                 education: [
-                    { school: "National Taipei University", dept: "Graduate Institute of Public Administration & Policy", degree: "Master's Program", period: "2022 - Incomplete" },
+                    { school: "National Taipei University", dept: "Graduate Institute of Public Administration & Policy", degree: "", period: "2022 - Incomplete" },
                     { school: "Tamkang University", dept: "Department of Public Administration", degree: "B.A.", period: "2018 - 2021" }
                 ],
                 experience: [
@@ -176,13 +222,30 @@
                     { year: "2026", title: "2026 IASE Impact Innovation Award", result: "Shortlisted [Youth Talent]", org: "IASE", desc: "Project: Sanxia Artisan Quest. Mapped local craft networks and digital participatory tools for regional sustainability.", link: "https://tanji2026.github.io/sanxia/" }
                 ],
                 qualifications: {
-                    esg: ["ISO 14064-1 Internal Verifier (DNV)", "ISO 14064-1 GHG Verification Specialist", "ISO 14067 Product Carbon Footprint Specialist", "iPAS Net Zero Planning & Mgmt Specialist (Intermediate)", "GRI Sustainability Reporting Specialist", "GHG Inventory Verification Personnel (MOENV)", "Environmental Education Personnel (MOENV)", "Low-Carbon Community Planner (NTPC)", "Sustainable Development Basic Ability (SFI)"],
-                    tech: ["AWS Certified AI Practitioner", "Azure AI-900", "iPAS AI Application Planner (Introductory)", "Google Cloud Program", "TQC IT Python Professional", "TQC Microsoft Office Professional"],
-                    finance: ["FinTech Knowledge Proficiency Test (TABF)", "Financial Markets Knowledge & Ethics (SFI)", "PMP Project Management Practice"]
+                    esg: [
+                        { issuer: "DNV", items: ["ISO 14064-1 Internal Verifier"] },
+                        { issuer: "Commercial Development Research Institute", items: ["ISO 14064-1 GHG Inventory Management Specialist", "ISO 14067 Product Carbon Footprint Specialist", "Sustainability Reporting Manager"] },
+                        { issuer: "AFNOR", items: ["ISO 14067 Product Carbon Footprint Lead Auditor"] },
+                        { issuer: "Ministry of Economic Affairs iPAS", items: ["Net-Zero Carbon Planning Manager (Intermediate / Entry)"] },
+                        { issuer: "Ministry of Environment", items: ["GHG Inventory Verification Personnel", "Environmental Education Personnel"] },
+                        { issuer: "New Taipei City Government", items: ["Low-Carbon Community Planner"] },
+                    ],
+                    tech: [
+                        { issuer: "AWS", items: ["AWS Certified AI Practitioner"] },
+                        { issuer: "Microsoft", items: ["Azure AI-900"] },
+                        { issuer: "Ministry of Economic Affairs iPAS", items: ["AI Application Planner (Introductory)"] },
+                        { issuer: "Google Cloud", items: ["Google Cloud Program Completion"] },
+                        { issuer: "Computer Skills Foundation (TQC)", items: ["IT Python Professional", "Microsoft Office Professional"] }
+                    ],
+                    finance: [
+                        { issuer: "Taiwan Academy of Banking and Finance", items: ["FinTech Knowledge Proficiency Test"] },
+                        { issuer: "Securities and Futures Institute", items: ["Financial Markets Knowledge & Ethics", "Sustainable Development Basic Ability Test"] },
+                        { issuer: "Ministry of Labor", items: ["PMP Project Management Practice"] }
+                    ]
                 },
                 overseas: {
-                    title: "Travel Green Equation",
-                    desc: "Apprenticeship at EarthCheck Academy in Brisbane. Studied international sustainable tourism certification and environmental performance monitoring.",
+                    title: "2026 First Cohort · Overseas Soar Group G-3-3 “Travel Green Equation”",
+                    desc: "A Youth Development Administration initiative that supports overseas apprenticeships, training, exchange, and resource access to help young people build international perspectives and capacity for action. I was selected for an apprenticeship at EarthCheck Academy in Brisbane, studying sustainable tourism certification, environmental performance monitoring, and destination management.",
                     video_link: "https://youtu.be/PpYg8SxHXf8?si=BNPhJUeTvJqRIijY",
                     video_text: "Watch Apprenticeship Video"
                 }
@@ -192,14 +255,14 @@
         const professionalProjects = [
             {
                 id: "proj-bank",
-                org: { zh: "永豐商業銀行 總行", en: "Bank SinoPac HQ" },
+                org: { zh: "永豐商業銀行", en: "Bank SinoPac" },
                 role: { zh: "營管企劃", en: "Operations & Management Planning Specialist" },
                 period: "2026.09 - Present",
                 src: "images/proj-bank.jpg",
                 title: { zh: "公平待客與金融友善專案", en: "Fair Customer Treatment & Financial Inclusion Project" },
                 desc: { 
-                    zh: "追蹤國內外公平待客與金融友善趨勢，統籌行內自評作業，並參與相關專案規劃及協助獎項申報。", 
-                    en: "Track trends in financial inclusion, coordinate internal self-assessments, and manage related projects and award applications." 
+                    zh: "關注公平待客與金融友善之國內外趨勢，協助獎項報獎、自評作業及相關專案規劃與管理。", 
+                    en: "Monitor domestic and international developments in fair customer treatment and financial inclusion; assist with award submissions, internal self-assessments, and the planning and management of related projects." 
                 },
                 details: {
                     context: {
@@ -207,8 +270,8 @@
                         en: "Implementing fair customer treatment has become a key governance metric, requiring robust internal mechanisms from a headquarters perspective."
                     },
                     implementation: {
-                        zh: "1. 追蹤國內外公平待客與金融友善的趨勢發展。\n2. 協助準備國內外相關獎項的申報資料。\n3. 統籌並規劃銀行內部的公平待客自評作業。\n4. 管理並推動金融友善相關的專案計畫。",
-                        en: "1. Monitor domestic and international trends in fair customer treatment.\n2. Assist in preparing materials for relevant ESG and financial inclusion awards.\n3. Coordinate the bank's internal self-assessment operations.\n4. Plan and drive forward financial inclusion initiatives."
+                        zh: "1. 關注並分析國內外公平待客與金融友善趨勢。\n2. 參與或協助國內外公平待客與金融友善相關獎項報獎。\n3. 規劃並統籌公平待客自評作業。\n4. 規劃與管理公平待客、金融友善相關專案及重要工作。",
+                        en: "1. Monitor and analyze domestic and international developments in fair customer treatment and financial inclusion.\n2. Participate in or assist with related domestic and international award submissions.\n3. Plan and coordinate internal fair customer treatment self-assessments.\n4. Plan and manage related fair customer treatment, financial inclusion, and priority initiatives."
                     },
                     reflection: {
                         zh: "期望透過這份工作，從大型金融機構的視角理解政策落地的實務挑戰，並將這份對社會包容的觀察帶入未來探討公正轉型的研究中。",
@@ -358,6 +421,32 @@
                 </svg>
             );
 
+            const QualificationColumn = ({ title, dot, groups }) => (
+                <div className="bg-white border border-gray-200 rounded-sm shadow-sm p-6">
+                    <h3 className="text-[16px] font-bold text-gray-900 mb-6 flex items-center gap-2.5">
+                        <span className={"inline-block w-2.5 h-2.5 rounded-full " + dot}></span>
+                        {title}
+                    </h3>
+                    <div className="space-y-5">
+                        {groups.map((group) => (
+                            <div key={group.issuer}>
+                                <p className="text-[11px] font-bold tracking-wide text-gray-400 uppercase mb-2.5 leading-snug">
+                                    {group.issuer}
+                                </p>
+                                <ul className="space-y-2">
+                                    {group.items.map((item) => (
+                                        <li key={item} className="flex gap-2 text-[14px] font-medium text-gray-700 leading-snug">
+                                            <span className="mt-[7px] w-1 h-1 rounded-full bg-gray-400 shrink-0"></span>
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+
             useEffect(() => {
                 const handleKeyDown = (e) => {
                     if (e.key === 'Escape') {
@@ -445,7 +534,9 @@
                                             {t.education.map((edu, idx) => (
                                                 <div key={idx} className="text-left">
                                                     <div className="text-[16px] font-bold text-gray-800 leading-snug">{edu.school}</div>
-                                                    <div className="text-[15px] font-medium text-gray-600 leading-snug mt-1">{edu.dept}・{edu.degree}</div>
+                                                    <div className="text-[15px] font-medium text-gray-600 leading-snug mt-1">
+                                                        {edu.dept}{edu.degree ? `・${edu.degree}` : ''}
+                                                    </div>
                                                     <div className="text-[14px] font-medium text-gray-400 mt-1">{edu.period}</div>
                                                 </div>
                                             ))}
@@ -461,9 +552,10 @@
                                         <div className="space-y-6">
                                             {t.experience.map((exp, idx) => (
                                                 <div key={idx} className="text-left">
-                                                    <div className="text-[16px] font-bold text-gray-800 leading-snug">{exp.org}</div>
-                                                    <div className="text-[15px] font-medium text-gray-600 leading-snug mt-1">{exp.role}</div>
-                                                    <div className="text-[14px] font-medium text-gray-400 mt-1">{exp.period}</div>
+                                                    <div className="text-[14px] font-medium text-gray-400 mb-1">{exp.period}</div>
+                                                    <div className="text-[16px] font-bold text-gray-800 leading-snug">
+                                                        {exp.role}<span className="text-gray-400 mx-1">｜</span>{exp.org}
+                                                    </div>
                                                 </div>
                                             ))}
                                         </div>
@@ -473,7 +565,7 @@
 
                                 {/* Right Column: Academic Bio, Interests, Proposal */}
                                 <div className="w-full md:w-2/3 pt-2">
-                                    {/* 學習歷程 */}
+                                    {/* 相關經歷 */}
                                     <h2 className="text-[18px] font-bold text-gray-900 mb-5 flex items-center gap-2.5">
                                         <span className="inline-block w-3 h-3 bg-gray-800 rounded-sm"></span>
                                         {t.section_bio}
@@ -487,8 +579,12 @@
                                         <span className="inline-block w-3 h-3 bg-gray-800 rounded-sm"></span>
                                         {t.section_interests}
                                     </h2>
-                                    <div className="text-[17px] text-gray-500 font-medium mb-14 pl-1 italic">
-                                        {lang === 'zh' ? '(此段落保留待後續填寫)' : '(Section content to be updated)'}
+                                    <div className="flex flex-wrap gap-2.5 mb-14 pl-1">
+                                        {t.interests.map((interest, idx) => (
+                                            <span key={idx} className="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-sm text-[15px] font-medium border border-gray-200">
+                                                {interest}
+                                            </span>
+                                        ))}
                                     </div>
 
                                     {/* 研究計畫 */}
@@ -496,13 +592,32 @@
                                         <span className="inline-block w-3 h-3 bg-gray-800 rounded-sm"></span>
                                         {t.section_proposal}
                                     </h2>
-                                    <div className="text-[17px] text-gray-500 font-medium mb-14 pl-1 italic">
-                                        {lang === 'zh' ? '(此段落保留待後續填寫)' : '(Section content to be updated)'}
+                                    <div className="mb-14 pl-1">
+                                        <div className="mb-6 text-[17px] font-bold text-gray-900 pb-2 border-b border-gray-200">
+                                            {t.proposal_title}
+                                        </div>
+                                        <div className="space-y-4">
+                                            {t.proposal.map((paragraph, idx) => (
+                                                <p key={idx} className="text-[16px] text-gray-700 leading-relaxed text-justify">
+                                                    {paragraph}
+                                                </p>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </header>
 
-                            {/* 2. Awards */}
+                            {/* 2. AI Training Program */}
+                            <section className="section-border pt-16">
+                                <h2 className="text-2xl font-bold mb-6 serif-font text-gray-900">{t.section_ai_practice}</h2>
+                                <div className="bg-gray-50 border border-gray-200 rounded-sm p-7 md:p-8">
+                                    <p className="text-[17px] font-medium text-gray-700 leading-relaxed text-justify">
+                                        {t.ai_practice}
+                                    </p>
+                                </div>
+                            </section>
+
+                            {/* 3. Awards */}
                             <section className="section-border pt-16">
                                 <h2 className="text-2xl font-bold mb-8 serif-font text-gray-900">{t.section_awards}</h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
@@ -547,61 +662,23 @@
                                 </div>
                             </section>
 
-                            {/* 3. Qualifications */}
+                            {/* 4. Qualifications */}
                             <section className="section-border pt-16">
-                                <h2 className="text-2xl font-bold mb-8 serif-font text-gray-900">{t.section_qualifications}</h2>
+                                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+                                    <h2 className="text-2xl font-bold mb-0 serif-font text-gray-900">{t.section_qualifications}</h2>
+                                    <div className="inline-flex self-start sm:self-auto items-baseline gap-3 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-sm">
+                                        <span className="text-[12px] font-bold tracking-wide text-gray-500 uppercase">{t.section_language}</span>
+                                        <span className="text-[15px] font-bold text-gray-800">{t.toeic}</span>
+                                    </div>
+                                </div>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                    {/* ESG Column Box */}
-                                    <div className="bg-white border border-gray-200 p-6 rounded-sm shadow-sm flex flex-col">
-                                        <h3 className="text-[17px] font-bold text-gray-900 mb-5 pb-3 border-b border-gray-100 flex items-center gap-2">
-                                            <span className="w-2.5 h-2.5 bg-emerald-600 rounded-full"></span>
-                                            {t.qual_esg}
-                                        </h3>
-                                        <ul className="space-y-4 flex-grow">
-                                            {t.qualifications.esg.map((item, idx) => (
-                                                <li key={idx} className="text-[15.5px] text-gray-700 font-medium flex items-start gap-2.5 leading-snug">
-                                                    <span className="text-gray-300 mt-1.5 text-xs">•</span> 
-                                                    <span>{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    {/* Tech Column Box */}
-                                    <div className="bg-white border border-gray-200 p-6 rounded-sm shadow-sm flex flex-col">
-                                        <h3 className="text-[17px] font-bold text-gray-900 mb-5 pb-3 border-b border-gray-100 flex items-center gap-2">
-                                            <span className="w-2.5 h-2.5 bg-indigo-600 rounded-full"></span>
-                                            {t.qual_tech}
-                                        </h3>
-                                        <ul className="space-y-4 flex-grow">
-                                            {t.qualifications.tech.map((item, idx) => (
-                                                <li key={idx} className="text-[15.5px] text-gray-700 font-medium flex items-start gap-2.5 leading-snug">
-                                                    <span className="text-gray-300 mt-1.5 text-xs">•</span> 
-                                                    <span>{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    {/* Finance Column Box */}
-                                    <div className="bg-white border border-gray-200 p-6 rounded-sm shadow-sm flex flex-col">
-                                        <h3 className="text-[17px] font-bold text-gray-900 mb-5 pb-3 border-b border-gray-100 flex items-center gap-2">
-                                            <span className="w-2.5 h-2.5 bg-amber-600 rounded-full"></span>
-                                            {t.qual_finance}
-                                        </h3>
-                                        <ul className="space-y-4 flex-grow">
-                                            {t.qualifications.finance.map((item, idx) => (
-                                                <li key={idx} className="text-[15.5px] text-gray-700 font-medium flex items-start gap-2.5 leading-snug">
-                                                    <span className="text-gray-300 mt-1.5 text-xs">•</span> 
-                                                    <span>{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
+                                    <QualificationColumn title={t.qual_esg} dot="bg-emerald-600" groups={t.qualifications.esg} />
+                                    <QualificationColumn title={t.qual_tech} dot="bg-indigo-600" groups={t.qualifications.tech} />
+                                    <QualificationColumn title={t.qual_finance} dot="bg-amber-600" groups={t.qualifications.finance} />
                                 </div>
                             </section>
 
-                            {/* 4. Overseas Program */}
+                            {/* 5. Overseas Program */}
                             <section className="section-border pt-16">
                                 <h2 className="text-2xl font-bold mb-6 serif-font text-gray-900">{t.section_overseas}</h2>
                                 <div className="flex flex-col md:flex-row gap-8 items-center bg-gray-50 border border-gray-200 p-8 rounded-sm">
@@ -827,3 +904,6 @@
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
+    </script>
+</body>
+</html>
