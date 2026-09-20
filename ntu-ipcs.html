@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -29,8 +30,8 @@
         }
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.5rem;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(8px); }
@@ -55,6 +56,7 @@
                 nav_cv: "個人簡歷",
                 nav_projects: "專案實務",
                 nav_gallery: "學習剪影",
+                nav_menu: "選單",
                 section_bio: "相關經歷",
                 section_interests: "研究方向",
                 section_proposal: "研究構想",
@@ -70,6 +72,7 @@
                 quote_author: "— Jane Goodall 珍古德",
                 view_detail_btn: "查看詳細說明",
                 view_project_btn: "查看作品",
+                award_project: "作品",
                 close_modal: "關閉",
                 qual_esg: "永續與氣候治理",
                 qual_tech: "資訊科技與人工智慧",
@@ -81,15 +84,15 @@
                 
                 interests: [
                     "跨部會氣候治理",
-                    "環境經濟學與政策評估",
+                    "環境政策評估",
                     "企業永續揭露",
-                    "公正轉型與綠色金融"
+                    "公正轉型與碳定價"
                 ],
                 proposal_title: "跨部會氣候政策下企業合規負擔的分配效果：臺灣上市櫃公司之分析",
                 proposal: [
-                    "臺灣正透過碳盤查、查證、減量與永續資訊揭露等制度推動企業淨零轉型。環境部、金管會及其他部會的措施雖共同指向減碳與企業韌性，但在適用對象、術語、資料要求、揭露內容及查證時程上，可能存在需進一步銜接之處。當多項制度同步推進時，不同規模與產業的上市櫃公司可能承受不均等的資料整備、查證與內部治理因應負擔。",
-                    "本研究擬以分配效果（distributional effects）與環境政策評估為觀點，系統比較跨部會氣候相關制度的規範對象、資訊要求與時程安排，並結合上市櫃公司公開年報、永續報告書及財務資料，分析不同規模與產業企業的制度因應情形。研究將以公開資訊可辨識的揭露、外部確信、氣候治理安排及相關財務特徵為主，檢視其與企業特徵的關聯，而不直接推估個別企業的實際合規成本。",
-                    "期望透過此分析，辨識跨部會制度在資料標準、時程與企業支持措施上可能產生的差異影響，並提出制度協調、分級輔導、資料標準及綠色與轉型金融支持等政策建議，使臺灣在推進淨零目標時，也能兼顧不同企業的轉型條件與合規負擔的分配效果。"
+                    "臺灣的淨零轉型不僅透過環境部的碳費、碳盤查與減量制度推動，也由金管會的永續資訊揭露與金融監理措施加以強化。這些制度改變了企業取得資訊、組織專業、完成確信與回應市場期待的方式；然而，相關負擔未必由所有上市櫃公司平均承擔。企業規模、產業位置、排放特性與既有治理資源的差異，可能使部分企業更容易回應制度，也可能使部分企業承受較高的轉型壓力。",
+                    "本研究將以分配效果（distributional effects）與公正轉型（just transition）為分析視角，結合跨部會政策文件、上市櫃公司的年報、永續報告書及財務資料，檢視企業在碳盤查、外部確信、永續揭露與氣候治理機制上的因應情形。研究將比較不同規模、產業與排放特性企業，觀察揭露完整性、外部確信與專責治理安排等可由公開資訊辨識的代理指標，是否呈現系統性差異，而不直接推估個別企業的實際合規成本。",
+                    "本研究不將企業合規負擔簡化為單一成本，而關注碳定價、資訊揭露與金融監理如何共同影響企業的轉型能力與資源分配。期望提出能將政策協調、分級支持與資訊可近性納入治理設計的建議，使氣候政策兼具減碳效益與公正轉型的方向。"
                 ],
                 ai_practice: "2025 年中我參與臺北大學與經濟部合作之「AI 新秀培訓專班」的 300 小時培訓，課程涵蓋生成式 AI 金融服務、金融數據管理、雲端金融平台架構、金融系統開發及自然語言處理。其後，我將所學運用於多項永續與氣候行動競賽，透過網頁應用程式開發社區微氣候韌性決策、CCUS 淨零策略模擬、低碳循環與綠色金融等工具，嘗試將複雜的氣候資料與制度議題轉化為可理解、可操作的應用。",
                 
@@ -112,14 +115,14 @@
                 ],
 
                 awards: [
-                    { year: "2026", title: "氣候變遷創意實作競賽", result: "榮獲 氣候應用特別獎", org: "教育部 / 交通部中央氣象署", desc: "結合 GIS 空間風險快篩與 NbS 自然解方，建立微氣候調適與社區韌性決策支援架構。", link: "https://tanji2026.github.io/nbs/" },
-                    { year: "2026", title: "第二屆 CCUS 創意教案徵選活動", result: "榮獲 優等獎", org: "中央大學 / CCUS 科學教育推廣計畫", desc: "建置模擬運算環境，將碳捕捉技術與政策誘因轉化為具備角色權衡機制的互動評估工具。", link: "https://tanji2026.github.io/ccus/" },
-                    { year: "2026", title: "臺灣「能」- 永續能源創意實作競賽", result: "晉級複賽", org: "教育部 / 國立科學工藝博物館", desc: "分析民間小額資金參與機制，規劃淨零群募與碳抵換媒合架構。", link: "https://tanji2026.github.io/twenergy/" },
-                    { year: "2026", title: "第四屆 北聯大U-STEP永續行動獎", result: "入圍決賽", org: "臺北聯合大學系統", desc: "作品：三鶯永續行：AI 智慧交通公民共創平台。探討低碳移動網絡規劃與弱勢群體移動權益保障。", link: "https://tanji2026.github.io/sanying/" },
-                    { year: "2026", title: "2026 台灣仿生設計競賽", result: "晉級決賽", org: "台灣仿生科技發展協會 / 新北市政府", desc: "作品：MycoTanji 仿生社區碳循環系統。以真菌分解機制評估社區微型碳循環效益。", link: "https://tanji2026.github.io/biomimicry/" },
-                    { year: "2026", title: "2026 Impact Star 青年影響力啟動賽", result: "晉級複賽", org: "新北市政府青年局", desc: "作品：三峽職人：手路尋蹤。建置互動式網頁遊戲連結傳統工坊，探討數位展示對地方文化維護之助益。", link: "https://tanji2026.github.io/sanxia/" },
-                    { year: "2026", title: "2026 新北市青年氣候行動徵件", result: "進入決選", org: "新北市政府 / 環保局", desc: "作品：碳吉圈圈：在地微型循環網絡。結合 IoT 物理感測與碳氮比監測，落實社區有機廢棄物循環轉化。", link: "https://tanji2026.github.io/tanji-loop/" },
-                    { year: "2026", title: "2026 IASE 影響力創新獎", result: "入圍【青年人才】", org: "IASE 國際永續認證協會", desc: "作品：三峽職人：手路尋蹤。整合地方工坊網絡與數位參與介面，評估青年推動永續實踐的可行路徑。", link: "https://tanji2026.github.io/sanxia/" }
+                    { year: "2026", title: "氣候變遷創意實作競賽", project: "碳吉：社區微氣候韌性決策平台", result: "榮獲 氣候應用特別獎", org: "教育部 / 交通部中央氣象署", desc: "結合 GIS 空間風險快篩與 NbS 自然解方，建立微氣候調適與社區韌性決策支援架構。", link: "https://tanji2026.github.io/nbs/" },
+                    { year: "2026", title: "第二屆 CCUS 創意教案徵選活動", project: "CCUS 淨零策略模擬器", result: "榮獲 優等獎", org: "中央大學 / CCUS 科學教育推廣計畫", desc: "建置模擬運算環境，將碳捕捉技術與政策誘因轉化為具備角色權衡機制的互動評估工具。", link: "https://tanji2026.github.io/ccus/" },
+                    { year: "2026", title: "臺灣「能」- 永續能源創意實作競賽", project: "TanJi 淨零群募平台", result: "晉級複賽", org: "教育部 / 國立科學工藝博物館", desc: "分析民間小額資金參與機制，規劃淨零群募與碳抵換媒合架構。", link: "https://tanji2026.github.io/twenergy/" },
+                    { year: "2026", title: "第四屆 北聯大U-STEP永續行動獎", project: "三鶯永續行：AI 智慧交通公民共創平台", result: "入圍決賽", org: "臺北聯合大學系統", desc: "探討低碳移動網絡規劃與弱勢群體移動權益保障。", link: "https://tanji2026.github.io/sanying/" },
+                    { year: "2026", title: "2026 台灣仿生設計競賽", project: "MycoTanji 仿生社區碳循環系統", result: "晉級決賽", org: "台灣仿生科技發展協會 / 新北市政府", desc: "以真菌分解機制評估社區微型碳循環效益。", link: "https://tanji2026.github.io/biomimicry/" },
+                    { year: "2026", title: "2026 Impact Star 青年影響力啟動賽", project: "三峽職人：手路尋蹤", result: "晉級複賽", org: "新北市政府青年局", desc: "建置互動式網頁遊戲連結傳統工坊，探討數位展示對地方文化維護之助益。", link: "https://tanji2026.github.io/sanxia/" },
+                    { year: "2026", title: "2026 新北市青年氣候行動徵件", project: "碳吉圈圈：在地微型循環網絡", result: "進入決選", org: "新北市政府 / 環保局", desc: "結合 IoT 物理感測與碳氮比監測，落實社區有機廢棄物循環轉化。", link: "https://tanji2026.github.io/tanji-loop/" },
+                    { year: "2026", title: "2026 IASE 影響力創新獎", project: "三峽職人：手路尋蹤", result: "入圍【青年人才】", org: "IASE 國際永續認證協會", desc: "整合地方工坊網絡與數位參與介面，評估青年推動永續實踐的可行路徑。", link: "https://tanji2026.github.io/sanxia/" }
                 ],
                 qualifications: {
                     esg: [
@@ -157,6 +160,7 @@
                 nav_cv: "Curriculum Vitae",
                 nav_projects: "Professional Projects",
                 nav_gallery: "Gallery",
+                nav_menu: "Menu",
                 section_bio: "Relevant Experience",
                 section_interests: "Research Focus",
                 section_proposal: "Research Concept",
@@ -172,6 +176,7 @@
                 quote_author: "— Dr. Jane Goodall",
                 view_detail_btn: "View Details",
                 view_project_btn: "View Project",
+                award_project: "Project",
                 close_modal: "Close",
                 qual_esg: "Sustainability Governance",
                 qual_tech: "IT & AI",
@@ -183,15 +188,15 @@
                 
                 interests: [
                     "Cross-Ministerial Climate Governance",
-                    "Environmental Economics & Policy Evaluation",
+                    "Environmental Policy Evaluation",
                     "Corporate Sustainability Disclosure",
-                    "Just Transition & Green Finance"
+                    "Just Transition & Carbon Pricing"
                 ],
                 proposal_title: "Distributional Effects of Corporate Compliance Burdens under Cross-Ministerial Climate Policies: An Analysis of Taiwan's Listed Firms",
                 proposal: [
-                    "Taiwan is advancing corporate net-zero transition through greenhouse-gas accounting, assurance, emissions reduction, and sustainability disclosure requirements. Measures led by the Ministry of Environment, the Financial Supervisory Commission, and other ministries share the goals of decarbonization and corporate resilience, but their covered entities, terminology, data requirements, disclosure content, and assurance timelines may require further alignment. As multiple systems advance in parallel, listed firms of different sizes and industries may carry unequal response burdens in data preparation, assurance, and internal governance.",
-                    "Drawing on a distributional-effects lens and environmental-policy evaluation, this study will systematically compare the covered entities, information requirements, and timelines of cross-ministerial climate-related systems. It will then use publicly available annual reports, sustainability reports, and financial data from listed firms to analyze institutional responses by firm size and industry. The study will examine observable disclosures, external assurance, climate-governance arrangements, and related financial characteristics, rather than directly estimating firm-specific monetary compliance costs.",
-                    "The study aims to identify differential effects that may arise from cross-ministerial systems in data standards, timelines, and corporate-support mechanisms. It will propose policy directions for institutional coordination, differentiated guidance, data standards, and green- and transition-finance support, so that Taiwan's net-zero transition can account for firms' differing transition conditions and the distributional effects of compliance burdens."
+                    "Taiwan's net-zero transition is being advanced not only through the Ministry of Environment's carbon-fee, greenhouse-gas accounting, and emissions-reduction measures, but also through the Financial Supervisory Commission's sustainability-disclosure and financial-supervision initiatives. These policies change how firms access information, organize expertise, obtain assurance, and respond to market expectations. Yet the resulting burdens may not be shared equally across listed firms. Differences in firm size, industrial position, emissions profile, and existing governance resources may make some firms better able to respond while placing greater transition pressure on others.",
+                    "Using distributional effects and just transition as analytical lenses, this study will combine cross-ministerial policy documents with annual reports, sustainability reports, and financial data from listed firms. It will examine how firms respond through greenhouse-gas accounting, external assurance, sustainability disclosure, and climate-governance arrangements. By comparing firms with different sizes, industries, and emissions profiles, the study will assess whether observable proxies in public information—such as reporting completeness, external assurance, and dedicated governance arrangements—show systematic differences. It will not directly estimate firm-specific monetary compliance costs.",
+                    "Rather than reducing corporate compliance burden to a single cost measure, this study asks how carbon pricing, sustainability disclosure, and financial supervision jointly shape firms' transition capacity and the distribution of resources. It aims to offer policy recommendations that incorporate coordination, differentiated support, and access to information into climate governance, so that decarbonization can advance alongside the principles of a just transition."
                 ],
                 ai_practice: "In mid-2025, I completed 300 hours in the AI Rising Talent Training Program jointly delivered by National Taipei University and the Ministry of Economic Affairs. The curriculum covered generative-AI financial services, financial data management, cloud financial-platform architecture, financial-system development, and natural language processing. I subsequently applied this learning in sustainability and climate-action competitions, developing web applications for community microclimate-resilience decisions, CCUS net-zero strategy simulations, low-carbon circularity, and green-finance tools. These projects sought to turn complex climate data and institutional issues into understandable, actionable applications.",
                 
@@ -211,14 +216,14 @@
                     { role: "Research Assistant", org: "Center for Corporate Sustainability / Election and Public Opinion Study Center, NTPU", period: "2022.09 - 2025.12" }
                 ],
                 awards: [
-                    { year: "2026", title: "Climate Change Creative Practice Competition", result: "Won Special Award", org: "MOE / CWA", desc: "Developed a decision-support platform utilizing GIS risk screening and NbS for community climate resilience.", link: "https://tanji2026.github.io/nbs/" },
-                    { year: "2026", title: "2nd CCUS Creative Lesson Plan Selection", result: "Won Excellence Award", org: "NCU / CCUS Science Education Program", desc: "Engineered an interactive CCUS net-zero strategy simulator translating policy into role-based tools.", link: "https://tanji2026.github.io/ccus/" },
-                    { year: "2026", title: "Taiwan 'ENERGY' Sustainable Energy Competition", result: "Semi-Finalist", org: "MOE / National Science and Technology Museum", desc: "Proposed a green finance crowdfunding platform to lower the threshold for zero-carbon investments.", link: "https://tanji2026.github.io/twenergy/" },
-                    { year: "2026", title: "4th USTP U-STEP Sustainability Action Award", result: "Finalist", org: "University System of Taipei", desc: "Project: SanYing Sustainable Mobility. Explored low-carbon commuting networks and transit equity for vulnerable groups.", link: "https://tanji2026.github.io/sanying/" },
-                    { year: "2026", title: "2026 Taiwan Biomimicry Design Challenge", result: "Finalist", org: "Biomimicry Taiwan / NTPC", desc: "Project: MycoTanji Biomimicry Local Carbon Cycle System. Modeled community mycelial recycling to assess local organic carbon loops.", link: "https://tanji2026.github.io/biomimicry/" },
-                    { year: "2026", title: "2026 Impact Star Youth Influence Competition", result: "Semi-Finalist", org: "NTPC Youth Dept.", desc: "Project: Sanxia Artisan Quest. Evaluated interactive web interfaces linking traditional workshops with regional revitalization.", link: "https://tanji2026.github.io/sanxia/" },
-                    { year: "2026", title: "2026 New Taipei City Youth Climate Action Campaign", result: "Finalist", org: "NTPC Government / EPB", desc: "Project: TanJi Loop: Local Micro-Circular Network. Deployed IoT sensors and C/N ratio tracking for community organic composting.", link: "https://tanji2026.github.io/tanji-loop/" },
-                    { year: "2026", title: "2026 IASE Impact Innovation Award", result: "Shortlisted [Youth Talent]", org: "IASE", desc: "Project: Sanxia Artisan Quest. Mapped local craft networks and digital participatory tools for regional sustainability.", link: "https://tanji2026.github.io/sanxia/" }
+                    { year: "2026", title: "Climate Change Creative Practice Competition", project: "TanJi: Community Microclimate Resilience Decision Platform", result: "Won Special Award", org: "MOE / CWA", desc: "Developed a decision-support platform utilizing GIS risk screening and NbS for community climate resilience.", link: "https://tanji2026.github.io/nbs/" },
+                    { year: "2026", title: "2nd CCUS Creative Lesson Plan Selection", project: "CCUS Net-Zero Strategy Simulator", result: "Won Excellence Award", org: "NCU / CCUS Science Education Program", desc: "Engineered an interactive CCUS net-zero strategy simulator translating policy into role-based tools.", link: "https://tanji2026.github.io/ccus/" },
+                    { year: "2026", title: "Taiwan 'ENERGY' Sustainable Energy Competition", project: "TanJi Net-Zero Crowdfunding Platform", result: "Semi-Finalist", org: "MOE / National Science and Technology Museum", desc: "Proposed a green finance crowdfunding platform to lower the threshold for zero-carbon investments.", link: "https://tanji2026.github.io/twenergy/" },
+                    { year: "2026", title: "4th USTP U-STEP Sustainability Action Award", project: "SanYing Sustainable Mobility: AI-Powered Civic Co-creation Platform", result: "Finalist", org: "University System of Taipei", desc: "Explored low-carbon commuting networks and transit equity for vulnerable groups.", link: "https://tanji2026.github.io/sanying/" },
+                    { year: "2026", title: "2026 Taiwan Biomimicry Design Challenge", project: "MycoTanji Biomimicry Community Carbon Cycle System", result: "Finalist", org: "Biomimicry Taiwan / NTPC", desc: "Modeled community mycelial recycling to assess local organic carbon loops.", link: "https://tanji2026.github.io/biomimicry/" },
+                    { year: "2026", title: "2026 Impact Star Youth Influence Competition", project: "Sanxia Artisan Quest", result: "Semi-Finalist", org: "NTPC Youth Dept.", desc: "Evaluated interactive web interfaces linking traditional workshops with regional revitalization.", link: "https://tanji2026.github.io/sanxia/" },
+                    { year: "2026", title: "2026 New Taipei City Youth Climate Action Campaign", project: "TanJi Loop: Local Micro-Circular Network", result: "Finalist", org: "NTPC Government / EPB", desc: "Deployed IoT sensors and C/N ratio tracking for community organic composting.", link: "https://tanji2026.github.io/tanji-loop/" },
+                    { year: "2026", title: "2026 IASE Impact Innovation Award", project: "Sanxia Artisan Quest", result: "Shortlisted [Youth Talent]", org: "IASE", desc: "Mapped local craft networks and digital participatory tools for regional sustainability.", link: "https://tanji2026.github.io/sanxia/" }
                 ],
                 qualifications: {
                     esg: [
@@ -336,56 +341,26 @@
         ];
 
         const galleryItems = [
-            { 
-                id: "g-aus-1", category: "overseas", src: "images/gallery-aus-1.jpg", 
-                caption: { zh: "EarthCheck 總部指標研習", en: "EarthCheck Indicator Study" },
-                desc: { zh: "在布里斯本 EarthCheck 學院研習，了解國際目的地標準與認證運作流程。", en: "Studied destination sustainability standards and certification processes at EarthCheck HQ." } 
-            },
-            { 
-                id: "g-aus-2", category: "overseas", src: "images/gallery-aus-2.jpg", 
-                caption: { zh: "昆士蘭 生態旅遊現勘", en: "Queensland Ecotourism Fieldwork" },
-                desc: { zh: "實地走訪生態示範據點，觀察環境承載量的監測機制。", en: "Investigated eco-tourism sites to observe environmental carrying capacity monitoring." } 
-            },
-            { 
-                id: "g-aus-3", category: "overseas", src: "images/gallery-aus-3.jpg", 
-                caption: { zh: "目的地治理 實務討論", en: "Destination Governance Discussion" },
-                desc: { zh: "與永續稽核師探討地方政府在推動永續轉型時遇到的實務挑戰。", en: "Discussed practical challenges of regional sustainable transition with auditors." } 
-            },
-            { 
-                id: "g-aus-4", category: "overseas", src: "images/gallery-aus-4.jpg", 
-                caption: { zh: "EarthCheck 學院結訓", en: "EarthCheck Academy Completion" },
-                desc: { zh: "完成見習計畫，確立將國際指標與在地實踐結合的視野。", en: "Completed the program, confirming the vision of bridging global benchmarks with local practices." } 
-            },
-            { 
-                id: "g-award-1", category: "awards", src: "images/gallery-award-1.jpg", 
-                caption: { zh: "氣候變遷創意實作 決賽發表", en: "Climate Competition Presentation" },
-                desc: { zh: "向氣象署委員說明空間圖資如何輔助社區進行微氣候調適。", en: "Presented to committee members on how GIS aids community microclimate adaptation." } 
-            },
-            { 
-                id: "g-award-2", category: "awards", src: "images/gallery-award-2.jpg", 
-                caption: { zh: "CCUS 創意教案 成果展演", en: "CCUS Lesson Plan Exhibition" },
-                desc: { zh: "展示互動式碳捕捉模擬器，探討產業減碳轉型的情境抉擇。", en: "Demonstrated the CCUS simulator, discussing industrial decarbonization trade-offs." } 
-            },
-            { 
-                id: "g-award-3", category: "awards", src: "images/gallery-award-3.jpg", 
-                caption: { zh: "仿生設計競賽 交流研討", en: "Biomimicry Design Seminar" },
-                desc: { zh: "與學者研討社區微型循環網絡，評估落葉堆肥的減碳潛力。", en: "Discussed local circular networks and evaluated the carbon-reduction potential of composting." } 
-            },
-            { 
-                id: "g-proj-1", category: "projects", src: "images/gallery-proj-1.jpg", 
-                caption: { zh: "中小企業 現場盤查", en: "SME On-site Auditing" },
-                desc: { zh: "走入金屬成型工廠，核實產線活動數據，協助建立盤查清冊。", en: "Visited manufacturing lines to verify activity data for inventory compilation." } 
-            },
-            { 
-                id: "g-proj-2", category: "projects", src: "images/gallery-proj-2.jpg", 
-                caption: { zh: "IoT 感測模組 現地架設", en: "IoT Sensor Deployment" },
-                desc: { zh: "架設環境感測硬體量測堆肥箱數據，測試低成本監測方案。", en: "Deployed sensors to measure compost data, testing low-cost monitoring solutions." } 
-            },
-            { 
-                id: "g-proj-3", category: "projects", src: "images/gallery-proj-3.jpg", 
-                caption: { zh: "社區低碳交通 田野訪談", en: "Community Transit Fieldwork" },
-                desc: { zh: "訪談邊陲社區長輩與通勤族，記錄公車路線調整對出行的影響。", en: "Interviewed elderly residents to document how transit adjustments impact mobility." } 
-            }
+            { id: 'overseas-01', category: 'overseas', src: 'images/gallery-overseas-01.jpg', caption: { zh: 'EarthCheck 總部', en: 'EarthCheck Headquarters' }, desc: { zh: '認識永續旅遊認證如何以環境、社會與治理指標，追蹤目的地與企業的永續績效。', en: 'Examined how sustainability-tourism certification uses environmental, social, and governance indicators to track the sustainability performance of destinations and businesses.' } },
+            { id: 'overseas-02', category: 'overseas', src: 'images/gallery-overseas-02.jpg', caption: { zh: '南岸公園', en: 'South Bank Parklands' }, desc: { zh: '觀察河岸綠地、步行空間與公共設施的整合，思考氣候調適與宜居城市的關係。', en: 'Observed how riverside green space, walking networks, and public facilities can be integrated into an open urban landscape, linking climate adaptation with liveability.' } },
+            { id: 'overseas-03', category: 'overseas', src: 'images/gallery-overseas-03.jpg', caption: { zh: '布里斯本會展中心', en: 'Brisbane Convention and Exhibition Centre' }, desc: { zh: '從大型會展場域的能源、交通與活動管理，理解永續活動降低環境衝擊的實務。', en: 'Considered how energy, transport, and event management at a major convention venue can reduce the environmental impacts of large-scale events.' } },
+            { id: 'overseas-04', category: 'overseas', src: 'images/gallery-overseas-04.jpg', caption: { zh: '黃金海岸', en: 'Gold Coast' }, desc: { zh: '透過沿海都市與觀光地景，思考海岸保育、旅遊承載與地方經濟之間的平衡。', en: 'Reflected on the balance between coastal conservation, tourism carrying capacity, and the local economy in a coastal destination.' } },
+            { id: 'overseas-05', category: 'overseas', src: 'images/gallery-overseas-05.jpg', caption: { zh: '陽光海岸', en: 'Sunshine Coast' }, desc: { zh: '從自然資源與觀光發展並存的區域，理解目的地管理如何兼顧生態、社區與旅客體驗。', en: 'Considered how destination management can balance ecological protection, community participation, and visitor experience where natural assets and tourism coexist.' } },
+            { id: 'overseas-06', category: 'overseas', src: 'images/gallery-overseas-06.jpg', caption: { zh: '澳洲動物園', en: 'Australia Zoo' }, desc: { zh: '從野生動物保育與環境教育的展示設計，認識觀光場域提升生物多樣性意識的可能。', en: 'Explored how wildlife conservation and environmental-education design can help tourism venues strengthen public awareness of biodiversity.' } },
+            { id: 'award-01', category: 'awards', src: 'images/gallery-award-01.jpg', caption: { zh: '碳吉：社區微氣候韌性決策平台', en: 'TanJi: Community Microclimate Resilience Decision Platform' }, desc: { zh: '為氣候變遷創意實作競賽開發，結合 GIS 風險篩檢與自然為本解方，協助社區進行微氣候調適與韌性決策。', en: 'Developed for the Climate Change Creative Practice Competition, this platform combines GIS risk screening with nature-based solutions to support community microclimate adaptation and resilience decisions.' } },
+            { id: 'award-02', category: 'awards', src: 'images/gallery-award-02.jpg', caption: { zh: 'CCUS 淨零策略模擬器', en: 'CCUS Net-Zero Strategy Simulator' }, desc: { zh: '為第二屆 CCUS 創意教案徵選設計，將碳捕捉技術與政策誘因轉化為可操作的淨零策略選擇。', en: 'Created for the 2nd CCUS Creative Lesson Plan Selection, this interactive simulator translates carbon-capture technologies and policy incentives into net-zero strategy choices.' } },
+            { id: 'award-03', category: 'awards', src: 'images/gallery-award-03.jpg', caption: { zh: '碳吉淨零群募平台', en: 'TanJi Net-Zero Crowdfunding Platform' }, desc: { zh: '為臺灣「能」永續能源創意實作競賽開發，探索群眾募資與綠色金融如何降低參與淨零投資的門檻。', en: 'Developed for the Taiwan “ENERGY” Sustainable Energy Competition, this platform explores how crowdfunding and green finance can lower participation barriers for net-zero investment.' } },
+            { id: 'award-04', category: 'awards', src: 'images/gallery-award-04.jpg', caption: { zh: '三鶯永續行：AI 智慧交通公民共創平台', en: 'SanYing Sustainable Mobility: AI-Powered Civic Co-creation Platform' }, desc: { zh: '為第四屆北聯大 U-STEP 永續行動獎設計，透過 AI 輔助共創介面探討低碳交通規劃與移動公平性。', en: 'Created for the 4th USTP U-STEP Sustainability Action Award, this project explores low-carbon mobility planning and mobility equity through an AI-supported civic co-creation interface.' } },
+            { id: 'award-05', category: 'awards', src: 'images/gallery-award-05.jpg', caption: { zh: 'MycoTanji 仿生社區碳循環系統', en: 'MycoTanji Biomimicry Community Carbon Cycle System' }, desc: { zh: '為 2026 臺灣仿生設計競賽開發，以真菌分解機制為靈感，評估社區尺度的碳循環潛力。', en: 'Developed for the 2026 Taiwan Biomimicry Design Challenge, this project uses fungal decomposition as a lens for assessing community-scale carbon-circulation potential.' } },
+            { id: 'award-06', category: 'awards', src: 'images/gallery-award-06.jpg', caption: { zh: '三峽職人：手路尋蹤', en: 'Sanxia Artisan Quest' }, desc: { zh: '為 2026 Impact Star 青年影響力啟動賽設計，以數位體驗串聯在地工坊與文化參與，探索區域永續發展。', en: 'Created for the 2026 Impact Star Youth Influence Competition, this digital experience connects local workshops and cultural participation to explore sustainable regional development.' } },
+            { id: 'award-07', category: 'awards', src: 'images/gallery-award-07.jpg', caption: { zh: '碳吉圈圈：在地微型循環網絡', en: 'TanJi Loop: Local Micro-Circular Network' }, desc: { zh: '為 2026 新北市青年氣候行動徵件開發，結合 IoT 感測與碳氮比監測，支持社區有機廢棄物循環。', en: 'Developed for the 2026 New Taipei City Youth Climate Action Campaign, this project combines IoT sensing and carbon–nitrogen ratio monitoring to support community organic-waste circularity.' } },
+            { id: 'award-08', category: 'awards', src: 'images/gallery-award-08.jpg', caption: { zh: '三峽職人：手路尋蹤', en: 'Sanxia Artisan Quest' }, desc: { zh: '投件 2026 IASE 影響力創新獎，整合在地職人網絡與數位參與，檢視青年行動如何轉化為永續實踐。', en: 'Submitted to the 2026 IASE Impact Innovation Award, this project integrates local craft networks with digital participation to examine youth-led sustainability practice.' } },
+            { id: 'work-01', category: 'projects', src: 'images/gallery-work-01.jpg', caption: { zh: '企業碳盤查實戰輔導計畫', en: 'Corporate Carbon Inventory Coaching Program' }, desc: { zh: '配合新北市政府經濟發展局計畫，協助企業培育碳盤查專業人才，強化面對盤查與揭露要求的實務能力。', en: 'Developed with the New Taipei City Government’s Economic Development Department, this program helped businesses build practical greenhouse-gas inventory capabilities and strengthen their readiness for inventory and disclosure requirements.' } },
+            { id: 'work-02', category: 'projects', src: 'images/gallery-work-02.jpg', caption: { zh: '中小企業碳盤查輔導', en: 'SME Carbon Inventory Support' }, desc: { zh: '針對企業溫室氣體排放設備與能源使用情形進行診斷，協助中小企業將減碳需求轉化為可執行的改善方向。', en: 'Reviewed emissions-generating equipment and energy-use conditions to help SMEs translate decarbonization needs into actionable energy-efficiency improvements.' } },
+            { id: 'work-03', category: 'projects', src: 'images/gallery-work-03.jpg', caption: { zh: '金管會 115 年金融教育課程', en: 'FSC Financial Education Course' }, desc: { zh: '以溫室氣體盤查及確信作業推動情形為主題，連結金融監理、企業資訊揭露與淨零轉型。', en: 'Focused on the implementation of greenhouse-gas accounting and assurance, linking financial supervision, corporate disclosure, and the net-zero transition.' } },
+            { id: 'work-04', category: 'projects', src: 'images/gallery-work-04.jpg', caption: { zh: '2026 臺德氣候合作研討會', en: '2026 Taiwan–Germany Climate Cooperation Forum' }, desc: { zh: '關注碳費至排放交易制度的轉型路徑，以及國際政策工具如何支持減碳與產業轉型。', en: 'Examined pathways from carbon fees to emissions trading and how international policy instruments can support decarbonization and industrial transition.' } },
+            { id: 'work-05', category: 'projects', src: 'images/gallery-work-05.jpg', caption: { zh: '企業永續報告書製作實務班', en: 'Corporate Sustainability Reporting Practice Course' }, desc: { zh: '透過臺灣永續評鑑實務分享，理解上市櫃公司永續報告書的審閱重點、揭露品質與評鑑觀察。', en: 'Used practical insights from the Taiwan Sustainability Evaluation to examine review priorities, disclosure quality, and assessment considerations in listed companies’ sustainability reports.' } },
+            { id: 'work-06', category: 'projects', src: 'images/gallery-work-06.jpg', caption: { zh: 'ISO 14067 主任稽核員訓練', en: 'ISO 14067 Lead Auditor Training' }, desc: { zh: '以蜂蜜蛋糕為案例分享產品碳足跡查證流程，練習從活動數據、排放係數到查證證據的檢視邏輯。', en: 'Used a honey-cake case study to explore product-carbon-footprint verification, from activity data and emission factors to the review of verification evidence.' } }
         ];
 
         const App = () => {
@@ -458,11 +433,26 @@
             }, []);
 
             return (
-                <div className="max-w-5xl mx-auto px-6 py-12 md:py-16">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16">
                     
                     {/* Top Navigation */}
                     <nav className="flex justify-between items-center mb-12 border-b border-gray-200 pb-5">
-                        <div className="flex gap-8">
+                        <details className="relative lg:hidden">
+                            <summary className="list-none flex items-center gap-2 cursor-pointer text-[16px] font-bold text-gray-800 select-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                                </svg>
+                                {t.nav_menu}
+                            </summary>
+                            <div className="absolute left-0 top-9 z-40 w-56 bg-white border border-gray-200 shadow-lg rounded-sm overflow-hidden">
+                                <button onClick={(e) => { setActiveTab('cv'); e.currentTarget.closest('details').removeAttribute('open'); }} className={"w-full text-left px-4 py-3 text-[16px] font-bold border-b border-gray-100 " + (activeTab === 'cv' ? "bg-gray-50 text-gray-900" : "text-gray-500")}>{t.nav_cv}</button>
+                                <button onClick={(e) => { setActiveTab('projects'); e.currentTarget.closest('details').removeAttribute('open'); }} className={"w-full text-left px-4 py-3 text-[16px] font-bold border-b border-gray-100 " + (activeTab === 'projects' ? "bg-gray-50 text-gray-900" : "text-gray-500")}>{t.nav_projects}</button>
+                                <button onClick={(e) => { setActiveTab('gallery'); e.currentTarget.closest('details').removeAttribute('open'); }} className={"w-full text-left px-4 py-3 text-[16px] font-bold " + (activeTab === 'gallery' ? "bg-gray-50 text-gray-900" : "text-gray-500")}>{t.nav_gallery}</button>
+                            </div>
+                        </details>
+                        <div className="hidden lg:flex gap-8">
                             <button 
                                 onClick={() => setActiveTab('cv')}
                                 className={`text-[18px] font-bold tracking-widest pb-1.5 transition-colors ${activeTab === 'cv' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400 hover:text-gray-700'}`}
@@ -503,11 +493,11 @@
                             </div>
 
                             {/* 1. Header & Bio */}
-                            <header className="flex flex-col md:flex-row gap-12 lg:gap-16 items-start">
+                            <header className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
                                 
                                 {/* Left Column: Photo, Contact, Education, Experience */}
-                                <div className="w-full md:w-1/3 shrink-0 flex flex-col items-center md:items-start">
-                                    <div className="w-56 h-72 md:w-full md:h-80 bg-gray-100 mb-6 border border-gray-200 shadow-sm relative overflow-hidden">
+                                <div className="w-full lg:w-1/3 shrink-0 flex flex-col items-center lg:items-start">
+                                    <div className="w-56 h-72 lg:w-full lg:h-80 bg-gray-100 mb-6 border border-gray-200 shadow-sm relative overflow-hidden">
                                         <img 
                                             src="images/profile.jpg" 
                                             alt={t.name}
@@ -515,9 +505,9 @@
                                             onError={(e) => handleImageError(e, 'profile.jpg')}
                                         />
                                     </div>
-                                    <h1 className="text-4xl font-bold mb-3 serif-font text-center md:text-left text-gray-900">{t.name}</h1>
-                                    <p className="text-[18px] font-medium text-gray-500 mb-4 text-center md:text-left leading-relaxed">{t.title}</p>
-                                    <div className="text-[16px] font-medium text-gray-600 mb-10 mx-auto md:mx-0 text-center md:text-left">
+                                    <h1 className="text-4xl font-bold mb-3 serif-font text-center lg:text-left text-gray-900">{t.name}</h1>
+                                    <p className="text-[18px] font-medium text-gray-500 mb-4 text-center lg:text-left leading-relaxed">{t.title}</p>
+                                    <div className="text-[16px] font-medium text-gray-600 mb-10 mx-auto lg:mx-0 text-center lg:text-left">
                                         <a href={`mailto:${t.email}`} className="text-gray-800 hover:text-blue-700 transition-colors border-b border-gray-300 pb-0.5">
                                             {lang === 'zh' ? '聯絡方式：' : 'Contact: '}{t.email}
                                         </a>
@@ -563,7 +553,7 @@
                                 </div>
 
                                 {/* Right Column: Academic Bio, Interests, Proposal */}
-                                <div className="w-full md:w-2/3 pt-2">
+                                <div className="w-full lg:w-2/3 pt-2">
                                     {/* 相關經歷 */}
                                     <h2 className="text-[18px] font-bold text-gray-900 mb-5 flex items-center gap-2.5">
                                         <span className="inline-block w-3 h-3 bg-gray-800 rounded-sm"></span>
@@ -609,10 +599,20 @@
                             {/* 2. AI Training Program */}
                             <section className="section-border pt-16">
                                 <h2 className="text-2xl font-bold mb-6 serif-font text-gray-900">{t.section_ai_practice}</h2>
-                                <div className="bg-gray-50 border border-gray-200 rounded-sm p-7 md:p-8">
-                                    <p className="text-[17px] font-medium text-gray-700 leading-relaxed text-justify">
-                                        {t.ai_practice}
-                                    </p>
+                                <div className="bg-gray-50 border border-gray-200 rounded-sm p-7 md:p-8 flex flex-col lg:flex-row gap-6 lg:items-start">
+                                    <div className="lg:flex-1">
+                                        <p className="text-[17px] font-medium text-gray-700 leading-relaxed text-justify">
+                                            {t.ai_practice}
+                                        </p>
+                                    </div>
+                                    <div className="w-full lg:w-[260px] shrink-0">
+                                        <img
+                                            src="images/ai-rising-talent-training.jpg"
+                                            alt={t.section_ai_practice}
+                                            onError={(e) => handleImageError(e, 'ai-rising-talent-training.jpg')}
+                                            className="w-full aspect-[4/3] object-cover rounded-sm border border-gray-200 bg-white"
+                                        />
+                                    </div>
                                 </div>
                             </section>
 
@@ -642,6 +642,11 @@
                                             <h3 className="text-[18px] font-bold text-gray-900 leading-snug mb-2">
                                                 {award.title}
                                             </h3>
+                                            {award.project && (
+                                                <div className="text-[15px] font-bold text-gray-700 leading-snug mb-2">
+                                                    <span className="text-gray-400 mr-1.5">{t.award_project}：</span>{award.project}
+                                                </div>
+                                            )}
                                             <div className="text-[15px] font-medium text-gray-500 mb-4">
                                                 {award.org}
                                             </div>
@@ -670,7 +675,7 @@
                                         <span className="text-[15px] font-bold text-gray-800">{t.toeic}</span>
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     <QualificationColumn title={t.qual_esg} dot="bg-emerald-600" groups={t.qualifications.esg} />
                                     <QualificationColumn title={t.qual_tech} dot="bg-indigo-600" groups={t.qualifications.tech} />
                                     <QualificationColumn title={t.qual_finance} dot="bg-amber-600" groups={t.qualifications.finance} />
@@ -680,8 +685,8 @@
                             {/* 5. Overseas Program */}
                             <section className="section-border pt-16">
                                 <h2 className="text-2xl font-bold mb-6 serif-font text-gray-900">{t.section_overseas}</h2>
-                                <div className="flex flex-col md:flex-row gap-8 items-center bg-gray-50 border border-gray-200 p-8 rounded-sm">
-                                    <div className="w-full md:w-2/3 flex flex-col items-start">
+                                <div className="flex flex-col lg:flex-row gap-8 items-center bg-gray-50 border border-gray-200 p-8 rounded-sm">
+                                    <div className="w-full lg:w-2/3 flex flex-col items-start">
                                         <h3 className="text-xl font-bold text-gray-900 mb-4">{t.overseas.title}</h3>
                                         <p className="text-[17px] font-medium text-gray-700 leading-relaxed text-justify mb-6">
                                             {t.overseas.desc}
@@ -691,7 +696,7 @@
                                             {t.overseas.video_text}
                                         </a>
                                     </div>
-                                    <div className="w-full md:w-1/3 aspect-[4/3] bg-white border border-gray-200 overflow-hidden shadow-sm">
+                                    <div className="w-full lg:w-1/3 aspect-[4/3] bg-white border border-gray-200 overflow-hidden shadow-sm">
                                         <img 
                                             src="images/life.jpg" 
                                             alt="Overseas Apprenticeship"
@@ -709,8 +714,8 @@
                     {activeTab === 'projects' && (
                         <div className="animate-fade-in space-y-12 pb-10">
                             {professionalProjects.map((proj) => (
-                                <div key={proj.id} className="flex flex-col md:flex-row gap-8 bg-white border border-gray-200 p-6 md:p-8 rounded-sm hover:border-gray-400 transition-colors shadow-xs">
-                                    <div className="w-full md:w-1/3 aspect-[4/3] bg-gray-100 overflow-hidden shrink-0 border border-gray-100 cursor-pointer" onClick={() => setSelectedProject(proj)}>
+                                <div key={proj.id} className="flex flex-col lg:flex-row gap-8 bg-white border border-gray-200 p-6 md:p-8 rounded-sm hover:border-gray-400 transition-colors shadow-xs">
+                                    <div className="w-full lg:w-1/3 aspect-[4/3] bg-gray-100 overflow-hidden shrink-0 border border-gray-100 cursor-pointer" onClick={() => setSelectedProject(proj)}>
                                         <img 
                                             src={proj.src} 
                                             alt={proj.title[lang]}
@@ -718,7 +723,7 @@
                                             onError={(e) => handleImageError(e, proj.src.split('/').pop())}
                                         />
                                     </div>
-                                    <div className="w-full md:w-2/3 flex flex-col">
+                                    <div className="w-full lg:w-2/3 flex flex-col">
                                         <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-2">
                                             <h3 className="text-xl font-bold text-gray-900 leading-snug">{proj.title[lang]}</h3>
                                             <span className="text-[14px] font-bold text-gray-600 bg-gray-100 px-3 py-1 rounded-sm w-fit shrink-0">
