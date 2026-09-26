@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex,nofollow">
-    <title>殷可盈 | NTPU Application Profile</title>
+    <title>殷可盈 | Academic Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
@@ -50,13 +50,15 @@
         const data = {
             zh: {
                 name: "殷可盈",
-                title: "永續管理師 Coco",
+                title: "永續研究者 Coco",
                 email: "yinkoying.yky@gmail.com",
                 nav_cv: "個人簡歷",
                 nav_projects: "專案實務",
                 nav_gallery: "學習剪影",
+                nav_issues: "關注議題",
                 nav_menu: "選單",
                 section_bio: "相關經歷",
+                section_study: "進修動機",
                 section_interests: "研究方向",
                 section_proposal: "研究構想",
                 section_ai_practice: "AI 新秀培訓專班",
@@ -80,6 +82,18 @@
                 gallery_awards: "競賽發表",
                 gallery_projects: "工作日常",
                 gallery_overseas: "海外見習",
+                issue_intro_label: "議題筆記",
+                issue_intro_title: "氣候政策、企業轉型與資源治理",
+                issue_intro: "我在這裡記錄對氣候治理、企業轉型與科技資源需求的觀察，結合相關政策與法規、公開資訊及實務經驗，提出值得進一步研究的問題；文章將持續更新。",
+                issue_categories_label: "文章分類",
+                issue_articles_label: "文章",
+                issue_all: "全部",
+                issue_empty: "這個分類的文章正在整理中。",
+                issue_categories: ["氣候政策與治理", "企業永續與轉型", "科技與資源治理"],
+                issue_read: "閱讀文章",
+                issue_back: "返回文章列表",
+                issue_questions: "我想持續追問",
+                issue_sources: "參考資料",
                 
                 interests: [
                     "跨部會氣候治理",
@@ -87,30 +101,43 @@
                     "企業永續揭露",
                     "綠色及轉型金融"
                 ],
-                proposal_title: "跨部會氣候政策協調與企業合規負擔：臺灣上市櫃公司之分析",
+                proposal_title: "跨部會氣候制度銜接與企業合規負擔：以臺灣上市櫃公司為例",
                 proposal: [
-                    "臺灣正透過碳盤查、查證、減量與永續資訊揭露等制度推動企業淨零轉型。環境部與金管會的相關措施雖共同指向減碳與企業韌性，但在適用對象、術語、資料要求、揭露內容及查證時程上，可能存在需要進一步銜接之處。對資源相對有限的上市櫃公司而言，制度之間的落差可能增加資料整備與內部治理的因應負擔。",
-                    "本研究擬以政策一致性（policy coherence）為分析架構，比較環境部與金管會之氣候相關制度，系統檢視其規範對象、資訊要求、術語、資料格式與時程安排。再結合上市櫃公司公開年報、永續報告書與相關揭露資料，觀察不同規模及產業企業的因應情形與差異。研究將把「合規負擔」界定為制度性因應負擔，而不逕自推論個別企業的實際金額成本。",
-                    "期望透過此分析，辨識跨部會制度可加強協調之處，並提出資料標準、時程安排及企業輔導機制的建議，協助臺灣在推進淨零目標時兼顧政策可執行性與企業轉型能力。"
+                    "環境部以公告事業及排放源為管理對象，要求溫室氣體盤查登錄，部分對象另須查驗；金管會則依產業與資本額，分階段要求上市櫃公司盤查、確信及揭露溫室氣體資訊，並涉及個體與合併報表範圍。兩部會已推動協作，但相關要求如何在企業實務中銜接，仍值得檢視。",
+                    "核心問題是：哪些上市櫃公司同時適用兩套制度？盤查邊界、排放資訊、查驗與確信，以及申報與揭露時程如何對應？這些要求可能在哪些環節增加資料整備與內部協調工作，規模較小的公司又面臨哪些壓力？",
+                    "分析將參考政策一致性（policy coherence）對政策目標、工具及執行的討論，比對相關政策、法規與作業指引，建立兩部會要求的對照架構。資料面則依可取得性，結合環境部公開登錄資訊、上市櫃公司年報及永續報告書，辨識可比對的企業，再按規模與產業比較揭露完整性、外部查驗或確信及治理安排。",
+                    "在資料可比對的範圍內，將歸納值得協調的制度環節及企業因應差異，並就資訊要求、查驗與確信時程，以及不同規模企業的輔導方式提出建議。"
                 ],
-                ai_practice: "2025 年中我參與臺北大學與經濟部合作之「AI 新秀培訓專班」的 300 小時培訓，課程涵蓋生成式 AI 金融服務、金融數據管理、雲端金融平台架構、金融系統開發及自然語言處理。其後，我將所學運用於多項永續與氣候行動競賽，透過網頁應用程式開發社區微氣候韌性決策、CCUS 淨零策略模擬、低碳循環與綠色金融等工具，嘗試將複雜的氣候資料與制度議題轉化為可理解、可操作的應用。",
+                proposal_challenges_title: "研究限制",
+                proposal_challenges: [
+                    { label: "組織邊界", text: "環境部的事業申報邊界，與金管會事業申報邊界未必相同。" },
+                    { label: "合規成本", text: "公開資料難以反映實際的盤查與查驗費用。" },
+                    { label: "產業規模", text: "產業規模本身可能是影響揭露能力主因之一。" }
+                ],
+                proposal_ref_label: "分析概念參考",
+                ai_practice_intro: "2025 年中，我完成臺北大學與經濟部合作的「AI 新秀培訓專班」300 小時培訓，學習內容包括：",
+                ai_learning: ["生成式 AI 金融服務與自然語言處理", "金融數據管理", "雲端金融平台架構與金融系統開發"],
+                ai_practice_outcome: "其後，我將所學運用於永續與氣候行動競賽，開發社區微氣候韌性、CCUS 淨零策略、低碳循環與綠色金融等網頁工具。",
                 
                 bio: [
-                    "我曾在國立臺北大學企業永續發展研究中心擔任研究助理，參與臺灣永續評鑑，審閱逾千份上市櫃公司永續報告書，累積企業公開揭露資料的檢視與整理經驗。",
-                    "在新系環境技術擔任專案工程師時，我協助中小企業依 ISO 14064-1 與 ISO 14067 進行溫室氣體與產品碳足跡盤查，接觸企業資料整備、外部查證與內部溝通的實務流程，也看見不同資源條件的企業面對相同制度要求時，會有不同的因應能力。另曾派駐環境部氣候變遷署，從政府專案執行現場觀察環境部、金管會及其他部會在制度推進與資料銜接上的協調需求。",
-                    "自 2026 年 9 月起，我將在永豐商業銀行擔任營管企劃，關注公平待客與金融友善之國內外趨勢，協助獎項報獎、自評作業及相關專案規劃與管理。我期待透過總行制度規劃與跨部門協作的實務，進一步理解金融機構如何將監理要求、內部治理與服務包容性轉化為可執行的工作。",
-                    "這些經驗讓我注意到，當碳盤查、查證與永續揭露等要求同步推進時，不同規模與資源條件的企業，在資訊整備、查證與內部治理上可能面臨不同的因應負擔。為將實務觀察轉化為可檢驗的研究問題，我希望透過研究所的環境政策、制度分析與實證方法訓練，進一步探討跨部會氣候治理對企業轉型的影響。"
+                    "在臺北大學企業永續發展研究中心參與臺灣永續評鑑，審閱逾千份上市櫃公司永續報告書，累積檢視公開揭露資料的經驗。",
+                    "任職新系環境技術期間，我協助中小企業依 ISO 14064-1 與 ISO 14067 進行溫室氣體及產品碳足跡盤查；派駐環境部氣候變遷署執行政府專案時，也觀察到環境部、金管會及其他部會的協調需求。",
+                    "2026 年 9 月加入永豐商業銀行總行擔任營管企劃，工作聚焦公平待客與金融友善，包含趨勢分析、自評、報獎及專案管理。我期待從中學習金融機構如何兼顧監理要求與不同客群需求，並從社會永續視角帶入對企業轉型的探討。"
+                ],
+                study_plan: [
+                    "我在淡江大學公共行政學系修習公共政策、環境政策、科技永續與研究方法，開始思考環境議題如何進入政策並落實。進入臺北大學公共行政暨政策學系碩士班後，我透過量化研究方法與公務成本效益分析深化分析能力，並修習資源經濟學、能源經濟學、排放交易制度專題及金融數據分析，逐步聚焦氣候治理與企業轉型。",
+                    "審閱永續報告書、輔導碳盤查及參與政府專案後，我更想釐清跨部會制度如何銜接，以及不同規模企業如何因應。申請臺北大學自然資源與環境管理研究所，是希望結合既有修課與實務經驗，透過政策與法規比較及企業公開資訊分析，深入研究這些問題。"
                 ],
 
                 education: [
-                    { school: "國立臺北大學", dept: "公共行政暨政策學系研究所", degree: "", period: "2022 - 肄業" },
+                    { school: "臺北大學", dept: "公共行政暨政策學系研究所", degree: "", period: "2022 - 肄業" },
                     { school: "淡江大學", dept: "公共行政學系", degree: "學士", period: "2018 - 2021" }
                 ],
 
                 experience: [
                     { role: "營管企劃", org: "永豐商業銀行", period: "2026.09 - Present" },
                     { role: "專案工程師", org: "新系環境技術有限公司", period: "2026.01 - 2026.09" },
-                    { role: "研究助理", org: "國立臺北大學 企業永續發展研究中心 / 民意與選舉研究中心", period: "2022.09 - 2025.12" }
+                    { role: "研究助理", org: "臺北大學 企業永續發展研究中心 / 民意與選舉研究中心", period: "2022.09 - 2025.12" }
                 ],
 
                 awards: [
@@ -154,13 +181,15 @@
             },
             en: {
                 name: "YIN, KO-YING",
-                title: "Sustainability Manager Coco",
+                title: "Sustainability Researcher · Coco",
                 email: "yinkoying.yky@gmail.com",
                 nav_cv: "Curriculum Vitae",
                 nav_projects: "Professional Projects",
                 nav_gallery: "Gallery",
+                nav_issues: "Issues of Interest",
                 nav_menu: "Menu",
                 section_bio: "Relevant Experience",
+                section_study: "Motivation for Graduate Study",
                 section_interests: "Research Focus",
                 section_proposal: "Research Concept",
                 section_ai_practice: "AI Rising Talent Training Program",
@@ -184,6 +213,18 @@
                 gallery_awards: "Presentations",
                 gallery_projects: "Work Life",
                 gallery_overseas: "Apprenticeship",
+                issue_intro_label: "Issue Notes",
+                issue_intro_title: "Climate policy, corporate transition, and resource governance",
+                issue_intro: "These notes bring together policies, regulations, public information, and professional experience to explore climate governance, corporate transition, and the resource demands of technology. I will continue to add articles and questions for further research.",
+                issue_categories_label: "Topics",
+                issue_articles_label: "Articles",
+                issue_all: "All",
+                issue_empty: "Articles in this topic are being prepared.",
+                issue_categories: ["Climate Policy & Governance", "Corporate Sustainability & Transition", "Technology & Resource Governance"],
+                issue_read: "Read article",
+                issue_back: "Back to articles",
+                issue_questions: "Questions I will keep asking",
+                issue_sources: "Sources",
                 
                 interests: [
                     "Cross-Ministerial Climate Governance",
@@ -191,22 +232,35 @@
                     "Corporate Sustainability Disclosure",
                     "Green and Transition Finance"
                 ],
-                proposal_title: "Policy Coordination and Corporate Compliance Burdens in Taiwan's Climate Governance: An Analysis of Listed Firms",
+                proposal_title: "Climate Policy Alignment Across Agencies and Corporate Compliance Burdens: A Study of Taiwan's Listed Firms",
                 proposal: [
-                    "Taiwan is advancing corporate net-zero transition through greenhouse-gas accounting, verification, emissions reduction, and sustainability disclosure requirements. Although measures led by the Ministry of Environment and the Financial Supervisory Commission share the broader goals of decarbonization and corporate resilience, their scope, terminology, data requirements, disclosure content, and verification timelines may require further alignment. For listed firms with relatively limited resources, gaps between regulatory systems may increase the burden of data preparation and internal governance.",
-                    "Drawing on policy coherence as its analytical framework, this study will compare climate-related regulatory systems administered by the Ministry of Environment and the Financial Supervisory Commission. It will systematically examine their covered entities, information requirements, terminology, data formats, and timelines. The study will then use publicly available annual reports, sustainability reports, and related disclosures to explore how firms of different sizes and industries respond. Compliance burden will be treated as an institutional response burden rather than as a direct estimate of firms' monetary costs.",
-                    "The study aims to identify areas where cross-ministerial coordination can be strengthened and to propose improvements in data standards, timelines, and corporate-support mechanisms. It seeks to support a net-zero transition that is both administratively workable and responsive to differences in corporate transition capacity."
+                    "The Ministry of Environment requires designated businesses and emission sources to account for and register greenhouse-gas emissions, with verification required for some. The Financial Supervisory Commission phases in accounting, assurance, and disclosure requirements for listed firms by industry and paid-in capital, covering both individual companies and consolidated groups. The agencies have begun coordinating their approaches, yet how these requirements fit together in practice warrants further study.",
+                    "The central questions are which listed firms fall under both systems and how their organizational boundaries, emissions information, verification and assurance requirements, and reporting timelines compare. Where might these requirements add to data preparation and internal coordination, and what pressures do smaller firms face?",
+                    "Drawing on policy-coherence work on policy goals, instruments, and implementation, the analysis will compare relevant policies, regulations, and implementation guidance. Subject to data availability, it will also bring together the Ministry of Environment's public registry, listed firms' annual reports, and sustainability reports to identify firms that can be matched across sources. Disclosure completeness, external verification or assurance, and governance arrangements will then be compared by firm size and industry.",
+                    "Within the scope of comparable public information, the findings will identify areas where requirements could be better aligned and how firms respond. They will inform recommendations on information requirements, verification and assurance schedules, and support tailored to firms of different sizes."
                 ],
-                ai_practice: "In mid-2025, I completed 300 hours in the AI Rising Talent Training Program jointly delivered by National Taipei University and the Ministry of Economic Affairs. The curriculum covered generative-AI financial services, financial data management, cloud financial-platform architecture, financial-system development, and natural language processing. I subsequently applied this learning in sustainability and climate-action competitions, developing web applications for community microclimate-resilience decisions, CCUS net-zero strategy simulations, low-carbon circularity, and green-finance tools. These projects sought to turn complex climate data and institutional issues into understandable, actionable applications.",
+                proposal_challenges_title: "Research Limitations",
+                proposal_challenges: [
+                    { label: "Reporting Boundaries", text: "A firm's reporting boundary under Ministry of Environment rules may differ from its reporting boundary under Financial Supervisory Commission rules." },
+                    { label: "Compliance Costs", text: "Public information may not reflect the actual costs of greenhouse gas accounting and verification." },
+                    { label: "Industry and Firm Size", text: "Industry and firm size may themselves be key factors affecting a company's capacity to disclose information." }
+                ],
+                proposal_ref_label: "Conceptual reference",
+                ai_practice_intro: "In mid-2025, I completed a 300-hour AI Rising Talent program jointly run by National Taipei University and the Ministry of Economic Affairs. The training covered:",
+                ai_learning: ["Generative AI for financial services and natural language processing", "Financial data management", "Cloud financial-platform architecture and financial-system development"],
+                ai_practice_outcome: "I later applied these skills in sustainability and climate-action competitions, building web tools for community microclimate resilience, CCUS net-zero strategy simulations, low-carbon circularity, and green finance.",
                 
                 bio: [
-                    "As a research assistant at National Taipei University's Center for Corporate Sustainability, I participated in the Taiwan Sustainability Evaluation, reviewing more than one thousand sustainability reports from listed companies and building experience in examining and organizing public corporate disclosures.",
-                    "As a project engineer at Xinxi Environmental Technology, I supported SMEs with greenhouse-gas and product-carbon-footprint inventories under ISO 14064-1 and ISO 14067. I encountered the practical processes of corporate data preparation, external assurance, and internal communication, and saw that firms with different resource conditions respond differently to the same requirements. I was also stationed at the Climate Change Administration, Ministry of Environment, where I observed the need for coordination in institutional implementation and data alignment among the Ministry of Environment, the Financial Supervisory Commission, and other ministries.",
-                    "Beginning in September 2026, I will serve as an Operations & Management Planning Specialist at Bank SinoPac, monitoring domestic and international developments in fair customer treatment and financial inclusion while assisting with award submissions, internal self-assessments, and related project planning and management. I hope to learn through headquarters-level policy planning and cross-departmental collaboration how financial institutions translate supervisory expectations, internal governance, and inclusive service into executable work.",
-                    "These experiences drew my attention to the differing response burdens firms may face in information preparation, assurance, and internal governance as carbon accounting, assurance, and sustainability-disclosure requirements advance in parallel. I hope to turn these practical observations into testable research questions through graduate training in environmental policy, institutional analysis, and empirical methods, with a focus on how cross-ministerial climate governance affects corporate transition."
+                    "At National Taipei University's Center for Corporate Sustainability, I contributed to the Taiwan Sustainability Evaluation and reviewed more than 1,000 sustainability reports from listed companies.",
+                    "At Xinxi Environmental Technology, I supported SMEs with greenhouse-gas inventories and product carbon footprints under ISO 14064-1 and ISO 14067. While stationed at the Ministry of Environment's Climate Change Administration for a government project, I also observed the need for coordination among the ministry, the Financial Supervisory Commission, and other agencies.",
+                    "I joined Bank SinoPac's headquarters in September 2026 as an Operations & Management Planning Specialist, working on fair customer treatment and financial inclusion through trend analysis, self-assessments, award submissions, and project management. I hope to learn how financial institutions balance supervisory requirements with the needs of different customer groups and bring a social sustainability perspective to my exploration of corporate transition."
+                ],
+                study_plan: [
+                    "I studied public policy, environmental policy, sustainability, and research methods in Tamkang University's Department of Public Administration, which led me to consider how environmental issues become policy and are put into practice. In National Taipei University's master's program in Public Administration and Policy, I strengthened my analytical foundation through quantitative research methods and cost-benefit analysis for public affairs. Courses in resource and energy economics, emissions trading, and financial data analysis then helped me focus on climate governance and corporate transition.",
+                    "Reviewing sustainability reports, supporting greenhouse-gas inventories, and working on government projects raised more specific questions for me: how do requirements across agencies fit together, and how do firms of different sizes respond? I hope to explore these questions at the Graduate Institute of Natural Resources and Environmental Management by comparing policies and regulations and analyzing public corporate disclosures."
                 ],
                 education: [
-                    { school: "National Taipei University", dept: "Graduate Institute of Public Administration & Policy", degree: "", period: "2022 - Incomplete" },
+                    { school: "National Taipei University", dept: "Master's Program in Public Administration and Policy", degree: "", period: "2022–2026 · Degree not completed" },
                     { school: "Tamkang University", dept: "Department of Public Administration", degree: "B.A.", period: "2018 - 2021" }
                 ],
                 experience: [
@@ -262,7 +316,7 @@
                 role: { zh: "營管企劃", en: "Operations & Management Planning Specialist" },
                 period: "2026.09 - Present",
                 src: "images/proj-bank.jpg",
-                title: { zh: "公平待客與金融友善專案", en: "Fair Customer Treatment & Financial Inclusion Project" },
+                title: { zh: "公平待客與金融友善工作", en: "Fair Customer Treatment and Financial Inclusion" },
                 desc: { 
                     zh: "關注公平待客與金融友善之國內外趨勢，協助獎項報獎、自評作業及相關專案規劃與管理。", 
                     en: "Monitor domestic and international developments in fair customer treatment and financial inclusion; assist with award submissions, internal self-assessments, and the planning and management of related projects." 
@@ -277,8 +331,8 @@
                         en: "1. Monitor and analyze domestic and international developments in fair customer treatment and financial inclusion.\n2. Participate in or assist with related domestic and international award submissions.\n3. Plan and coordinate internal fair customer treatment self-assessments.\n4. Plan and manage related fair customer treatment, financial inclusion, and priority initiatives."
                     },
                     reflection: {
-                        zh: "期望透過這份工作，從大型金融機構的視角理解政策落地的實務挑戰，並將這份對社會包容的觀察帶入未來探討公正轉型的研究中。",
-                        en: "I hope to gain firsthand insight into how large financial institutions implement top-down regulations. This will deepen my understanding of social inclusion, directly supporting my future research on the just transition."
+                        zh: "這份工作剛開始，我期待從金融機構的制度規劃與跨部門合作，學習監理要求如何轉化為實際服務；也希望將對服務包容性的觀察，帶入未來對政策分配效果的思考。",
+                        en: "As I begin this role, I hope to learn how a financial institution translates supervisory expectations into services through internal planning and cross-departmental work. Questions of service inclusion will also inform how I think about the distributional effects of policy."
                     }
                 },
                 tags: { zh: ["金融友善", "內部治理", "專案規劃"], en: ["Financial Inclusion", "Internal Governance", "Project Planning"] }
@@ -339,59 +393,6 @@
             }
         ];
 
-        const galleryItemsLegacy = [
-            { 
-                id: "g-aus-1", category: "overseas", src: "images/gallery-aus-1.jpg", 
-                caption: { zh: "EarthCheck 總部指標研習", en: "EarthCheck Indicator Study" },
-                desc: { zh: "在布里斯本 EarthCheck 學院研習，了解國際目的地標準與認證運作流程。", en: "Studied destination sustainability standards and certification processes at EarthCheck HQ." } 
-            },
-            { 
-                id: "g-aus-2", category: "overseas", src: "images/gallery-aus-2.jpg", 
-                caption: { zh: "昆士蘭 生態旅遊現勘", en: "Queensland Ecotourism Fieldwork" },
-                desc: { zh: "實地走訪生態示範據點，觀察環境承載量的監測機制。", en: "Investigated eco-tourism sites to observe environmental carrying capacity monitoring." } 
-            },
-            { 
-                id: "g-aus-3", category: "overseas", src: "images/gallery-aus-3.jpg", 
-                caption: { zh: "目的地治理 實務討論", en: "Destination Governance Discussion" },
-                desc: { zh: "與永續稽核師探討地方政府在推動永續轉型時遇到的實務挑戰。", en: "Discussed practical challenges of regional sustainable transition with auditors." } 
-            },
-            { 
-                id: "g-aus-4", category: "overseas", src: "images/gallery-aus-4.jpg", 
-                caption: { zh: "EarthCheck 學院結訓", en: "EarthCheck Academy Completion" },
-                desc: { zh: "完成見習計畫，確立將國際指標與在地實踐結合的視野。", en: "Completed the program, confirming the vision of bridging global benchmarks with local practices." } 
-            },
-            { 
-                id: "g-award-1", category: "awards", src: "images/gallery-award-1.jpg", 
-                caption: { zh: "氣候變遷創意實作 決賽發表", en: "Climate Competition Presentation" },
-                desc: { zh: "向氣象署委員說明空間圖資如何輔助社區進行微氣候調適。", en: "Presented to committee members on how GIS aids community microclimate adaptation." } 
-            },
-            { 
-                id: "g-award-2", category: "awards", src: "images/gallery-award-2.jpg", 
-                caption: { zh: "CCUS 創意教案 成果展演", en: "CCUS Lesson Plan Exhibition" },
-                desc: { zh: "展示互動式碳捕捉模擬器，探討產業減碳轉型的情境抉擇。", en: "Demonstrated the CCUS simulator, discussing industrial decarbonization trade-offs." } 
-            },
-            { 
-                id: "g-award-3", category: "awards", src: "images/gallery-award-3.jpg", 
-                caption: { zh: "仿生設計競賽 交流研討", en: "Biomimicry Design Seminar" },
-                desc: { zh: "與學者研討社區微型循環網絡，評估落葉堆肥的減碳潛力。", en: "Discussed local circular networks and evaluated the carbon-reduction potential of composting." } 
-            },
-            { 
-                id: "g-proj-1", category: "projects", src: "images/gallery-proj-1.jpg", 
-                caption: { zh: "中小企業 現場盤查", en: "SME On-site Auditing" },
-                desc: { zh: "走入金屬成型工廠，核實產線活動數據，協助建立盤查清冊。", en: "Visited manufacturing lines to verify activity data for inventory compilation." } 
-            },
-            { 
-                id: "g-proj-2", category: "projects", src: "images/gallery-proj-2.jpg", 
-                caption: { zh: "IoT 感測模組 現地架設", en: "IoT Sensor Deployment" },
-                desc: { zh: "架設環境感測硬體量測堆肥箱數據，測試低成本監測方案。", en: "Deployed sensors to measure compost data, testing low-cost monitoring solutions." } 
-            },
-            { 
-                id: "g-proj-3", category: "projects", src: "images/gallery-proj-3.jpg", 
-                caption: { zh: "社區低碳交通 田野訪談", en: "Community Transit Fieldwork" },
-                desc: { zh: "訪談邊陲社區長輩與通勤族，記錄公車路線調整對出行的影響。", en: "Interviewed elderly residents to document how transit adjustments impact mobility." } 
-            }
-        ];
-
         const galleryItems = [
             { id: 'overseas-01', category: 'overseas', src: 'images/gallery-overseas-01.jpg', caption: { zh: 'EarthCheck 總部', en: 'EarthCheck Headquarters' }, desc: { zh: '認識永續旅遊認證如何以環境、社會與治理指標，追蹤目的地與企業的永續績效。', en: 'Examined how sustainability-tourism certification uses environmental, social, and governance indicators to track the sustainability performance of destinations and businesses.' } },
             { id: 'overseas-02', category: 'overseas', src: 'images/gallery-overseas-02.jpg', caption: { zh: '南岸公園', en: 'South Bank Parklands' }, desc: { zh: '觀察河岸綠地、步行空間與公共設施的整合，思考氣候調適與宜居城市的關係。', en: 'Observed how riverside green space, walking networks, and public facilities can be integrated into an open urban landscape, linking climate adaptation with liveability.' } },
@@ -415,14 +416,88 @@
             { id: 'work-06', category: 'projects', src: 'images/gallery-work-06.jpg', caption: { zh: 'ISO 14067 主任稽核員訓練', en: 'ISO 14067 Lead Auditor Training' }, desc: { zh: '以蜂蜜蛋糕為案例分享產品碳足跡查證流程，練習從活動數據、排放係數到查證證據的檢視邏輯。', en: 'Used a honey-cake case study to explore product-carbon-footprint verification, from activity data and emission factors to the review of verification evidence.' } }
         ];
 
+        const issueCover = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-label="Data centre, electricity and water illustration">
+                <defs>
+                    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#dcebe8"/><stop offset="1" stop-color="#f3efe4"/></linearGradient>
+                    <linearGradient id="water" x2="1" y2="0"><stop stop-color="#7aaab9"/><stop offset="1" stop-color="#c4d9d6"/></linearGradient>
+                </defs>
+                <rect width="1200" height="720" fill="url(#bg)"/>
+                <circle cx="1010" cy="148" r="84" fill="#fff8d9" opacity=".8"/>
+                <path d="M0 516 Q170 465 315 520 T635 510 T950 490 T1200 508 V720 H0Z" fill="#bfd1c8"/>
+                <path d="M0 587 Q215 550 390 596 T760 579 T1200 578 V720 H0Z" fill="url(#water)"/>
+                <path d="M0 630 Q182 609 366 636 T758 625 T1200 627" fill="none" stroke="#e8f2ee" stroke-width="8" opacity=".75"/>
+                <rect x="226" y="166" width="595" height="380" rx="16" fill="#e8e9df" stroke="#334d55" stroke-width="10"/>
+                <rect x="242" y="179" width="563" height="40" fill="#789690"/>
+                <g fill="#29454d"><rect x="274" y="252" width="146" height="256" rx="7"/><rect x="449" y="252" width="146" height="256" rx="7"/><rect x="624" y="252" width="146" height="256" rx="7"/></g>
+                <g stroke="#a9ccc3" stroke-width="9" stroke-linecap="round"><path d="M299 292h97M299 338h97M299 384h97M299 430h97"/><path d="M474 292h97M474 338h97M474 384h97M474 430h97"/><path d="M649 292h97M649 338h97M649 384h97M649 430h97"/></g>
+                <g fill="#dfb778"><circle cx="302" cy="471" r="8"/><circle cx="477" cy="471" r="8"/><circle cx="652" cy="471" r="8"/></g>
+                <path d="M821 315 Q946 310 949 238 H1087" fill="none" stroke="#597c79" stroke-width="12" stroke-linecap="round"/>
+                <path d="M1048 200l-39 60h32l-25 58 73-79h-34l23-39z" fill="#d99b61"/>
+                <path d="M819 441 Q943 443 962 518" fill="none" stroke="#568da4" stroke-width="12" stroke-linecap="round"/>
+                <path d="M982 499c-17 30-23 41-23 52a23 23 0 0 0 46 0c0-11-6-22-23-52z" fill="#5997b0"/>
+                <g fill="#557c6a"><circle cx="97" cy="455" r="27"/><circle cx="138" cy="426" r="35"/><circle cx="176" cy="459" r="25"/><rect x="131" y="458" width="11" height="111"/></g>
+            </svg>
+        `);
+
+        // Add a new entry here to publish another article. Replace image with a local image path when available.
+        const issueArticles = [
+            {
+                id: 'ai-infrastructure',
+                categoryId: 2,
+                date: '2026.09',
+                image: issueCover,
+                zh: {
+                    title: 'AI 資料中心的用電、用水與地方治理',
+                    summary: '從 AI 應用經驗出發，思考資料中心的資源需求、資訊揭露與地方參與。',
+                    imageAlt: '資料中心連接電力與水資源的示意插畫',
+                    paragraphs: [
+                        '參與 AI 新秀培訓並開發永續議題的網頁應用後，我更能體會數位工具整理資訊、協助決策的價值。同時，我也開始注意支撐這些工具的資料中心與運算設施：它們需要電力、冷卻與場址，技術的使用終究與實體資源相連。',
+                        '國際能源署指出，資料中心用電需求持續成長，供電與電網接入的壓力可能集中在特定地區。聯合國環境規劃署則建議以用電效率、用水效率與再生能源使用等指標，提升資料中心的環境管理。這些資料提供了討論起點；個別設施的影響仍須依所在地、水源、冷卻方式與能源結構判斷。',
+                        '我關注的不只是總用量，更是資源需求如何進入地方決策：企業揭露了哪些資訊？新增需求由誰承擔？社區能否及早理解設施的環境影響並參與討論？若有機會進入研究所，我希望從環境政策與資源管理的角度，持續閱讀相關研究與公開資料，檢視不同治理工具如何讓數位發展與地方需求更好地銜接。'
+                    ],
+                    questions: [
+                        '資料中心的用電、用水與能源來源，應如何公開，才能支持具體的環境評估？',
+                        '選址與供應規劃如何納入地方居民、電網與水資源管理者的觀點？',
+                        '哪些政策工具能讓數位技術的效益與環境負擔被一併衡量？'
+                    ]
+                },
+                en: {
+                    title: 'AI Data Centres: Electricity, Water, and Local Governance',
+                    summary: 'Drawing on my experience with AI applications to explore resource demand, disclosure, and local participation in data-centre decisions.',
+                    imageAlt: 'Illustration linking a data centre to electricity and water resources',
+                    paragraphs: [
+                        'Training in AI and building web applications for sustainability projects showed me how digital tools can help organize information and support decisions. They also led me to think about the data centres and computing facilities behind those tools. Electricity, cooling, and physical sites connect digital services to real resources.',
+                        'The International Energy Agency reports continued growth in data-centre electricity demand, with pressure on power supply and grid connections concentrated in some locations. The UN Environment Programme recommends measures such as power usage effectiveness, water usage effectiveness, and renewable-energy use for managing data centres. These sources offer a starting point; the impact of any particular facility depends on its location, water supply, cooling system, and electricity mix.',
+                        'I am interested in how these demands enter local decisions. What information do operators disclose? Who bears the cost of added demand? Can communities understand potential impacts early enough to participate? If I have the opportunity to pursue graduate study, I hope to examine public data and research on how environmental policy and resource management can connect digital development with local needs.'
+                    ],
+                    questions: [
+                        'What information about electricity, water, and energy sources would make environmental assessment more meaningful?',
+                        'How can siting and supply planning include local residents, grid operators, and water managers?',
+                        'Which policy tools can account for both the benefits and environmental burdens of digital technologies?'
+                    ]
+                },
+                sources: [
+                    { label: 'IEA (2026) · Key Questions on Energy and AI', url: 'https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary' },
+                    { label: 'UNEP (2025) · Sustainable Procurement Guidelines for Data Centres and Servers', url: 'https://www.unep.org/technical-highlight/unep-releases-guidelines-curb-environmental-impact-data-centres' }
+                ]
+            }
+        ];
+
         const App = () => {
             const [lang, setLang] = useState('zh');
-            const [activeTab, setActiveTab] = useState('cv'); // 'cv', 'projects', 'gallery'
+            const [activeTab, setActiveTab] = useState('cv'); // 'cv', 'projects', 'gallery', 'issues'
             const [galleryFilter, setGalleryFilter] = useState('all'); 
+            const [issueFilter, setIssueFilter] = useState('all');
             const [selectedProject, setSelectedProject] = useState(null);
             const [selectedGalleryItem, setSelectedGalleryItem] = useState(null);
+            const [selectedIssueId, setSelectedIssueId] = useState(null);
 
             const t = data[lang];
+            const selectedIssue = issueArticles.find((item) => item.id === selectedIssueId);
+            const filteredIssues = issueFilter === 'all'
+                ? issueArticles
+                : issueArticles.filter((item) => item.categoryId === issueFilter);
 
             const handleImageError = (e, filename) => {
                 e.target.onerror = null; 
@@ -501,10 +576,11 @@
                             <div className="absolute left-0 top-9 z-40 w-56 bg-white border border-gray-200 shadow-lg rounded-sm overflow-hidden">
                                 <button onClick={(e) => { setActiveTab('cv'); e.currentTarget.closest('details').removeAttribute('open'); }} className={"w-full text-left px-4 py-3 text-[16px] font-bold border-b border-gray-100 " + (activeTab === 'cv' ? "bg-gray-50 text-gray-900" : "text-gray-500")}>{t.nav_cv}</button>
                                 <button onClick={(e) => { setActiveTab('projects'); e.currentTarget.closest('details').removeAttribute('open'); }} className={"w-full text-left px-4 py-3 text-[16px] font-bold border-b border-gray-100 " + (activeTab === 'projects' ? "bg-gray-50 text-gray-900" : "text-gray-500")}>{t.nav_projects}</button>
-                                <button onClick={(e) => { setActiveTab('gallery'); e.currentTarget.closest('details').removeAttribute('open'); }} className={"w-full text-left px-4 py-3 text-[16px] font-bold " + (activeTab === 'gallery' ? "bg-gray-50 text-gray-900" : "text-gray-500")}>{t.nav_gallery}</button>
+                                <button onClick={(e) => { setActiveTab('gallery'); e.currentTarget.closest('details').removeAttribute('open'); }} className={"w-full text-left px-4 py-3 text-[16px] font-bold border-b border-gray-100 " + (activeTab === 'gallery' ? "bg-gray-50 text-gray-900" : "text-gray-500")}>{t.nav_gallery}</button>
+                                <button onClick={(e) => { setSelectedIssueId(null); setActiveTab('issues'); e.currentTarget.closest('details').removeAttribute('open'); }} className={"w-full text-left px-4 py-3 text-[16px] font-bold " + (activeTab === 'issues' ? "bg-gray-50 text-gray-900" : "text-gray-500")}>{t.nav_issues}</button>
                             </div>
                         </details>
-                        <div className="hidden lg:flex gap-8">
+                        <div className="hidden lg:flex gap-6 xl:gap-8">
                             <button 
                                 onClick={() => setActiveTab('cv')}
                                 className={`text-[18px] font-bold tracking-widest pb-1.5 transition-colors ${activeTab === 'cv' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400 hover:text-gray-700'}`}
@@ -522,6 +598,12 @@
                                 className={`text-[18px] font-bold tracking-widest pb-1.5 transition-colors ${activeTab === 'gallery' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400 hover:text-gray-700'}`}
                             >
                                 {t.nav_gallery}
+                            </button>
+                            <button
+                                onClick={() => { setSelectedIssueId(null); setActiveTab('issues'); }}
+                                className={`text-[18px] font-bold tracking-widest pb-1.5 transition-colors ${activeTab === 'issues' ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400 hover:text-gray-700'}`}
+                            >
+                                {t.nav_issues}
                             </button>
                         </div>
                         <div className="flex gap-2.5">
@@ -615,6 +697,15 @@
                                         {t.bio.map((p, idx) => <p key={idx}>{p}</p>)}
                                     </div>
 
+                                    {/* 進修動機 */}
+                                    <h2 className="text-[18px] font-bold text-gray-900 mb-5 flex items-center gap-2.5">
+                                        <span className="inline-block w-3 h-3 bg-gray-800 rounded-sm"></span>
+                                        {t.section_study}
+                                    </h2>
+                                    <div className="text-[17px] text-gray-700 space-y-4 text-justify leading-relaxed font-medium mb-14 pl-1">
+                                        {t.study_plan.map((p, idx) => <p key={idx}>{p}</p>)}
+                                    </div>
+
                                     {/* 研究方向 */}
                                     <h2 className="text-[18px] font-bold text-gray-900 mb-5 flex items-center gap-2.5">
                                         <span className="inline-block w-3 h-3 bg-gray-800 rounded-sm"></span>
@@ -644,18 +735,48 @@
                                                 </p>
                                             ))}
                                         </div>
+                                        <div className="mt-7 p-5 md:p-6 bg-slate-50 border border-gray-200 border-l-[3px] border-l-emerald-700 rounded-sm">
+                                            <h3 className="text-[16px] font-bold text-gray-900 mb-4">{t.proposal_challenges_title}</h3>
+                                            <ul className="space-y-3">
+                                                {t.proposal_challenges.map((item) => (
+                                                    <li key={item.label} className="flex gap-3 text-[15px] text-gray-700 leading-relaxed">
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 mt-[10px] shrink-0" aria-hidden="true"></span>
+                                                        <span><strong className="text-gray-900">{item.label}{lang === 'zh' ? '：' : ': '}</strong>{item.text}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        <p className="text-[13px] text-gray-500 mt-5 leading-relaxed">
+                                            {t.proposal_ref_label}{lang === 'zh' ? '：' : ': '}<a href="https://doi.org/10.1002/eet.1589" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-emerald-800" title="Understanding Policy Coherence: Analytical Framework and Examples of Sector–Environment Policy Interactions in the EU">Nilsson et al. (2012)</a>
+                                        </p>
                                     </div>
                                 </div>
                             </header>
 
                             {/* 2. AI Training Program */}
                             <section className="section-border pt-16">
-                                <h2 className="text-2xl font-bold mb-6 serif-font text-gray-900">{t.section_ai_practice}</h2>
-                                <div className="bg-gray-50 border border-gray-200 rounded-sm p-7 md:p-8 flex flex-col lg:flex-row gap-6 lg:items-start">
+                                <h2 className="text-2xl font-bold mb-6 serif-font text-gray-900 flex items-center gap-3">
+                                    <span className="w-9 h-9 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-100 inline-flex items-center justify-center shrink-0" aria-hidden="true">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                                            <rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 9h6v6H9zM9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3m14-6h3m-3 6h3"/>
+                                        </svg>
+                                    </span>
+                                    {t.section_ai_practice}
+                                </h2>
+                                <div className="bg-gradient-to-br from-gray-50 to-emerald-50/30 border border-gray-200 border-l-[3px] border-l-emerald-700 rounded-sm p-7 md:p-8 flex flex-col lg:flex-row gap-6 lg:items-start">
                                     <div className="lg:flex-1">
-                                        <p className="text-[17px] font-medium text-gray-700 leading-relaxed text-justify">
-                                            {t.ai_practice}
+                                        <p className="text-[16px] font-medium text-gray-700 leading-relaxed">
+                                            {t.ai_practice_intro}
                                         </p>
+                                        <ul className="mt-4 mb-4 space-y-2.5">
+                                            {t.ai_learning.map((item) => (
+                                                <li key={item} className="flex gap-3 text-[16px] text-gray-700 leading-relaxed">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 mt-[10px] shrink-0" aria-hidden="true"></span>
+                                                    <span>{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <p className="text-[16px] font-medium text-gray-700 leading-relaxed">{t.ai_practice_outcome}</p>
                                     </div>
                                     <div className="w-full lg:w-[260px] shrink-0">
                                         <img
@@ -863,6 +984,105 @@
                                 ))}
                             </div>
                         </div>
+                    )}
+
+                    {/* Tab: Issues of Interest (關注議題) */}
+                    {activeTab === 'issues' && (
+                        <main className="animate-fade-in pb-16">
+                            <div className="max-w-3xl mb-10 md:mb-14">
+                                <span className="text-[12px] font-bold text-emerald-800 tracking-[0.18em] uppercase">{t.issue_intro_label}</span>
+                                <h2 className="text-3xl md:text-4xl font-bold serif-font text-gray-900 leading-snug mt-3 mb-5">{t.issue_intro_title}</h2>
+                                <p className="text-[17px] text-gray-600 leading-relaxed">{t.issue_intro}</p>
+                            </div>
+
+                            {!selectedIssue ? (
+                                <>
+                                    <div className="mb-9">
+                                        <h3 className="text-[14px] font-bold text-gray-700 mb-4">{t.issue_categories_label}</h3>
+                                        <div className="flex flex-wrap gap-2.5" role="group" aria-label={t.issue_categories_label}>
+                                            {[{ id: 'all', name: t.issue_all }, ...t.issue_categories.map((name, id) => ({ id, name }))].map((category) => (
+                                                <button
+                                                    key={category.id}
+                                                    type="button"
+                                                    onClick={() => setIssueFilter(category.id)}
+                                                    aria-pressed={issueFilter === category.id}
+                                                    className={`px-4 py-2 text-[14px] font-bold rounded-full border transition-colors ${issueFilter === category.id ? 'bg-emerald-900 text-white border-emerald-900' : 'bg-white text-gray-600 border-gray-200 hover:border-emerald-700 hover:text-emerald-900'}`}
+                                                >{category.name}</button>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <h3 className="text-[14px] font-bold text-gray-700 mb-5">{t.issue_articles_label}</h3>
+                                    {filteredIssues.length === 0 ? (
+                                        <p className="border border-gray-200 bg-gray-50 rounded-sm p-6 text-gray-600">{t.issue_empty}</p>
+                                    ) : <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    {filteredIssues.map((article, index) => (
+                                        <article key={article.id} className={`group bg-white border border-gray-200 rounded-sm overflow-hidden hover:border-gray-400 hover:shadow-md transition-all ${index === 0 ? 'md:col-span-2 md:flex' : ''}`}>
+                                            <div className={`bg-slate-100 overflow-hidden ${index === 0 ? 'md:w-[43%] md:shrink-0' : ''}`}>
+                                                <img
+                                                    src={article.image || issueCover}
+                                                    alt={article[lang].imageAlt}
+                                                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = issueCover; }}
+                                                    className={`w-full object-cover ${index === 0 ? 'aspect-[16/10] md:h-full' : 'aspect-[16/9]'}`}
+                                                />
+                                            </div>
+                                            <div className="p-6 md:p-8 flex flex-col justify-center">
+                                                <div className="text-[13px] font-bold tracking-wide text-emerald-800 mb-3">{t.issue_categories[article.categoryId]} <span className="text-gray-300 mx-2">·</span> {article.date}</div>
+                                                <h3 className="text-2xl font-bold serif-font text-gray-900 leading-snug mb-3">{article[lang].title}</h3>
+                                                <p className="text-[16px] text-gray-600 leading-relaxed mb-6">{article[lang].summary}</p>
+                                                <button
+                                                    onClick={() => { setSelectedIssueId(article.id); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                                                    className="self-start text-[15px] font-bold text-emerald-900 border-b border-emerald-800 pb-1 hover:text-emerald-700 transition-colors"
+                                                >
+                                                    {t.issue_read} &rarr;
+                                                </button>
+                                            </div>
+                                        </article>
+                                    ))}
+                                </div>}
+                                </>
+                            ) : (
+                                <article className="max-w-3xl mx-auto">
+                                    <button
+                                        onClick={() => { setSelectedIssueId(null); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                                        className="text-[15px] font-bold text-gray-600 hover:text-emerald-800 transition-colors mb-9"
+                                    >
+                                        &larr; {t.issue_back}
+                                    </button>
+                                    <div className="text-[13px] font-bold tracking-wide text-emerald-800 mb-4">{t.issue_categories[selectedIssue.categoryId]} <span className="text-gray-300 mx-2">·</span> {selectedIssue.date}</div>
+                                    <h3 className="text-3xl md:text-4xl font-bold serif-font text-gray-900 leading-snug mb-4">{selectedIssue[lang].title}</h3>
+                                    <p className="text-[18px] text-gray-600 leading-relaxed mb-8">{selectedIssue[lang].summary}</p>
+                                    <figure className="mb-10">
+                                        <img
+                                            src={selectedIssue.image || issueCover}
+                                            alt={selectedIssue[lang].imageAlt}
+                                            onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = issueCover; }}
+                                            className="w-full aspect-[16/9] object-cover border border-gray-200 rounded-sm"
+                                        />
+                                    </figure>
+                                    <div className="space-y-6 text-[17px] text-gray-700 leading-[1.9]">
+                                        {selectedIssue[lang].paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+                                    </div>
+                                    <section className="border-t border-gray-200 mt-12 pt-9">
+                                        <h4 className="text-xl font-bold text-gray-900 mb-5">{t.issue_questions}</h4>
+                                        <ul className="space-y-3 list-disc pl-6 text-[16px] text-gray-700 leading-relaxed">
+                                            {selectedIssue[lang].questions.map((question, index) => <li key={index}>{question}</li>)}
+                                        </ul>
+                                    </section>
+                                    <section className="border-t border-gray-200 mt-10 pt-9">
+                                        <h4 className="text-xl font-bold text-gray-900 mb-5">{t.issue_sources}</h4>
+                                        <ul className="space-y-3 text-[15px] leading-relaxed">
+                                            {selectedIssue.sources.map((source) => (
+                                                <li key={source.url}>
+                                                    <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-emerald-900 underline underline-offset-4 decoration-emerald-700/50 hover:text-emerald-700 break-words">
+                                                        {source.label} &nearr;
+                                                    </a>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </section>
+                                </article>
+                            )}
+                        </main>
                     )}
 
                     {/* MODAL 1: Professional Project Detailed View */}
